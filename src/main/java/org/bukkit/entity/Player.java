@@ -1272,4 +1272,22 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      */
     public <T> void spawnParticle(Particle particle, double x, double y, double z, int count, double offsetX, double offsetY, double offsetZ, double extra, T data);
 
+    // Spigot start
+    public class Spigot extends Entity.Spigot
+    {
+
+        /**
+         * Gets the connection address of this player, regardless of whether it
+         * has been spoofed or not.
+         *
+         * @return the player's connection address
+         */
+        public InetSocketAddress getRawAddress()
+        {
+            throw new UnsupportedOperationException( "Not supported yet." );
+        }
+    }
+
+    Spigot spigot();
+    // Spigot end
 }
