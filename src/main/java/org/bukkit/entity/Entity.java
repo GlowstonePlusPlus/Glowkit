@@ -373,4 +373,22 @@ public interface Entity extends Metadatable, CommandSender {
      * @return whether the entity is
      */
     public boolean isInvulnerable();
+
+    // Spigot Start
+    public class Spigot
+    {
+
+        /**
+         * Returns whether this entity is invulnerable.
+         *         
+        * @return True if the entity is invulnerable.
+         */
+        public boolean isInvulnerable()
+        {
+            throw new UnsupportedOperationException( "Not supported yet." );
+        }
+    }
+
+    Spigot spigot();
+    // Spigot End
 }
