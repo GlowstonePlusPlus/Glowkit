@@ -342,4 +342,22 @@ public interface Entity extends Metadatable, CommandSender {
      * @return if the custom name is displayed
      */
     public boolean isCustomNameVisible();
+
+    // Spigot Start
+    public class Spigot
+    {
+
+        /**
+         * Returns whether this entity is invulnerable.
+         *         
+        * @return True if the entity is invulnerable.
+         */
+        public boolean isInvulnerable()
+        {
+            throw new UnsupportedOperationException( "Not supported yet." );
+        }
+    }
+
+    Spigot spigot();
+    // Spigot End
 }
