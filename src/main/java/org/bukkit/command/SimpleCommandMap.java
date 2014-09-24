@@ -78,6 +78,7 @@ public class SimpleCommandMap implements CommandMap {
         register("bukkit", new AchievementCommand());
         register("bukkit", new ParticleCommand());
         register("bukkit", new SetBlockCommand());
+        register("bukkit", new TriggerCommand());
     }
 
     /**
