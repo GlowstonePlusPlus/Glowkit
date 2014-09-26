@@ -127,6 +127,14 @@ public interface Team {
     void setNameTagVisibility(NameTagVisibility visibility) throws IllegalArgumentException;
 
     /**
+     * Gets the color of a team
+     * This is only used for the team color sidebar slots
+     * @return
+     * @throws IllegalStateException if this team has been unregistered
+     */
+    ChatColor getColor() throws IllegalStateException;
+
+    /**
      * Gets the Set of players on the team
      *
      * @return players on the team
@@ -194,7 +202,6 @@ public interface Team {
      * @param visibility The visiblity of death messages
      * @throws IllegalArgumentException if the visibility is null
      * @throws IllegalStateException if this team has been unregistered
-     * @since 1.8
      */
     void setDeathMessageVisibility(NametagVisibility visibility) throws IllegalStateException, IllegalArgumentException;
 
@@ -203,7 +210,6 @@ public interface Team {
      *
      * @return visibility The visiblity of death messages
      * @throws IllegalStateException if this team has been unregistered
-     * @since 1.8
      */
     NametagVisibility getDeathMessageVisibility() throws IllegalStateException;
 }

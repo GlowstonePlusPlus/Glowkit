@@ -16,7 +16,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.scoreboard.Criteria;
 import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Score;
@@ -32,7 +31,7 @@ public class ScoreboardCommand extends VanillaCommand {
     private static final List<String> MAIN_CHOICES = ImmutableList.of("objectives", "players", "teams");
     private static final List<String> OBJECTIVES_CHOICES = ImmutableList.of("list", "add", "remove", "setdisplay");
     private static final List<String> OBJECTIVES_CRITERIA = ImmutableList.of("health", "playerKillCount", "totalKillCount", "deathCount", "dummy", "trigger");
-    private static final List<String> PLAYERS_CHOICES = ImmutableList.of("set", "add", "remove", "reset", "list", "enable");
+    private static final List<String> PLAYERS_CHOICES = ImmutableList.of("set", "add", "remove", "reset", "list", "enable", "test");
     private static final List<String> TEAMS_CHOICES = ImmutableList.of("add", "remove", "join", "leave", "empty", "list", "option");
     private static final List<String> TEAMS_OPTION_CHOICES = ImmutableList.of("color", "friendlyfire", "seeFriendlyInvisibles");
     private static final Map<String, DisplaySlot> OBJECTIVES_DISPLAYSLOT = ImmutableMap.of("belowName", DisplaySlot.BELOW_NAME, "list", DisplaySlot.PLAYER_LIST, "sidebar", DisplaySlot.SIDEBAR);
@@ -101,17 +100,9 @@ public class ScoreboardCommand extends VanillaCommand {
                     return false;
                 }
                 String name = args[2];
-                String criteria = null;
-                for (String crit: OBJECTIVES_CRITERIA) {
-                    if (args[3].equalsIgnoreCase(crit)) {
-                        criteria = args[3];
-                        break;
-                    }
-                }
+                String criteria = args[3];
 
-                if (criteria == null) {
-                    sender.sendMessage(ChatColor.RED + "Invalid objective criteria type. Valid types are: " + stringCollectionToString(OBJECTIVES_CRITERIA));
-                } else if (name.length() > 16) {
+                if (name.length() > 16) {
                     sender.sendMessage(ChatColor.RED + "The name '" + name + "' is too long for an objective, it can be at most 16 characters long");
                 } else if (mainScoreboard.getObjective(name) != null) {
                     sender.sendMessage(ChatColor.RED + "An objective with the name '" + name + "' already exists");
@@ -174,7 +165,7 @@ public class ScoreboardCommand extends VanillaCommand {
             }
         } else if (args[0].equalsIgnoreCase("players")) {
             if (args.length == 1) {
-                sender.sendMessage(ChatColor.RED + "/scoreboard players <set|add|remove|reset|list|enable>");
+                sender.sendMessage(ChatColor.RED + "/scoreboard players <set|add|remove|reset|list|enable|test> ...");
                 return false;
             }
             if (args[1].equalsIgnoreCase("set") || args[1].equalsIgnoreCase("add") || args[1].equalsIgnoreCase("remove")) {
@@ -291,6 +282,35 @@ public class ScoreboardCommand extends VanillaCommand {
                 objective.getScore(args[2]).setLocked(false);
                 sender.sendMessage("Enabled trigger " + args[3] + " for " + args[2]);
                 return true;
+            } else if (args[1].equalsIgnoreCase("test")) {
+                if (args.length < 5) {
+                    sender.sendMessage("Usage: /scoreboard players test <player> <objective> <min> [max]");
+                    return false;
+                }
+
+                Objective objective = mainScoreboard.getObjective(args[3]);
+                if (objective == null) {
+                    sender.sendMessage("No objective was found by the name '" + args[3] + "'");
+                    return false;
+                }
+
+                String min_str = args[4];
+                String max_str = null;
+
+                if (args.length > 5) {
+                    max_str = args[5];
+                }
+
+                if (args[2] == "*") {
+                    for (String player: objective.getEntries()) {
+                        testImpl(sender, player, objective, min_str, max_str);
+                    }
+                    return true;
+                }
+
+                testImpl(sender, args[2], objective, min_str, max_str);
+
+
             }
         } else if (args[0].equalsIgnoreCase("teams")) {
             if (args.length == 1) {
@@ -507,6 +527,51 @@ public class ScoreboardCommand extends VanillaCommand {
         return true;
     }
 
+    private boolean testImpl(CommandSender sender, String player, Objective objective, String min_str, String max_str) {
+        if (!objective.hasScore(player)) {
+            sender.sendMessage(ChatColor.RED + "No " + objective.getName() + " score for " + player + "found");
+            return false;
+        }
+        int value = objective.getScore(player).getScore();
+
+        int min;
+        int max;
+
+        if (min_str == "*") {
+            min = Integer.MIN_VALUE;
+        }
+        else {
+            min = Integer.valueOf(min_str);
+        }
+
+        if (max_str != null) {
+            if (max_str == "*") {
+                max = Integer.MAX_VALUE;
+
+            } else {
+                max = Integer.valueOf(max_str);
+            }
+        }
+        else {
+            max = Integer.MAX_VALUE;
+        }
+
+
+        if (min > max) {
+            sender.sendMessage(ChatColor.RED + "The number you have entered (" + max + ") is too small, it must be at least " + min);
+            return false;
+        }
+
+        if (min <= value && value <= max) {
+            sender.sendMessage("Score " + value + "is in range " + min + " to " + max);
+            return true;
+        }
+        else {
+            sender.sendMessage("Score " + value + "is NOT in range " + min + " to " + max);
+            return false;
+        }
+    }
+
     @Override
     public List<String> tabComplete(CommandSender sender, String alias, String[] args) throws IllegalArgumentException {
         Validate.notNull(sender, "Sender cannot be null");
@@ -541,7 +606,7 @@ public class ScoreboardCommand extends VanillaCommand {
                 if (args.length == 2) {
                     return StringUtil.copyPartialMatches(args[1], PLAYERS_CHOICES, new ArrayList<String>());
                 }
-                if (args[1].equalsIgnoreCase("set") || args[1].equalsIgnoreCase("add") || args[1].equalsIgnoreCase("remove") || args[1].equalsIgnoreCase("enable")) {
+                if (args[1].equalsIgnoreCase("set") || args[1].equalsIgnoreCase("add") || args[1].equalsIgnoreCase("remove") || args[1].equalsIgnoreCase("enable") || args[1].equalsIgnoreCase("test")) {
                     if (args.length == 3) {
                         return super.tabComplete(sender, alias, args);
                     }
