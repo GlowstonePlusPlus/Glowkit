@@ -2,7 +2,6 @@ package org.bukkit.scoreboard;
 
 import org.bukkit.OfflinePlayer;
 
-import java.util.Map;
 import java.util.Set;
 
 /**
@@ -89,18 +88,20 @@ public interface Objective {
     DisplaySlot getDisplaySlot() throws IllegalStateException;
 
     /**
+     * Sets this objective to display with the specified render type.
      *
-     * @return
-     * @throws IllegalStateException if this objective has been unregistered
-     */
-    RenderType getType() throws IllegalStateException;
-
-    /**
-     *
-     * @param type
+     * @param type the new render type for this objective
      * @throws IllegalStateException if this objective has been unregistered
      */
     void setType(RenderType type) throws IllegalStateException;
+
+    /**
+     * Gets the render type of this objective.
+     *
+     * @return the render type for this objective
+     * @throws IllegalStateException if this objective has been unregistered
+     */
+    RenderType getType() throws IllegalStateException;
 
     /**
      * Gets a player's Score for an Objective on this Scoreboard
@@ -126,16 +127,17 @@ public interface Objective {
     Score getScore(String entry) throws IllegalArgumentException, IllegalStateException;
 
     /**
-     * Gets whether a score exists for the given entry
+     * Gets whether a score exists for the given entry.
+     *
      * @param entry The entry to check for
      * @throws IllegalArgumentException if entry is null
      * @throws IllegalStateException if this objective has been unregistered
      */
     boolean hasScore(String entry) throws IllegalArgumentException, IllegalStateException;
 
-
     /**
      * Gets a set of all entries for this objective.
+     *
      * @return entries A set of entries.
      * @throws IllegalStateException if this objective has been unregistered
      */

@@ -5,15 +5,15 @@ package org.bukkit.scoreboard;
  */
 public enum DisplaySlot {
     /**
-     * Displays a player's score underneath their nametag in-game
+     * Displays underneath their nameplate in-game.
      */
     BELOW_NAME,
     /**
-     * Displays a player's score in the tab-menu, next to their name
+     * Displays in the tab-menu, next to their name.
      */
     PLAYER_LIST,
     /**
-     * Displays a player's score in the sidebar on the right-hand side of the screen
+     * Displays in the sidebar on the right-hand side of the screen.
      */
-    SIDEBAR;
+    SIDEBAR
 }

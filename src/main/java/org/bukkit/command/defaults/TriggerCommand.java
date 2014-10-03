@@ -1,6 +1,8 @@
 package org.bukkit.command.defaults;
 
-import com.google.common.collect.ImmutableList;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.commons.lang.Validate;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -11,11 +13,11 @@ import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Score;
 import org.bukkit.util.StringUtil;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.google.common.collect.ImmutableList;
 
-public class TriggerCommand extends VanillaCommand{
-    private static final List<String> TABCOMPLETE_ADD_SET = ImmutableList.of("add", "set");
+public class TriggerCommand extends VanillaCommand {
+
+    private static final List<String> COMPLETIONS = ImmutableList.of("add", "set");
 
     public TriggerCommand() {
         super("trigger");
@@ -36,8 +38,7 @@ public class TriggerCommand extends VanillaCommand{
         if (sender instanceof Player) {
             player = (Player) sender;
             objective = Bukkit.getScoreboardManager().getMainScoreboard().getObjective(args[0]);
-        }
-        else {
+        } else {
             sender.sendMessage("Only players can use the /trigger command");
             return false;
         }
@@ -47,7 +48,7 @@ public class TriggerCommand extends VanillaCommand{
             return false;
         }
 
-        if (objective.getScore(player.getName()).getLocked() == true) {
+        if (objective.getScore(player.getName()).getLocked()) {
             sender.sendMessage(ChatColor.RED + "Trigger " + objective.getName() + " is not enabled");
             return false;
         }
@@ -56,8 +57,7 @@ public class TriggerCommand extends VanillaCommand{
 
         try {
             value = Integer.valueOf(args[2]);
-        }
-        catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {
             sender.sendMessage(ChatColor.RED + "'" + args[2] + "' is not a valid number");
             return false;
         }
@@ -69,8 +69,7 @@ public class TriggerCommand extends VanillaCommand{
             score.setLocked(true);
             sender.sendMessage("Trigger " + args[0] + " changed with add " + value);
             return true;
-        }
-        if (args[1].equalsIgnoreCase("set")) {
+        } else if (args[1].equalsIgnoreCase("set")) {
             score.setScore(value);
             score.setLocked(true);
             sender.sendMessage("Trigger " + args[0] + " changed with set " + value);
@@ -86,18 +85,16 @@ public class TriggerCommand extends VanillaCommand{
         Validate.notNull(args, "Arguments cannot be null");
         Validate.notNull(alias, "Alias cannot be null");
 
-        if (sender instanceof Player) {
-            Player player = (Player) sender;
-            if (args.length == 1) {
+        if (args.length == 1) {
+            if (sender instanceof Player) {
                 List<String> objectives = new ArrayList<String>();
-                for (Objective objective: Bukkit.getScoreboardManager().getMainScoreboard().getObjectivesByCriteria(Criterias.TRIGGER)) {
+                for (Objective objective : Bukkit.getScoreboardManager().getMainScoreboard().getObjectivesByCriteria(Criterias.TRIGGER)) {
                     objectives.add(objective.getName());
                 }
                 return objectives;
             }
-        }
-        if (args.length == 2) {
-            return StringUtil.copyPartialMatches(args[1], TABCOMPLETE_ADD_SET, new ArrayList<String>(TABCOMPLETE_ADD_SET.size()));
+        } else if (args.length == 2) {
+            return StringUtil.copyPartialMatches(args[1], COMPLETIONS, new ArrayList<String>(COMPLETIONS.size()));
         }
 
         return ImmutableList.of();

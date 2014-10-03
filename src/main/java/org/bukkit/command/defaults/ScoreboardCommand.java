@@ -42,7 +42,7 @@ public class ScoreboardCommand extends VanillaCommand {
             .put("bold", ChatColor.BOLD)
             .put("dark_aqua", ChatColor.DARK_AQUA)
             .put("dark_blue", ChatColor.DARK_BLUE)
-            .put("dark_gray",  ChatColor.DARK_GRAY)
+            .put("dark_gray", ChatColor.DARK_GRAY)
             .put("dark_green", ChatColor.DARK_GREEN)
             .put("dark_purple", ChatColor.DARK_PURPLE)
             .put("dark_red", ChatColor.DARK_RED)
@@ -272,7 +272,7 @@ public class ScoreboardCommand extends VanillaCommand {
                 }
 
                 if (args[2].equalsIgnoreCase("*")) {
-                    for (String player: mainScoreboard.getEntries()) {
+                    for (String player : mainScoreboard.getEntries()) {
                         objective.getScore(player).setLocked(false);
                         sender.sendMessage("Enabled trigger " + args[3] + " for " + player);
                     }
@@ -294,23 +294,21 @@ public class ScoreboardCommand extends VanillaCommand {
                     return false;
                 }
 
-                String min_str = args[4];
-                String max_str = null;
+                String minStr = args[4];
+                String maxStr = null;
 
                 if (args.length > 5) {
-                    max_str = args[5];
+                    maxStr = args[5];
                 }
 
-                if (args[2] == "*") {
-                    for (String player: objective.getEntries()) {
-                        testImpl(sender, player, objective, min_str, max_str);
+                if (args[2].equals("*")) {
+                    for (String player : objective.getEntries()) {
+                        testImpl(sender, player, objective, minStr, maxStr);
                     }
                     return true;
                 }
 
-                testImpl(sender, args[2], objective, min_str, max_str);
-
-
+                testImpl(sender, args[2], objective, minStr, maxStr);
             }
         } else if (args[0].equalsIgnoreCase("teams")) {
             if (args.length == 1) {
@@ -532,30 +530,26 @@ public class ScoreboardCommand extends VanillaCommand {
             sender.sendMessage(ChatColor.RED + "No " + objective.getName() + " score for " + player + "found");
             return false;
         }
-        int value = objective.getScore(player).getScore();
 
+        int value = objective.getScore(player).getScore();
         int min;
         int max;
 
-        if (min_str == "*") {
+        if (min_str.equals("*")) {
             min = Integer.MIN_VALUE;
-        }
-        else {
+        } else {
             min = Integer.valueOf(min_str);
         }
 
         if (max_str != null) {
-            if (max_str == "*") {
+            if (max_str.equals("*")) {
                 max = Integer.MAX_VALUE;
-
             } else {
                 max = Integer.valueOf(max_str);
             }
-        }
-        else {
+        } else {
             max = Integer.MAX_VALUE;
         }
-
 
         if (min > max) {
             sender.sendMessage(ChatColor.RED + "The number you have entered (" + max + ") is too small, it must be at least " + min);
@@ -565,8 +559,7 @@ public class ScoreboardCommand extends VanillaCommand {
         if (min <= value && value <= max) {
             sender.sendMessage("Score " + value + "is in range " + min + " to " + max);
             return true;
-        }
-        else {
+        } else {
             sender.sendMessage("Score " + value + "is NOT in range " + min + " to " + max);
             return false;
         }

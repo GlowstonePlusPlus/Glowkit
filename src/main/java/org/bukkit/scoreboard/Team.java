@@ -112,19 +112,19 @@ public interface Team {
     void setCanSeeFriendlyInvisibles(boolean enabled) throws IllegalStateException;
 
     /**
-     * Gets the name tag visibility of a team
-     * This affects what nametags will be visible to players on the team
+     * Gets the name tag visibility of this team. This affects what
+     * nametags will be visible to players on the team.
      *
-     * @return
+     * @return this team's nametag visibility.
      * @throws IllegalStateException if this team has been unregistered
      */
     NametagVisibility getNametagVisibility() throws IllegalStateException;
 
     /**
-     * Sets the name tag visibility of a team
-     * This affects what nametags will be visible to players on the team
+     * Sets the name tag visibility of this team. This affects what
+     * nametags will be visible to players on the team.
      *
-     * @param visibility
+     * @param visibility the new nametag visibility.
      * @throws IllegalStateException if this team has been unregistered
      */
     void setNametagVisibility(NametagVisibility visibility) throws IllegalStateException;
