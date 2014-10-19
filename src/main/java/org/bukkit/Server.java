@@ -956,6 +956,13 @@ public interface Server extends PluginMessageRecipient {
         public void restart() {
             throw new UnsupportedOperationException("Not supported yet.");
         }
+
+        // PaperSpigot start - Add getTPS method
+        public double[] getTPS()
+        {
+            throw new UnsupportedOperationException( "Not supported yet." );
+        }
+        // PaperSpigot end
     }
 
     Spigot spigot();
