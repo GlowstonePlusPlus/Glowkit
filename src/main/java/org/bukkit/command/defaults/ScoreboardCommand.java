@@ -504,6 +504,9 @@ public class ScoreboardCommand extends VanillaCommand {
                         }
                         team.setPrefix(color.toString());
                         team.setSuffix(ChatColor.RESET.toString());
+                        if (!color.isFormat()) {
+                            team.setColor(color);
+                        }
                     } else {
                         if (!value.equals("true") && !value.equals("false")) {
                             sender.sendMessage(ChatColor.RED + "Valid values for option " + option + " are: true and false");
