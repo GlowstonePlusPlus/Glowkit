@@ -14,6 +14,10 @@ import org.bukkit.Sound;
 import org.bukkit.Statistic;
 import org.bukkit.WeatherType;
 import org.bukkit.*;
+import org.bukkit.Particle;
+import org.bukkit.Sound;
+import org.bukkit.Statistic;
+import org.bukkit.WeatherType;
 import org.bukkit.command.CommandSender;
 import org.bukkit.conversations.Conversable;
 import org.bukkit.map.MapView;
@@ -21,8 +25,6 @@ import org.bukkit.plugin.messaging.PluginMessageRecipient;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.title.Title;
 import org.bukkit.title.TitleOptions;
-
-import java.net.InetSocketAddress;
 
 /**
  * Represents a player, connected or not
