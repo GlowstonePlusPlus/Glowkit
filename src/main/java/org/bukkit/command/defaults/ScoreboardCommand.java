@@ -530,7 +530,7 @@ public class ScoreboardCommand extends VanillaCommand {
 
     private boolean testImpl(CommandSender sender, String player, Objective objective, String min_str, String max_str) {
         if (!objective.hasScore(player)) {
-            sender.sendMessage(ChatColor.RED + "No " + objective.getName() + " score for " + player + "found");
+            sender.sendMessage(ChatColor.RED + "No " + objective.getName() + " score for " + player + " found");
             return false;
         }
 
@@ -560,10 +560,10 @@ public class ScoreboardCommand extends VanillaCommand {
         }
 
         if (min <= value && value <= max) {
-            sender.sendMessage("Score " + value + "is in range " + min + " to " + max);
+            sender.sendMessage("Score " + value + " is in range " + min + " to " + max);
             return true;
         } else {
-            sender.sendMessage("Score " + value + "is NOT in range " + min + " to " + max);
+            sender.sendMessage("Score " + value + " is NOT in range " + min + " to " + max);
             return false;
         }
     }
