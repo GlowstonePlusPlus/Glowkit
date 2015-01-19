@@ -1143,4 +1143,11 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * @param options the new options for the player
      */
     public void setTitleOptions(TitleOptions options);
+
+    /**
+     * Sends an action bar message to the player.
+     *
+     * @param message the message to send
+     */
+    public void sendActionBarMessage(String message);
 }
