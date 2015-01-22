@@ -44,7 +44,7 @@ public class VersionCommand extends BukkitCommand {
 
         if (args.length == 0) {
             sender.sendMessage("This server is running " + Bukkit.getName() + " version " + Bukkit.getVersion() + " (Implementing API version " + Bukkit.getBukkitVersion() + ")");
-            sendVersion(sender);
+            //sendVersion(sender);
         } else {
             StringBuilder name = new StringBuilder();
 
@@ -142,7 +142,7 @@ public class VersionCommand extends BukkitCommand {
         return ImmutableList.of();
     }
 
-    private final ReentrantLock versionLock = new ReentrantLock();
+    /*private final ReentrantLock versionLock = new ReentrantLock();
     private boolean hasVersion = false;
     private String versionMessage = null;
     private final Set<CommandSender> versionWaiters = new HashSet<CommandSender>();
@@ -251,5 +251,5 @@ public class VersionCommand extends BukkitCommand {
             e.printStackTrace();
             return -1;
         }
-    }
+    }*/
 }
