@@ -37,12 +37,14 @@
     </distributionManagement>
 
     <!-- required until fixed plexus-compiler-eclipse is deployed -->
+    <!--
     <pluginRepositories>
         <pluginRepository>
             <id>spigotmc-public</id>
             <url>https://hub.spigotmc.org/nexus/content/groups/public/</url>
         </pluginRepository>
     </pluginRepositories>
+    -->
 
     <dependencies>
         <dependency>
