@@ -10,7 +10,6 @@ import org.bukkit.event.entity.EntityDamageEvent;
 
 import com.google.common.collect.ImmutableList;
 
-@Deprecated
 public class KillCommand extends VanillaCommand {
     public KillCommand() {
         super("kill");

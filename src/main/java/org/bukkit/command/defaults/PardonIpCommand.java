@@ -12,7 +12,6 @@ import org.bukkit.util.StringUtil;
 
 import com.google.common.collect.ImmutableList;
 
-@Deprecated
 public class PardonIpCommand extends VanillaCommand {
     public PardonIpCommand() {
         super("pardon-ip");

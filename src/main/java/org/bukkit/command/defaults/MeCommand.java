@@ -4,7 +4,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
-@Deprecated
 public class MeCommand extends VanillaCommand {
     public MeCommand() {
         super("me");

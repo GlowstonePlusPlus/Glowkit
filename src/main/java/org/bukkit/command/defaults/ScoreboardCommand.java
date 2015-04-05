@@ -26,7 +26,6 @@ import org.bukkit.util.StringUtil;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 
-@Deprecated
 public class ScoreboardCommand extends VanillaCommand {
 
     private static final List<String> MAIN_CHOICES = ImmutableList.of("objectives", "players", "teams");

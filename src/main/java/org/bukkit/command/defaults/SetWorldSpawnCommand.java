@@ -12,7 +12,6 @@ import org.bukkit.entity.Player;
 
 import java.util.List;
 
-@Deprecated
 public class SetWorldSpawnCommand extends VanillaCommand {
 
     public SetWorldSpawnCommand() {

@@ -12,7 +12,6 @@ import org.bukkit.entity.Player;
 
 import com.google.common.collect.ImmutableList;
 
-@Deprecated
 public class ToggleDownfallCommand extends VanillaCommand {
     public ToggleDownfallCommand() {
         super("toggledownfall");

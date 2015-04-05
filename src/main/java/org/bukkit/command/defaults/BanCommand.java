@@ -13,7 +13,6 @@ import org.bukkit.entity.Player;
 
 import com.google.common.collect.ImmutableList;
 
-@Deprecated
 public class BanCommand extends VanillaCommand {
     public BanCommand() {
         super("ban");

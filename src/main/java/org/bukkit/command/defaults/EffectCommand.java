@@ -10,7 +10,6 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.StringUtil;
 
-@Deprecated
 public class EffectCommand extends VanillaCommand {
     private static final List<String> effects;
 

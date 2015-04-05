@@ -6,7 +6,6 @@ import org.bukkit.Location;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-@Deprecated
 public class PlaySoundCommand extends VanillaCommand {
     public PlaySoundCommand() {
         super("playsound");

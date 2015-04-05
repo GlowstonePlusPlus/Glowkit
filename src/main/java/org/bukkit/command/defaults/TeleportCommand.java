@@ -13,7 +13,6 @@ import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
 
 import com.google.common.collect.ImmutableList;
 
-@Deprecated
 public class TeleportCommand extends VanillaCommand {
 
     public TeleportCommand() {
