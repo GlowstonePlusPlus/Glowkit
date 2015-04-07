@@ -54,7 +54,9 @@ public class FlowerPot extends MaterialData {
      *
      * @return material MaterialData for the block currently in the flower pot
      *     or null if empty
+     * @deprecated Use {@link org.bukkit.block.FlowerPot#getContents()} instead.
      */
+    @Deprecated
     public MaterialData getContents() {
         switch (getData()) {
             case 1:
@@ -88,7 +90,9 @@ public class FlowerPot extends MaterialData {
      * Set the contents of the flower pot
      *
      * @param materialData MaterialData of the block to put in the flower pot.
+     * @deprecated Use {@link org.bukkit.block.FlowerPot#setContents(MaterialData)} instead.
      */
+    @Deprecated
     public void setContents(MaterialData materialData) {
         Material mat = materialData.getItemType();
 
