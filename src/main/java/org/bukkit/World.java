@@ -13,7 +13,6 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.*;
 import org.bukkit.generator.BlockPopulator;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.material.MaterialData;
 import org.bukkit.metadata.Metadatable;
 import org.bukkit.plugin.messaging.PluginMessageRecipient;
 import org.bukkit.util.Vector;
@@ -1177,33 +1176,6 @@ public interface World extends PluginMessageRecipient, Metadatable {
      * @return The world border for this world.
      */
     public WorldBorder getWorldBorder();
-
-    /**
-     * Displays a particle at the provided Location in the World.
-     *
-     * @param loc the location to play the effect at
-     * @param particle the {@link Particle}
-     * @param offsetX the X axis random offset
-     * @param offsetY the Y axis random offset
-     * @param offsetZ the Z axis random offset
-     * @param data the data of the particles, sometimes speed
-     * @param amount the number of particles to show
-     */
-    public void showParticle(Location loc, Particle particle, float offsetX, float offsetY, float offsetZ, float data, int amount);
-
-    /**
-     * Displays a particle at the provided Location in the World.
-     *
-     * @param loc the location to play the effect at
-     * @param particle the {@link Particle}
-     * @param material the {@link MaterialData} of the particle, for some particles
-     * @param offsetX the X axis random offset
-     * @param offsetY the Y axis random offset
-     * @param offsetZ the Z axis random offset
-     * @param data the data of the particles, sometimes speed
-     * @param amount the number of particles to show
-     */
-    public void showParticle(Location loc, Particle particle, MaterialData material, float offsetX, float offsetY, float offsetZ, float data, int amount);
 
     /**
      * Represents various map environment types that a world may be
