@@ -255,23 +255,23 @@ public enum Effect {
      */
     LARGE_SMOKE("largesmoke", Type.PARTICLE),
     /**
-     * ?
+     * The water bubble particles that appear in water, guardian laser beams and fishing.
      */
     BUBBLE("bubble", Type.PARTICLE),
     /**
-     * ?
+     * The particle on the end of the fishing line, or the hook.
      */
     WAKE("wake", Type.PARTICLE),
     /**
-     * ?
+     * The underwater particles.
      */
     SUSPENDED("suspended", Type.PARTICLE),
     /**
-     * ?
+     * The crossed out circle particle that appears on barriers.
      */
     BARRIER("barrier", Type.PARTICLE),
     /**
-     * ?
+     * Rain particles.
      */
     WATER_DROPLET(39, Type.PARTICLE),
     /**
@@ -280,7 +280,7 @@ public enum Effect {
      */
     ITEM_BREAK("iconcrack", Type.PARTICLE, Material.class),
     /**
-     * ?
+     * Unknown. Perhaps the particle when an item is vacuumed into the player's inventory.
      * This particle requires a Material and data value so that the client can select the correct texture.
      */
     ITEM_TAKE(40, Type.PARTICLE, MaterialData.class),
@@ -295,7 +295,7 @@ public enum Effect {
      */
     TILE_DUST("blockdust", Type.PARTICLE, MaterialData.class),
     /**
-     * ?
+     * The particle used when an elder guardian appears.
      */
     MOB_APPEARANCE(41, Type.PARTICLE);
     ;
