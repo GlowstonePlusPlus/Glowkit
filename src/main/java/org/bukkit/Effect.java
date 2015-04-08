@@ -255,10 +255,35 @@ public enum Effect {
      */
     LARGE_SMOKE("largesmoke", Type.PARTICLE),
     /**
+     * ?
+     */
+    BUBBLE("bubble", Type.PARTICLE),
+    /**
+     * ?
+     */
+    WAKE("wake", Type.PARTICLE),
+    /**
+     * ?
+     */
+    SUSPENDED("suspended", Type.PARTICLE),
+    /**
+     * ?
+     */
+    BARRIER("barrier", Type.PARTICLE),
+    /**
+     * ?
+     */
+    WATER_DROPLET(39, Type.PARTICLE),
+    /**
      * The particles generated when a tool breaks.
      * This particle requires a Material so that the client can select the correct texture.
      */
     ITEM_BREAK("iconcrack", Type.PARTICLE, Material.class),
+    /**
+     * ?
+     * This particle requires a Material and data value so that the client can select the correct texture.
+     */
+    ITEM_TAKE(40, Type.PARTICLE, MaterialData.class),
     /**
      * The particles generated while breaking a block.
      * This particle requires a Material and data value so that the client can select the correct texture.
@@ -268,7 +293,11 @@ public enum Effect {
      * The particles generated while sprinting a block
      * This particle requires a Material and data value so that the client can select the correct texture.
      */
-    TILE_DUST("blockdust", Type.PARTICLE, MaterialData.class);
+    TILE_DUST("blockdust", Type.PARTICLE, MaterialData.class),
+    /**
+     * ?
+     */
+    MOB_APPEARANCE(41, Type.PARTICLE);
     ;
 
     private final int id;
