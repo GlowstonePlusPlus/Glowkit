@@ -126,9 +126,41 @@ public enum Effect {
     BONEMEAL_USE(2005, Type.VISUAL),
 
     /**
+     * Explosion particles
+     */
+    EXPLOSION("explode", Type.PARTICLE),
+    /**
+     * A larger version of the explode particle
+     */
+    EXPLOSION_LARGE("largeexplode", Type.PARTICLE),
+    /**
+     * The biggest explosion particle effect
+     */
+    EXPLOSION_HUGE("hugeexplosion", Type.PARTICLE),
+    /**
      * The spark that comes off a fireworks
      */
     FIREWORKS_SPARK("fireworksSpark", Type.PARTICLE),
+    /**
+     * The water bubble particles that appear in water, guardian laser beams and fishing.
+     */
+    BUBBLE("bubble", Type.PARTICLE),
+    /**
+     * Water particles
+     */
+    SPLASH("splash", Type.PARTICLE),
+    /**
+     * The particle on the end of the fishing line, or the hook.
+     */
+    WAKE("wake", Type.PARTICLE),
+    /**
+     * The underwater particles.
+     */
+    SUSPENDED("suspended", Type.PARTICLE),
+    /**
+     * Small gray particles
+     */
+    VOID_FOG("depthsuspend", Type.PARTICLE),
     /**
      * Critical hit particles
      */
@@ -138,13 +170,14 @@ public enum Effect {
      */
     MAGIC_CRIT("magicCrit", Type.PARTICLE),
     /**
-     * Multicolored potion effect particles
+     * Smoke particles
      */
-    POTION_SWIRL("mobSpell", Type.PARTICLE),
+    PARTICLE_SMOKE("smoke", Type.PARTICLE),
     /**
-     * Multicolored potion effect particles that are slightly transparent
+     * The smoke particles that appears on blazes, minecarts
+     * with furnaces and fire
      */
-    POTION_SWIRL_TRANSPARENT("mobSpellAmbient", Type.PARTICLE),
+    LARGE_SMOKE("largesmoke", Type.PARTICLE),
     /**
      * A puff of white potion swirls
      */
@@ -154,9 +187,37 @@ public enum Effect {
      */
     INSTANT_SPELL("instantSpell", Type.PARTICLE),
     /**
+     * Multicolored potion effect particles
+     */
+    POTION_SWIRL("mobSpell", Type.PARTICLE),
+    /**
+     * Multicolored potion effect particles that are slightly transparent
+     */
+    POTION_SWIRL_TRANSPARENT("mobSpellAmbient", Type.PARTICLE),
+    /**
      * A puff of purple particles
      */
     WITCH_MAGIC("witchMagic", Type.PARTICLE),
+    /**
+     * The water drip particle that appears on blocks under water
+     */
+    WATERDRIP("dripWater", Type.PARTICLE),
+    /**
+     * The lava drip particle that appears on blocks under lava
+     */
+    LAVADRIP("dripLava", Type.PARTICLE),
+    /**
+     * The particle that appears when hitting a villager
+     */
+    VILLAGER_THUNDERCLOUD("angryVillager", Type.PARTICLE),
+    /**
+     * The particle that appears when trading with a villager
+     */
+    HAPPY_VILLAGER("happyVillager", Type.PARTICLE),
+    /**
+     * Small gray particles
+     */
+    SMALL_SMOKE("townaura", Type.PARTICLE),
     /**
      * The note that appears above note blocks
      */
@@ -182,34 +243,6 @@ public enum Effect {
      */
     FOOTSTEP("footstep", Type.PARTICLE),
     /**
-     * Water particles
-     */
-    SPLASH("splash", Type.PARTICLE),
-    /**
-     * Smoke particles
-     */
-    PARTICLE_SMOKE("smoke", Type.PARTICLE),
-    /**
-     * The biggest explosion particle effect
-     */
-    EXPLOSION_HUGE("hugeexplosion", Type.PARTICLE),
-    /**
-     * A larger version of the explode particle
-     */
-    EXPLOSION_LARGE("largeexplode", Type.PARTICLE),
-    /**
-     * Explosion particles
-     */
-    EXPLOSION("explode", Type.PARTICLE),
-    /**
-     * Small gray particles
-     */
-    VOID_FOG("depthsuspend", Type.PARTICLE),
-    /**
-     * Small gray particles
-     */
-    SMALL_SMOKE("townaura", Type.PARTICLE),
-    /**
      * A puff of white smoke
      */
     CLOUD("cloud", Type.PARTICLE),
@@ -221,14 +254,6 @@ public enum Effect {
      * Snowball breaking
      */
     SNOWBALL_BREAK("snowballpoof", Type.PARTICLE),
-    /**
-     * The water drip particle that appears on blocks under water
-     */
-    WATERDRIP("dripWater", Type.PARTICLE),
-    /**
-     * The lava drip particle that appears on blocks under lava
-     */
-    LAVADRIP("dripLava", Type.PARTICLE),
     /**
      * White particles
      */
@@ -242,48 +267,14 @@ public enum Effect {
      */
     HEART("heart", Type.PARTICLE),
     /**
-     * The particle that appears when hitting a villager
-     */
-    VILLAGER_THUNDERCLOUD("angryVillager", Type.PARTICLE),
-    /**
-     * The particle that appears when trading with a villager
-     */
-    HAPPY_VILLAGER("happyVillager", Type.PARTICLE),
-    /**
-     * The smoke particles that appears on blazes, minecarts
-     * with furnaces and fire
-     */
-    LARGE_SMOKE("largesmoke", Type.PARTICLE),
-    /**
-     * The water bubble particles that appear in water, guardian laser beams and fishing.
-     */
-    BUBBLE("bubble", Type.PARTICLE),
-    /**
-     * The particle on the end of the fishing line, or the hook.
-     */
-    WAKE("wake", Type.PARTICLE),
-    /**
-     * The underwater particles.
-     */
-    SUSPENDED("suspended", Type.PARTICLE),
-    /**
      * The crossed out circle particle that appears on barriers.
      */
     BARRIER("barrier", Type.PARTICLE),
-    /**
-     * Rain particles.
-     */
-    WATER_DROPLET(39, Type.PARTICLE),
     /**
      * The particles generated when a tool breaks.
      * This particle requires a Material so that the client can select the correct texture.
      */
     ITEM_BREAK("iconcrack", Type.PARTICLE, Material.class),
-    /**
-     * Unknown. Perhaps the particle when an item is vacuumed into the player's inventory.
-     * This particle requires a Material and data value so that the client can select the correct texture.
-     */
-    ITEM_TAKE(40, Type.PARTICLE, MaterialData.class),
     /**
      * The particles generated while breaking a block.
      * This particle requires a Material and data value so that the client can select the correct texture.
@@ -295,9 +286,18 @@ public enum Effect {
      */
     TILE_DUST("blockdust", Type.PARTICLE, MaterialData.class),
     /**
+     * Rain particles.
+     */
+    WATER_DROPLET("droplet", Type.PARTICLE),
+    /**
+     * Unknown. Perhaps the particle when an item is vacuumed into the player's inventory.
+     * This particle requires a Material and data value so that the client can select the correct texture.
+     */
+    ITEM_TAKE("take", Type.PARTICLE, MaterialData.class),
+    /**
      * The particle used when an elder guardian appears.
      */
-    MOB_APPEARANCE(41, Type.PARTICLE);
+    MOB_APPEARANCE("mobappearance", Type.PARTICLE);
     ;
 
     private final int id;
