@@ -291,9 +291,8 @@ public enum Effect {
     WATER_DROPLET("droplet", Type.PARTICLE),
     /**
      * Unknown. Perhaps the particle when an item is vacuumed into the player's inventory.
-     * This particle requires a Material and data value so that the client can select the correct texture.
      */
-    ITEM_TAKE("take", Type.PARTICLE, MaterialData.class),
+    ITEM_TAKE("take", Type.PARTICLE),
     /**
      * The particle used when an elder guardian appears.
      */
