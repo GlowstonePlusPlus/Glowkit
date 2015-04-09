@@ -13,7 +13,6 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.*;
 import org.bukkit.generator.BlockPopulator;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.material.MaterialData;
 import org.bukkit.metadata.Metadatable;
 import org.bukkit.plugin.messaging.PluginMessageRecipient;
 import org.bukkit.util.Vector;
@@ -1171,39 +1170,63 @@ public interface World extends PluginMessageRecipient, Metadatable {
      */
     public boolean isGameRule(String rule);
 
+    // Spigot start
+    public class Spigot
+    {
+
+        /**
+         * Plays an effect to all players within a default radius around a given
+         * location.
+         *
+         * @param location the {@link Location} around which players must be to
+         * see the effect
+         * @param effect the {@link Effect}
+         * @throws IllegalArgumentException if the location or effect is null.
+         * It also throws when the effect requires a material or a material data
+         */
+        public void playEffect(Location location, Effect effect)
+        {
+            throw new UnsupportedOperationException( "Not supported yet." );
+        }
+
+        /**
+         * Plays an effect to all players within a default radius around a given
+         * location. The effect will use the provided material (and material
+         * data if required). The particle's position on the client will be the
+         * given location, adjusted on each axis by a normal distribution with
+         * mean 0 and standard deviation given in the offset parameters, each
+         * particle has independently calculated offsets. The effect will have
+         * the given speed and particle count if the effect is a particle. Some
+         * effect will create multiple particles.
+         *
+         * @param location the {@link Location} around which players must be to
+         * see the effect
+         * @param effect effect the {@link Effect}
+         * @param id the item/block/data id for the effect
+         * @param data the data value of the block/item for the effect
+         * @param offsetX the amount to be randomly offset by in the X axis
+         * @param offsetY the amount to be randomly offset by in the Y axis
+         * @param offsetZ the amount to be randomly offset by in the Z axis
+         * @param speed the speed of the particles
+         * @param particleCount the number of particles
+         * @param radius the radius around the location
+         */
+        public void playEffect(Location location, Effect effect, int id, int data, float offsetX, float offsetY, float offsetZ, float speed, int particleCount, int radius)
+        {
+            throw new UnsupportedOperationException( "Not supported yet." );
+        }
+    }
+
+    Spigot spigot();
+    // Spigot end
+
+
     /**
      * Gets the world border for this world.
      *
      * @return The world border for this world.
      */
     public WorldBorder getWorldBorder();
-
-    /**
-     * Displays a particle at the provided Location in the World.
-     *
-     * @param loc the location to play the effect at
-     * @param particle the {@link Particle}
-     * @param offsetX the X axis random offset
-     * @param offsetY the Y axis random offset
-     * @param offsetZ the Z axis random offset
-     * @param data the data of the particles, sometimes speed
-     * @param amount the number of particles to show
-     */
-    public void showParticle(Location loc, Particle particle, float offsetX, float offsetY, float offsetZ, float data, int amount);
-
-    /**
-     * Displays a particle at the provided Location in the World.
-     *
-     * @param loc the location to play the effect at
-     * @param particle the {@link Particle}
-     * @param material the {@link MaterialData} of the particle, for some particles
-     * @param offsetX the X axis random offset
-     * @param offsetY the Y axis random offset
-     * @param offsetZ the Z axis random offset
-     * @param data the data of the particles, sometimes speed
-     * @param amount the number of particles to show
-     */
-    public void showParticle(Location loc, Particle particle, MaterialData material, float offsetX, float offsetY, float offsetZ, float data, int amount);
 
     /**
      * Represents various map environment types that a world may be
