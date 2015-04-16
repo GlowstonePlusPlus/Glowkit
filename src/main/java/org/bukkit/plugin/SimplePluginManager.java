@@ -3,6 +3,8 @@ package org.bukkit.plugin;
 import java.io.File;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -49,6 +51,7 @@ public final class SimplePluginManager implements PluginManager {
     private final Map<String, Map<Permissible, Boolean>> permSubs = new HashMap<String, Map<Permissible, Boolean>>();
     private final Map<Boolean, Map<Permissible, Boolean>> defSubs = new HashMap<Boolean, Map<Permissible, Boolean>>();
     private boolean useTimings = false;
+    private Collection<URL> ignoreURLs = null;
 
     public SimplePluginManager(Server instance, SimpleCommandMap commandMap) {
         server = instance;
@@ -94,6 +97,10 @@ public final class SimplePluginManager implements PluginManager {
         }
     }
 
+    public void setIgnoreURLs(Collection<URL> urls) {
+        this.ignoreURLs = urls;
+    }
+
     /**
      * Loads the plugins contained within the specified directory
      *
@@ -118,6 +125,17 @@ public final class SimplePluginManager implements PluginManager {
 
         // This is where it figures out all possible plugins
         for (File file : directory.listFiles()) {
+
+            // Skip plugins in the ignore set
+            try {
+                URL url = file.toURI().toURL();
+                if (ignoreURLs != null && ignoreURLs.contains(file.toURI().toURL())) {
+                    continue;
+                }
+            } catch (MalformedURLException ex) {
+                // ignore
+            }
+
             PluginLoader loader = null;
             for (Pattern filter : filters) {
                 Matcher match = filter.matcher(file.getName());
