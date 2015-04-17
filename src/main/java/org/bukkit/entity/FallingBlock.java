@@ -59,4 +59,11 @@ public interface FallingBlock extends Entity {
      * @param hurtEntities whether entities will be damaged by this block.
      */
     void setHurtEntities(boolean hurtEntities);
+
+    /**
+     * Gets the source block location of the falling block
+     *
+     * @return the source block location the falling block was spawned from
+     */
+    org.bukkit.Location getSourceLoc(); // PaperSpigot - Add FallingBlock source location API
 }
