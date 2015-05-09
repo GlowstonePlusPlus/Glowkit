@@ -1,21 +1,42 @@
 package org.bukkit.scoreboard;
 
-public enum NameTagVisibility {
+/**
+ * Possible nametag visibilities for {@link Team}s.
+ */
+public enum NametagVisibility {
+    /**
+     * Always show nametags for those on this team.
+     */
+    ALWAYS("always"),
+    /**
+     * Never show nametags for those on this team.
+     */
+    NEVER("never"),
+    /**
+     * Hide this team's nametags from other teams.
+     */
+    HIDE_FOR_OTHER_TEAMS("hideForOtherTeams"),
+    /**
+     * Hide this team's nametags from their own team.
+     */
+    HIDE_FOR_OWN_TEAM("hideForOwnTeam");
 
-    /**
-     * Always show the player's nametag.
-     */
-    ALWAYS,
-    /**
-     * Never show the player's nametag.
-     */
-    NEVER,
-    /**
-     * Show the player's nametag only to his own team members.
-     */
-    HIDE_FOR_OTHER_TEAMS,
-    /**
-     * Show the player's nametag only to members of other teams.
-     */
-    HIDE_FOR_OWN_TEAM;
+    private final String value;
+
+    private NametagVisibility(String value) {
+        this.value = value;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public static NametagVisibility get(String value) {
+        for (NametagVisibility n : values()) {
+            if (n.value.equalsIgnoreCase(value)) {
+                return n;
+            }
+        }
+        return null;
+    }
 }
