@@ -2,6 +2,7 @@ package org.bukkit.scoreboard;
 
 import java.util.Set;
 
+import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.potion.PotionEffectType;
 
@@ -135,6 +136,15 @@ public interface Team {
     ChatColor getColor() throws IllegalStateException;
 
     /**
+     * Sets color of a team
+     * This is only used for the team color sidebar slots
+     *
+     * @param color
+     * @throws IllegalStateException if this team has been unregistered
+     */
+     void setColor(ChatColor color) throws IllegalStateException;
+
+    /**
      * Gets the Set of players on the team
      *
      * @return players on the team
@@ -203,7 +213,7 @@ public interface Team {
      * @throws IllegalArgumentException if the visibility is null
      * @throws IllegalStateException if this team has been unregistered
      */
-    void setDeathMessageVisibility(NametagVisibility visibility) throws IllegalStateException, IllegalArgumentException;
+    void setDeathMessageVisibility(NameTagVisibility visibility) throws IllegalStateException, IllegalArgumentException;
 
     /**
      * Get the visiblity of death messages for players on this team.
@@ -211,5 +221,5 @@ public interface Team {
      * @return visibility The visiblity of death messages
      * @throws IllegalStateException if this team has been unregistered
      */
-    NametagVisibility getDeathMessageVisibility() throws IllegalStateException;
+    NameTagVisibility getDeathMessageVisibility() throws IllegalStateException;
 }

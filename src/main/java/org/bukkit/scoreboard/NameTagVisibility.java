@@ -3,7 +3,7 @@ package org.bukkit.scoreboard;
 /**
  * Possible nametag visibilities for {@link Team}s.
  */
-public enum NametagVisibility {
+public enum NameTagVisibility {
     /**
      * Always show nametags for those on this team.
      */
@@ -23,7 +23,7 @@ public enum NametagVisibility {
 
     private final String value;
 
-    private NametagVisibility(String value) {
+    private NameTagVisibility(String value) {
         this.value = value;
     }
 
@@ -31,8 +31,8 @@ public enum NametagVisibility {
         return value;
     }
 
-    public static NametagVisibility get(String value) {
-        for (NametagVisibility n : values()) {
+    public static NameTagVisibility get(String value) {
+        for (NameTagVisibility n : values()) {
             if (n.value.equalsIgnoreCase(value)) {
                 return n;
             }
