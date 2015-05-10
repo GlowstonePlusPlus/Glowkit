@@ -4,14 +4,14 @@ A plugin API for [Minecraft](https://minecraft.net/) servers, with updates from 
 
 Bug Reporting
 -------------
-The development team is open to both bug and feature requests / suggestions. You can submit these on [GitHub issues](https://github.com/deathcap/Glowkit/issues).
+The development team is open to both bug and feature requests / suggestions. You can submit these on [GitHub issues](https://github.com/GlowstonePlusPlus/Glowkit/issues).
 
 Compilation
 -----------
 Bukkit is a Java program which uses [Maven 3](http://maven.apache.org/) for compilation. To compile fresh from Git, simply perform the following steps:
 
 * Install Maven and Git using your preferred installation methods.
-* `git clone https://github.com/deathcap/Glowkit`
+* `git clone https://github.com/GlowstonePlusPlus/Glowkit`
 * `cd Glowkit`
 * `mvn clean install`
  
