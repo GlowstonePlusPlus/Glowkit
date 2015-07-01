@@ -1183,6 +1183,26 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
         {
             throw new UnsupportedOperationException( "Not supported yet" );
         }
+
+        /**
+         * Get the view distance for this player
+         *
+         * @return View distance
+         */
+        public int getViewDistance()
+        {
+            throw new UnsupportedOperationException( "Not supported yet" );
+        }
+
+        /**
+         * Set the view distance for this player
+         *
+         * @param viewDistance View distance
+         */
+        public void setViewDistance(int viewDistance)
+        {
+            throw new UnsupportedOperationException( "Not supported yet" );
+        }
     }
 
     Spigot spigot();
