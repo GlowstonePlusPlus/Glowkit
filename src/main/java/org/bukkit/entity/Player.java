@@ -1075,6 +1075,7 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      */
     public double getHealthScale();
 
+
     /**
      * Gets the entity which is followed by the camera when in
      * {@link GameMode#SPECTATOR}.
@@ -1114,4 +1115,59 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      */
     @Deprecated
     public void resetTitle();
+
+    /**
+     * Removes the title from the player's view. This does not reset the values
+     * the player sees.
+     */
+    public void clearTitle();
+
+    /**
+     * Gets the title currently set on the player
+     *
+     * @return the current title
+     */
+    public Title getTitle();
+
+    /**
+     * Sets the title to be shown to the player. Upon setting, the title will
+     * be shown if the title's heading differs from the last sent title. Only
+     * changing the subtitle has no effect.
+     *
+     * @param title the title to show the player
+     */
+    public void setTitle(Title title);
+
+    /**
+     * Sets the title to be shown the player. If forceUpdate is true, this
+     * will update the player immediately, otherwise the player will only
+     * be updated if the header has been changed from the last sent title.
+     *
+     * @param title the title to show the player
+     * @param forceUpdate true to force update the player, false otherwise
+     */
+    public void setTitle(Title title, boolean forceUpdate);
+
+    /**
+     * Gets the player's current title options.
+     *
+     * @return the current title options
+     */
+    public TitleOptions getTitleOptions();
+
+    /**
+     * Sets the player's title options. Upon setting, the new options will be
+     * sent to the player. Setting this to null will result in the default
+     * settings being applied.
+     *
+     * @param options the new options for the player
+     */
+    public void setTitleOptions(TitleOptions options);
+
+    /**
+     * Sends an action bar message to the player.
+     *
+     * @param message the message to send
+     */
+    public void sendActionBarMessage(String message);
 }
