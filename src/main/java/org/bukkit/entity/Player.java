@@ -5,6 +5,7 @@ import java.net.InetSocketAddress;
 import org.bukkit.Achievement;
 import org.bukkit.ChatColor;
 import org.bukkit.Effect;
+import org.bukkit.GameMode;
 import org.bukkit.Instrument;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -1074,76 +1075,43 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      */
     public double getHealthScale();
 
-     // Spigot start
-     public class Spigot extends Entity.Spigot
-     {
-         public void playEffect(Location location, Effect effect, int id, int data, float offsetX, float offsetY, float offsetZ, float speed, int particleCount, int radius)
-         {
-             throw new UnsupportedOperationException( "Not supported yet." );
-         }
-     }
-
-     Spigot spigot();
-     // Spigot end
+    /**
+     * Gets the entity which is followed by the camera when in
+     * {@link GameMode#SPECTATOR}.
+     *
+     * @return the followed entity, or null if not in spectator mode or not
+     * following a specific entity.
+     */
+    public Entity getSpectatorTarget();
 
     /**
-     * Removes the title from the player's view. This does not reset the values
-     * the player sees.
+     * Sets the entity which is followed by the camera when in
+     * {@link GameMode#SPECTATOR}.
+     *
+     * @param entity the entity to follow or null to reset
+     * @throws IllegalStateException if the player is not in
+     * {@link GameMode#SPECTATOR}
      */
-    public void clearTitle();
+    public void setSpectatorTarget(Entity entity);
 
     /**
-     * Resets the title settings for this player. Sets their {@link org.bukkit.title.TitleOptions}
-     * back to defaults and removes their currently set {@link org.bukkit.title.Title}.
+     * Sends a title and a subtitle message to the player. If either of these
+     * values are null, they will not be sent and the display will remain
+     * unchanged. If they are empty strings, the display will be updated as
+     * such. If the strings contain a new line, only the first line will be
+     * sent.
+     *
+     * @param title Title text
+     * @param subtitle Subtitle text
+     * @deprecated API subject to change
      */
+    @Deprecated
+    public void sendTitle(String title, String subtitle);
+
+    /**
+     * Resets the title displayed to the player.
+     * @deprecated API subject to change.
+     */
+    @Deprecated
     public void resetTitle();
-
-    /**
-     * Gets the title currently set on the player
-     *
-     * @return the current title
-     */
-    public Title getTitle();
-
-    /**
-     * Sets the title to be shown to the player. Upon setting, the title will
-     * be shown if the title's heading differs from the last sent title. Only
-     * changing the subtitle has no effect.
-     *
-     * @param title the title to show the player
-     */
-    public void setTitle(Title title);
-
-    /**
-     * Sets the title to be shown the player. If forceUpdate is true, this
-     * will update the player immediately, otherwise the player will only
-     * be updated if the header has been changed from the last sent title.
-     *
-     * @param title the title to show the player
-     * @param forceUpdate true to force update the player, false otherwise
-     */
-    public void setTitle(Title title, boolean forceUpdate);
-
-    /**
-     * Gets the player's current title options.
-     *
-     * @return the current title options
-     */
-    public TitleOptions getTitleOptions();
-
-    /**
-     * Sets the player's title options. Upon setting, the new options will be
-     * sent to the player. Setting this to null will result in the default
-     * settings being applied.
-     *
-     * @param options the new options for the player
-     */
-    public void setTitleOptions(TitleOptions options);
-
-    /**
-     * Sends an action bar message to the player.
-     *
-     * @param message the message to send
-     */
-    public void sendActionBarMessage(String message);
 }
