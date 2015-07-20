@@ -1075,6 +1075,18 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      */
     public double getHealthScale();
 
+     // Spigot start
+     public class Spigot extends Entity.Spigot
+     {
+         public void playEffect(Location location, Effect effect, int id, int data, float offsetX, float offsetY, float offsetZ, float speed, int particleCount, int radius)
+         {
+             throw new UnsupportedOperationException( "Not supported yet." );
+         }
+     }
+
+     Spigot spigot();
+     // Spigot end
+
     /**
      * Gets the entity which is followed by the camera when in
      * {@link GameMode#SPECTATOR}.
@@ -1093,6 +1105,7 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * {@link GameMode#SPECTATOR}
      */
     public void setSpectatorTarget(Entity entity);
+
 
     /**
      * Sends a title and a subtitle message to the player. If either of these
