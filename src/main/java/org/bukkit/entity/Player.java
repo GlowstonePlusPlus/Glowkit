@@ -1075,7 +1075,6 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      */
     public double getHealthScale();
 
-
     /**
      * Gets the entity which is followed by the camera when in
      * {@link GameMode#SPECTATOR}.
