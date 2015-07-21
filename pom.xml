@@ -78,7 +78,7 @@
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-          <version>2.2.4</version>
+            <version>2.2.4</version>
         </dependency>
         <dependency>
             <groupId>org.avaje</groupId>
@@ -118,29 +118,29 @@
                     <target>1.6</target>
                 </configuration>
             </plugin>
-<!-- reverted since it is causing this error my system:
-     "The package org.bukkit.material collides with a type"
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                - versions after this appear to be broken -
-                <version>3.1</version>
-                <configuration>
-                    - we use the Eclipse compiler as it doesn't need a JDK -
-                    <compilerId>eclipse</compilerId>
-                    - source and target are ignored if this isn't true -
-                    <optimize>true</optimize>
-                </configuration>
-                <dependencies>
-                    - we need our custom version as it fixes some bugs on case sensitive file systems -
-                    <dependency>
-                        <groupId>org.codehaus.plexus</groupId>
-                        <artifactId>plexus-compiler-eclipse</artifactId>
-                        <version>2.5.0-spigotmc</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-            -->
+            <!-- reverted since it is causing this error my system:
+                 "The package org.bukkit.material collides with a type"
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-compiler-plugin</artifactId>
+                            - versions after this appear to be broken -
+                            <version>3.1</version>
+                            <configuration>
+                                - we use the Eclipse compiler as it doesn't need a JDK -
+                                <compilerId>eclipse</compilerId>
+                                - source and target are ignored if this isn't true -
+                                <optimize>true</optimize>
+                            </configuration>
+                            <dependencies>
+                                - we need our custom version as it fixes some bugs on case sensitive file systems -
+                                <dependency>
+                                    <groupId>org.codehaus.plexus</groupId>
+                                    <artifactId>plexus-compiler-eclipse</artifactId>
+                                    <version>2.5.0-spigotmc</version>
+                                </dependency>
+                            </dependencies>
+                        </plugin>
+                        -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>animal-sniffer-maven-plugin</artifactId>

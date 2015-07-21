@@ -1075,18 +1075,6 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      */
     public double getHealthScale();
 
-     // Spigot start
-     public class Spigot extends Entity.Spigot
-     {
-         public void playEffect(Location location, Effect effect, int id, int data, float offsetX, float offsetY, float offsetZ, float speed, int particleCount, int radius)
-         {
-             throw new UnsupportedOperationException( "Not supported yet." );
-         }
-     }
-
-     Spigot spigot();
-     // Spigot end
-
     /**
      * Gets the entity which is followed by the camera when in
      * {@link GameMode#SPECTATOR}.
@@ -1182,4 +1170,118 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * @param message the message to send
      */
     public void sendActionBarMessage(String message);
+
+    // Spigot start
+    public class Spigot extends Entity.Spigot
+    {
+        /**
+         * Gets the connection address of this player, regardless of whether it
+         * has been spoofed or not.
+         *
+         * @return the player's connection address
+         */
+        public InetSocketAddress getRawAddress()
+        {
+            throw new UnsupportedOperationException( "Not supported yet." );
+        }
+
+        public void playEffect(Location location, Effect effect, int id, int data, float offsetX, float offsetY, float offsetZ, float speed, int particleCount, int radius)
+        {
+            throw new UnsupportedOperationException( "Not supported yet." );
+        }
+
+        /**
+         * Gets whether the player collides with entities
+         *
+         * @return the player's collision toggle state
+         */
+        public boolean getCollidesWithEntities()
+        {
+            throw new UnsupportedOperationException( "Not supported yet." );
+        }
+
+        /**
+         * Sets whether the player collides with entities
+         *
+         * @param collides whether the player should collide with entities or
+         * not.
+         */
+        public void setCollidesWithEntities(boolean collides)
+        {
+            throw new UnsupportedOperationException( "Not supported yet." );
+        }
+
+        /**
+         * Respawns the player if dead.
+         */
+        public void respawn()
+        {
+            throw new UnsupportedOperationException( "Not supported yet." );
+        }
+
+        /**
+         * Gets player locale language.
+         *
+         * @return the player's client language settings
+         */
+        public String getLocale()
+        {
+            throw new UnsupportedOperationException( "Not supported yet." );
+        }
+
+        /**
+         * Gets all players hidden with {@link #hidePlayer(org.bukkit.entity.Player)}.
+         *
+         * @return a Set with all hidden players
+         */
+        public java.util.Set<Player> getHiddenPlayers()
+        {
+            throw new UnsupportedOperationException( "Not supported yet." );
+        }
+
+        /**
+         * Get whether the player affects mob spawning
+         *
+         * @return whether or not the player affects
+         * mob spawning.
+         */
+        public boolean getAffectsSpawning()
+        {
+            throw new  UnsupportedOperationException( "Not supported yet." );
+        }
+
+        /**
+         * Set whether or not the player affects mob spawning
+         *
+         * @param affects whether or not the player should affect
+         * spawning or not.
+         */
+        public void setAffectsSpawning(boolean affects)
+        {
+            throw new UnsupportedOperationException( "Not supported yet" );
+        }
+
+        /**
+         * Get the view distance for this player
+         *
+         * @return View distance
+         */
+        public int getViewDistance()
+        {
+            throw new UnsupportedOperationException( "Not supported yet" );
+        }
+
+        /**
+         * Set the view distance for this player
+         *
+         * @param viewDistance View distance
+         */
+        public void setViewDistance(int viewDistance)
+        {
+            throw new UnsupportedOperationException( "Not supported yet" );
+        }
+    }
+
+    Spigot spigot();
+    // Spigot end
 }
