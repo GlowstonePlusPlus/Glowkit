@@ -150,14 +150,6 @@ public enum Effect {
      */
     MAGIC_CRIT("magicCrit", Type.PARTICLE),
     /**
-     * A puff of white potion swirls
-     */
-    SPELL("spell", Type.PARTICLE),
-    /**
-     * A puff of white stars
-     */
-    INSTANT_SPELL("instantSpell", Type.PARTICLE),
-    /**
      * Multicolored potion effect particles
      */
     POTION_SWIRL("mobSpell", Type.PARTICLE),
@@ -165,6 +157,14 @@ public enum Effect {
      * Multicolored potion effect particles that are slightly transparent
      */
     POTION_SWIRL_TRANSPARENT("mobSpellAmbient", Type.PARTICLE),
+    /**
+     * A puff of white potion swirls
+     */
+    SPELL("spell", Type.PARTICLE),
+    /**
+     * A puff of white stars
+     */
+    INSTANT_SPELL("instantSpell", Type.PARTICLE),
     /**
      * A puff of purple particles
      */
@@ -340,7 +340,7 @@ public enum Effect {
         this.id = 0;
         this.data = null;
         this.distanceIgnored = false;
-     }
+    }
 
     /**
      * Gets the ID for this effect.
@@ -399,16 +399,6 @@ public enum Effect {
         return BY_ID.get(id);
     }
 
-   /**
-     * Gets the Effect associated with the given name.
-     *
-     * @param name name of the Effect to return
-     * @return Effect with the given name
-     */
-    public static Effect getByName(String name) {
-        return BY_NAME.get(name);
-    }
-
     static {
         for (Effect effect : values()) {
             if (effect.type == Type.PARTICLE) {
@@ -423,6 +413,24 @@ public enum Effect {
                 BY_ID.put(effect.id, effect);
             }
         }
+    }
+
+    static {
+        for (Effect effect : values()) {
+            if (effect.type != Type.PARTICLE) {
+                BY_ID.put(effect.id, effect);
+            }
+        }
+    }
+
+    /**
+     * Gets the Effect associated with the given name.
+     *
+     * @param name name of the Effect to return
+     * @return Effect with the given name
+     */
+    public static Effect getByName(String name) {
+        return BY_NAME.get(name);
     }
 
     static {

@@ -9,20 +9,26 @@
         <version>9</version>
     </parent>
 
-    <groupId>org.bukkit</groupId>
-    <artifactId>bukkit</artifactId>
-    <version>1.8.7-R0.1-SNAPSHOT</version>
+    <groupId>net.glowstone</groupId>
+    <artifactId>glowkit</artifactId>
+    <version>1.8.8-R0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>Bukkit</name>
-    <url>http://www.bukkit.org/</url>
-    <description>A plugin API for Minecraft servers.</description>
+    <name>Glowkit</name>
+    <url>https://github.com/GlowstonePlusPlus/Glowkit</url>
+    <description>An enhanced plugin API for Minecraft servers.</description>
 
     <properties>
-        <maven.compiler.source>1.6</maven.compiler.source>
-        <maven.compiler.target>1.6</maven.compiler.target>
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <scm>
+        <developerConnection>scm:git:git@github.com:GlowstonePlusPlus/Glowkit.git</developerConnection>
+        <connection>scm:git:git://github.com/GlowstonePlusPlus/Glowkit.git</connection>
+        <url>https://github.com/GlowstonePlusPlus/Glowkit/tree/bukkit+glowkit/</url>
+    </scm>
 
     <!-- just until we get deployment to central approved -->
     <distributionManagement>
@@ -53,7 +59,7 @@
             <version>3.4</version>
             <scope>compile</scope>
         </dependency>
-        <!-- Keep lang2 for compatibility for now. This may be removed in the future. -->
+        <!-- Keep lang2 for plugin compatibility for now. This may be removed in the future. -->
         <dependency>
             <groupId>commons-lang</groupId>
             <artifactId>commons-lang</artifactId>
@@ -92,6 +98,14 @@
             <version>1.15</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>net.md-5</groupId>
+            <artifactId>bungeecord-chat</artifactId>
+            <version>1.8-SNAPSHOT</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+
         <!-- testing -->
         <dependency>
             <groupId>junit</groupId>
@@ -114,8 +128,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.3.2</version>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>1.7</source>
+                    <target>1.7</target>
                 </configuration>
             </plugin>
             <!-- reverted since it is causing this error my system:
