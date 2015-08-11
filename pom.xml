@@ -23,6 +23,13 @@
         <connection>scm:git:git://github.com/GlowstonePlusPlus/Glowkit.git</connection>
         <url>https://github.com/GlowstonePlusPlus/Glowkit/tree/bukkit+glowkit/</url>
     </scm>
+    
+    <repositories>
+        <repository>
+            <id>SonaType OSS</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </repository>
+    </repositories>
 
     <!-- just until we get deployment to central approved -->
     <distributionManagement>
