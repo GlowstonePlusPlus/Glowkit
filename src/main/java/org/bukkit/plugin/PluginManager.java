@@ -83,6 +83,15 @@ public interface PluginManager {
     public Plugin[] loadPlugins(File directory);
 
     /**
+     * Loads the array of plugins
+     *
+     * @param files Array of plugin files to load
+     * @param sourceFolder Containing folder path name string for error messages
+     * @return A list of all plugins loaded
+     */
+    public Plugin[] loadPlugins(File[] files, String sourceFolder);
+
+    /**
      * Disables all the loaded plugins
      */
     public void disablePlugins();

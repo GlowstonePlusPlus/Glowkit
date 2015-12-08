@@ -123,7 +123,7 @@ public final class SimplePluginManager implements PluginManager {
      *
      * @param files Array of plugin files to load
      * @param sourceFolder Containing folder path name string for error messages
-     * @return
+     * @return A list of all plugins loaded
      */
     public Plugin[] loadPlugins(File[] files, String sourceFolder) {
         List<Plugin> result = new ArrayList<Plugin>();
