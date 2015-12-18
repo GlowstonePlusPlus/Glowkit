@@ -415,14 +415,6 @@ public enum Effect {
         }
     }
 
-    static {
-        for (Effect effect : values()) {
-            if (effect.type != Type.PARTICLE) {
-                BY_ID.put(effect.id, effect);
-            }
-        }
-    }
-
     /**
      * Gets the Effect associated with the given name.
      *

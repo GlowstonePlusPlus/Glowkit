@@ -38,6 +38,7 @@ import org.bukkit.util.CachedServerIcon;
 
 import com.avaje.ebean.config.ServerConfig;
 import com.google.common.collect.ImmutableList;
+import org.bukkit.generator.ChunkGenerator;
 
 import org.bukkit.inventory.ItemFactory;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -906,6 +907,17 @@ public interface Server extends PluginMessageRecipient {
     public int getIdleTimeout();
 
     /**
+     * Create a ChunkData for use in a generator.
+     * 
+     * See {@link ChunkGenerator#generateChunkData(org.bukkit.World, java.util.Random, int, int, org.bukkit.generator.ChunkGenerator.BiomeGrid)}
+     * 
+     * @param world the world to create the ChunkData for
+     * @return a new ChunkData for the world
+     * 
+     */
+    public ChunkGenerator.ChunkData createChunkData(World world);
+
+    /**
      * @see UnsafeValues
      * @return the unsafe values instance
      */
@@ -919,13 +931,6 @@ public interface Server extends PluginMessageRecipient {
         {
             throw new UnsupportedOperationException( "Not supported yet." );
         }
-
-        // PaperSpigot start - Add getTPS method
-        public double[] getTPS()
-        {
-            throw new UnsupportedOperationException( "Not supported yet." );
-        }
-        // PaperSpigot end
 
         /**
          * Sends the component to the player
@@ -951,6 +956,13 @@ public interface Server extends PluginMessageRecipient {
         public void restart() {
             throw new UnsupportedOperationException("Not supported yet.");
         }
+
+        // PaperSpigot start - Add getTPS method
+        public double[] getTPS()
+        {
+            throw new UnsupportedOperationException( "Not supported yet." );
+        }
+        // PaperSpigot end
     }
 
     Spigot spigot();
