@@ -94,7 +94,7 @@ public class TimingsCommand extends BukkitCommand {
                 }
 
                 sender.sendMessage("Timings written to " + timings.getPath());
-                sender.sendMessage( "Paste contents of file into form at http://www.spigotmc.org/go/timings to read results." );
+                sender.sendMessage( "Paste contents of file into form at http://aikar.co/timings.php to read results." );
 
             } catch (IOException e) {
             } finally {
@@ -241,7 +241,7 @@ public class TimingsCommand extends BukkitCommand {
 
                 String location = con.getHeaderField( "Location" );
                 String pasteID = location.substring( "http://paste.ubuntu.com/".length(), location.length() - 1 );
-                sender.sendMessage( ChatColor.GREEN + "Timings results can be viewed at http://www.spigotmc.org/go/timings?url=" + pasteID );
+                sender.sendMessage( ChatColor.GREEN + "Timings results can be viewed at http://aikar.co/timings.php?url=" + pasteID );
             } catch ( IOException ex )
             {
                 sender.sendMessage( ChatColor.RED + "Error pasting timings, check your console for more information" );

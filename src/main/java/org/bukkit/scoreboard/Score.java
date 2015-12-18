@@ -81,6 +81,7 @@ public interface Score {
      *     unregistered
      */
     void setLocked(boolean locked);
+
     /**
      * Gets the scoreboard for the associated objective.
      *

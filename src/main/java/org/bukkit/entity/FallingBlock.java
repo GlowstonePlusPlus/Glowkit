@@ -47,6 +47,20 @@ public interface FallingBlock extends Entity {
     void setDropItem(boolean drop);
 
     /**
+     * Get the HurtEntities state of this block.
+     *
+     * @return whether entities will be damaged by this block.
+     */
+    boolean canHurtEntities();
+
+    /**
+     * Set the HurtEntities state of this block.
+     *
+     * @param hurtEntities whether entities will be damaged by this block.
+     */
+    void setHurtEntities(boolean hurtEntities);
+
+    /**
      * Gets the source block location of the falling block
      *
      * @return the source block location the falling block was spawned from
