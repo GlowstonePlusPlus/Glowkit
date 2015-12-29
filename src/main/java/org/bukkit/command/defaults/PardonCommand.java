@@ -16,9 +16,9 @@ import com.google.common.collect.ImmutableList;
 
 public class PardonCommand extends VanillaCommand {
     public PardonCommand() {
-        super("pardon");
+        super("unban");
         this.description = "Allows the specified player to use this server";
-        this.usageMessage = "/pardon <player>";
+        this.usageMessage = "/unban <player>";
         this.setPermission("bukkit.command.unban.player");
     }
 
