@@ -16,9 +16,9 @@ public class DefaultGameModeCommand extends VanillaCommand {
     private static final List<String> GAMEMODE_NAMES = ImmutableList.of("adventure", "creative", "survival");
 
     public DefaultGameModeCommand() {
-        super("defaultgamemode");
+        super("dgm");
         this.description = "Set the default gamemode";
-        this.usageMessage = "/defaultgamemode <mode>";
+        this.usageMessage = "/dgm <mode>";
         this.setPermission("bukkit.command.defaultgamemode");
     }
 

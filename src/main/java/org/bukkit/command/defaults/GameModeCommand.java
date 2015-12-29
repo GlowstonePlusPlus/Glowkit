@@ -18,9 +18,9 @@ public class GameModeCommand extends VanillaCommand {
     private static final List<String> GAMEMODE_NAMES = ImmutableList.of("adventure", "creative", "survival", "spectator");
 
     public GameModeCommand() {
-        super("gamemode");
+        super("gm");
         this.description = "Changes the player to a specific game mode";
-        this.usageMessage = "/gamemode <mode> [player]";
+        this.usageMessage = "/gm <mode> [player]";
         this.setPermission("bukkit.command.gamemode");
     }
 
