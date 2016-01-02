@@ -177,6 +177,10 @@ public enum Sound {
     ZOMBIE_PIG_ANGRY,
     ZOMBIE_PIG_DEATH,
     ZOMBIE_PIG_HURT,
+    // Generic Mob Sounds
+    NEUTRAL_DIE,
+    HOSTILE_HURT,
+    HOSTILE_DIE,
     // Dig Sounds
     DIG_WOOL,
     DIG_GRASS,
@@ -224,4 +228,11 @@ public enum Sound {
     VILLAGER_IDLE,
     VILLAGER_NO,
     VILLAGER_YES,
+    // Player
+    PLAYER_FALL_BIG,
+    PLAYER_FALL_SMALL,
+    PLAYER_HURT,
+    PLAYER_DIE,
+    PLAYER_SWIM_SPLASH,
+    PLAYER_SWIM
 }
