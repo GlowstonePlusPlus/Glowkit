@@ -31,7 +31,7 @@ public class SimpleCommandMap implements CommandMap {
         register("bukkit", new VersionCommand("version"));
         register("bukkit", new ReloadCommand("reload"));
         register("bukkit", new PluginsCommand("plugins"));
-        register("bukkit", new TimingsCommand("timings"));
+        register("bukkit", new co.aikar.timings.TimingsCommand("timings")); // Spigot
     }
 
     public void setFallbackCommands() {
@@ -60,6 +60,7 @@ public class SimpleCommandMap implements CommandMap {
      * {@inheritDoc}
      */
     public boolean register(String label, String fallbackPrefix, Command command) {
+        command.timings = co.aikar.timings.TimingsManager.getCommandTiming(fallbackPrefix, command); // Spigot
         label = label.toLowerCase().trim();
         fallbackPrefix = fallbackPrefix.toLowerCase().trim();
         boolean registered = register(label, command, false, fallbackPrefix);
