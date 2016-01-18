@@ -251,11 +251,13 @@ public final class Timings {
     =================
     */
 
-    static TimingHandler ofSafe(String name) {
+    @Deprecated
+    public static TimingHandler ofSafe(String name) {
         return ofSafe(null, name, null);
     }
 
-    static Timing ofSafe(Plugin plugin, String name) {
+    @Deprecated
+    public static Timing ofSafe(Plugin plugin, String name) {
         Timing pluginHandler = null;
         if (plugin != null) {
             pluginHandler = ofSafe(plugin.getName(), "Combined Total", TimingsManager.PLUGIN_GROUP_HANDLER);
@@ -263,11 +265,13 @@ public final class Timings {
         return ofSafe(plugin != null ? plugin.getName() : "Minecraft - Invalid Plugin", name, pluginHandler);
     }
 
-    static TimingHandler ofSafe(String name, Timing groupHandler) {
+    @Deprecated
+    public static TimingHandler ofSafe(String name, Timing groupHandler) {
         return ofSafe(null, name, groupHandler);
     }
 
-    static TimingHandler ofSafe(String groupName, String name, Timing groupHandler) {
+    @Deprecated
+    public static TimingHandler ofSafe(String groupName, String name, Timing groupHandler) {
         return TimingsManager.getHandler(groupName, name, groupHandler, false);
     }
 }

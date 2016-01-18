@@ -1,10 +1,8 @@
 package org.bukkit.command;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
-
+import co.aikar.timings.Timing;
+import co.aikar.timings.Timings;
+import com.google.common.collect.ImmutableList;
 import org.apache.commons.lang3.Validate;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -15,7 +13,10 @@ import org.bukkit.permissions.Permissible;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.util.StringUtil;
 
-import com.google.common.collect.ImmutableList;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Represents a Command, which executes various tasks upon user input
@@ -31,7 +32,7 @@ public abstract class Command {
     protected String usageMessage;
     private String permission;
     private String permissionMessage;
-    public co.aikar.timings.Timing timings; // Spigot
+    public Timing timings; // Spigot
     public String getTimingName() {return getName();} // Spigot
 
     protected Command(String name) {
@@ -46,7 +47,7 @@ public abstract class Command {
         this.usageMessage = usageMessage;
         this.aliases = aliases;
         this.activeAliases = new ArrayList<String>(aliases);
-        this.timings = new org.spigotmc.CustomTimingsHandler("** Command: " + name); // Spigot
+        this.timings = Timings.ofSafe("** Command: " + name); // Spigot
     }
 
     /**
@@ -230,7 +231,7 @@ public abstract class Command {
     public boolean setLabel(String name) {
         this.nextLabel = name;
         if (!isRegistered()) {
-            this.timings = new org.spigotmc.CustomTimingsHandler("** Command: " + name); // Spigot
+            this.timings = Timings.ofSafe("** Command: " + name); // Spigot
             this.label = name;
             return true;
         }
