@@ -31,7 +31,8 @@ public abstract class Command {
     protected String usageMessage;
     private String permission;
     private String permissionMessage;
-    public org.spigotmc.CustomTimingsHandler timings; // Spigot
+    public co.aikar.timings.Timing timings; // Spigot
+    public String getTimingName() {return getName();} // Spigot
 
     protected Command(String name) {
         this(name, "", "/" + name, new ArrayList<String>());

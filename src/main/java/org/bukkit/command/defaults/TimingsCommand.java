@@ -33,13 +33,12 @@ import org.spigotmc.CustomTimingsHandler;
 // Spigot end
 
 public class TimingsCommand extends BukkitCommand {
-    private static final List<String> TIMINGS_SUBCOMMANDS = ImmutableList.of("report", "reset", "on", "off", "paste"); // Spigot
-    public static long timingStart = 0; // Spigot
+    public static final List<String> TIMINGS_SUBCOMMANDS = ImmutableList.of("merged", "reset", "separate");
 
     public TimingsCommand(String name) {
         super(name);
-        this.description = "Manages Spigot Timings data to see performance of the server."; // Spigot
-        this.usageMessage = "/timings <reset|report|on|off|paste>"; // Spigot
+        this.description = "Records timings for all plugin events";
+        this.usageMessage = "/timings <reset>";
         this.setPermission("bukkit.command.timings");
     }
 

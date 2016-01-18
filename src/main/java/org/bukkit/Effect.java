@@ -329,17 +329,17 @@ public enum Effect {
     private Effect(String particleName, Type type, Class<?> data) {
         this.particleName = particleName;
         this.type = type;
-        this.id = 0;
+        id = 0;
         this.data = data;
-        this.distanceIgnored = false;
+        distanceIgnored = false;
     }
 
     private Effect(String particleName, Type type) {
         this.particleName = particleName;
         this.type = type;
-        this.id = 0;
-        this.data = null;
-        this.distanceIgnored = false;
+        id = 0;
+        data = null;
+        distanceIgnored = false;
     }
 
     /**
@@ -398,14 +398,6 @@ public enum Effect {
     public static Effect getById(int id) {
         return BY_ID.get(id);
     }
-
-    static {
-        for (Effect effect : values()) {
-            if (effect.type == Type.PARTICLE) {
-                BY_NAME.put(effect.particleName, effect);
-            }
-         }
-     }
 
     static {
         for (Effect effect : values()) {
