@@ -1,5 +1,7 @@
 package org.bukkit.command;
 
+import org.bukkit.Location;
+
 import java.util.List;
 
 /**
@@ -19,4 +21,10 @@ public interface TabCompleter {
      *     to default to the command executor
      */
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args);
+
+    // PaperSpigot start - location tab-completes
+    default List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args, Location location) {
+        return onTabComplete(sender, command, alias, args);
+    }
+    // PaperSpigot end
 }
