@@ -4,11 +4,15 @@ import org.bukkit.entity.Entity;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.entity.EntityEvent;
 
+// PaperSpigot start
+import org.bukkit.event.Cancellable;
+// PaperSpigot end
+
 /**
  * Called when an entity stops riding another entity.
  *
  */
-public class EntityDismountEvent extends EntityEvent
+public class EntityDismountEvent extends EntityEvent implements Cancellable // PaperSpigot - implement Cancellable
 {
 
     private static final HandlerList handlers = new HandlerList();
@@ -36,4 +40,16 @@ public class EntityDismountEvent extends EntityEvent
     {
         return handlers;
     }
+
+    // PaperSpigot start - implement Cancellable methods
+    @Override
+    public boolean isCancelled() {
+        return cancelled;
+    }
+
+    @Override
+    public void setCancelled(boolean cancelled) {
+        this.cancelled = cancelled;
+    }
+    // PaperSpigot end
 }
