@@ -23,17 +23,21 @@ public abstract class InventoryView {
          */
         BREW_TIME(0, InventoryType.BREWING),
         /**
-         * The progress of the right-pointing arrow in a furnace inventory.
-         */
-        COOK_TIME(0, InventoryType.FURNACE),
-        /**
          * The progress of the flame in a furnace inventory.
          */
-        BURN_TIME(1, InventoryType.FURNACE),
+        BURN_TIME(0, InventoryType.FURNACE),
         /**
          * How many total ticks the current fuel should last.
          */
-        TICKS_FOR_CURRENT_FUEL(2, InventoryType.FURNACE),
+        TICKS_FOR_CURRENT_FUEL(1, InventoryType.FURNACE),
+        /**
+         * The progress of the right-pointing arrow in a furnace inventory.
+         */
+        COOK_TIME(2, InventoryType.FURNACE),
+        /**
+         * How many total ticks the current smelting should last.
+         */
+        TICKS_FOR_CURRENT_SMELTING(3, InventoryType.FURNACE),
         /**
          * In an enchanting inventory, the top button's experience level
          * value.
@@ -71,7 +75,14 @@ public abstract class InventoryView {
          * value.
          * @deprecated magic value
          */
-        ENCHANT_ID_AND_LEVEL3(6, InventoryType.ENCHANTING);
+        ENCHANT_ID_AND_LEVEL3(6, InventoryType.ENCHANTING),
+        POWER_LEVEL(0, InventoryType.BEACON),
+        POTION_EFFECT1(1, InventoryType.BEACON),
+        POTION_EFFECT2(2, InventoryType.BEACON),
+        /**
+         * The repair's cost in xp levels
+         */
+        REPAIR_COST(0, InventoryType.ANVIL);
         int id;
         InventoryType style;
         private Property(int id, InventoryType appliesTo) {
