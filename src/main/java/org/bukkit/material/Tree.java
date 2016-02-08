@@ -28,7 +28,7 @@ public class Tree extends Wood {
      * @param species the species of the tree block
      */
     public Tree(TreeSpecies species) {
-        this((species.equals(TreeSpecies.ACACIA) || species.equals(TreeSpecies.DARK_OAK) ? Material.LOG_2 : Material.LOG), species, DEFAULT_DIRECTION);
+        this(DEFAULT_TYPE, species, DEFAULT_DIRECTION);
     }
 
     /**
@@ -39,7 +39,7 @@ public class Tree extends Wood {
      * @param dir the direction the tree block is facing
      */
     public Tree(TreeSpecies species, BlockFace dir) {
-        this((species.equals(TreeSpecies.ACACIA) || species.equals(TreeSpecies.DARK_OAK) ? Material.LOG_2 : Material.LOG), species, dir);
+        this(DEFAULT_TYPE, species, dir);
     }
 
     /**

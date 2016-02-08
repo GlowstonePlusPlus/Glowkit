@@ -28,7 +28,7 @@ public class Leaves extends Wood {
      * @param species the species of the wood block
      */
     public Leaves(TreeSpecies species) {
-        this((species.equals(TreeSpecies.ACACIA) || species.equals(TreeSpecies.DARK_OAK) ? Material.LEAVES_2 : Material.LEAVES), species, DEFAULT_DECAYABLE);
+        this(DEFAULT_TYPE, species, DEFAULT_DECAYABLE);
     }
 
     /**
@@ -39,7 +39,7 @@ public class Leaves extends Wood {
      * @param isDecayable whether the block is permanent or can disappear
      */
     public Leaves(TreeSpecies species, boolean isDecayable) {
-        this((species.equals(TreeSpecies.ACACIA) || species.equals(TreeSpecies.DARK_OAK) ? Material.LEAVES_2 : Material.LEAVES), species, isDecayable);
+        this(DEFAULT_TYPE, species, isDecayable);
     }
 
     /**
