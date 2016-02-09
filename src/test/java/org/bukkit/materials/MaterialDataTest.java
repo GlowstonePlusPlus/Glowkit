@@ -7,6 +7,7 @@ import org.bukkit.Material;
 import org.bukkit.TreeSpecies;
 import org.bukkit.block.BlockFace;
 import org.bukkit.material.Leaves;
+import org.bukkit.material.Sapling;
 import org.bukkit.material.Tree;
 import org.bukkit.material.Wood;
 import org.bukkit.material.WoodenStep;
@@ -27,7 +28,7 @@ public class MaterialDataTest {
             assertThat("Constructed with correct tree species", wood.getSpecies(), equalTo(species));
         }
 
-        Material[] types = new Material[]{Material.WOOD, Material.SAPLING, Material.WOOD_DOUBLE_STEP};
+        Material[] types = new Material[]{Material.WOOD, Material.WOOD_DOUBLE_STEP};
         for (Material type : types) {
             Wood sapling = new Wood(type);
             assertThat("Constructed with correct wood type", sapling.getItemType(), equalTo(type));
@@ -154,6 +155,29 @@ public class MaterialDataTest {
                 assertThat("Constructed with default step type", woodenStep.getItemType(), equalTo(Material.WOOD_STEP));
                 assertThat("Constructed with correct tree species", woodenStep.getSpecies(), equalTo(species));
                 assertThat("Constructed with correct inversion", woodenStep.isInverted(), equalTo(isInverted));
+            }
+        }
+    }
+    
+    @Test
+    public void testSapling() {
+        Sapling sapling = new Sapling();
+        assertThat("Constructed with default sapling type", sapling.getItemType(), equalTo(Material.SAPLING));
+        assertThat("Constructed with default tree species", sapling.getSpecies(), equalTo(TreeSpecies.GENERIC));
+        assertThat("Constructed with default growable", sapling.isInstantGrowable(), equalTo(false));
+
+        TreeSpecies[] allSpecies = TreeSpecies.values();
+        boolean[] growable = new boolean[]{true, false};
+        for (TreeSpecies species : allSpecies) {
+            sapling = new Sapling(species);
+            assertThat("Constructed with default sapling type", sapling.getItemType(), equalTo(Material.SAPLING));
+            assertThat("Constructed with correct tree species", sapling.getSpecies(), equalTo(species));
+            assertThat("Constructed with default growable", sapling.isInstantGrowable(), equalTo(false));
+            for (boolean isInstantGrowable : growable) {
+                sapling = new Sapling(species, isInstantGrowable);
+                assertThat("Constructed with default sapling type", sapling.getItemType(), equalTo(Material.SAPLING));
+                assertThat("Constructed with correct tree species", sapling.getSpecies(), equalTo(species));
+                assertThat("Constructed with correct growable", sapling.isInstantGrowable(), equalTo(isInstantGrowable));
             }
         }
     }
