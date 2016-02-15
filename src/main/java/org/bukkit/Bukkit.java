@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 
 import org.bukkit.Warning.WarningState;
 import org.bukkit.command.CommandException;
+import org.bukkit.command.CommandMap;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.command.PluginCommand;
@@ -1129,6 +1130,17 @@ public final class Bukkit {
     public static UnsafeValues getUnsafe() {
         return server.getUnsafe();
     }
+
+    // Paper start
+    /**
+     * Gets the active {@link CommandMap}.
+     *
+     * @return the active command map
+     */
+    public static CommandMap getCommandMap() {
+        return server.getCommandMap();
+    }
+    // Paper end
 
     public static Server.Spigot spigot()
     {
