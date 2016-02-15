@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 
 import org.bukkit.Warning.WarningState;
 import org.bukkit.command.CommandException;
+import org.bukkit.command.CommandMap;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.command.PluginCommand;
@@ -923,6 +924,15 @@ public interface Server extends PluginMessageRecipient {
      */
     @Deprecated
     UnsafeValues getUnsafe();
+
+    // Paper start
+    /**
+     * Gets the active {@link CommandMap}.
+     *
+     * @return the active command map
+     */
+    CommandMap getCommandMap();
+    // Paper end
 
     public class Spigot
     {
