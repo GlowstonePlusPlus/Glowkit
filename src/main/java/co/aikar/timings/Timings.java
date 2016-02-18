@@ -60,9 +60,10 @@ public final class Timings {
     }
 
     /**
+     * <p>
      * Returns a handler that has a groupHandler timer handler. Parent timers should not have their
      * start/stop methods called directly, as the children will call it for you.
-     * <p/>
+     * </p>
      * Parent Timers are used to group multiple subsections togethers and get a summary of them combined
      * Parent Handler can not be changed after first call
      *
@@ -119,8 +120,9 @@ public final class Timings {
     }
 
     /**
+     * <p>
      * Sets whether or not the Spigot Timings system should be enabled
-     * <p/>
+     * </p>
      * Calling this will reset timing data.
      *
      * @param enabled Should timings be reported
@@ -131,8 +133,9 @@ public final class Timings {
     }
 
     /**
+     * <p>
      * Gets whether or not the Verbose level of timings is enabled.
-     * <p/>
+     * </p>
      * When Verbose is disabled, high-frequency timings will not be available
      *
      * @return Enabled or not
@@ -142,8 +145,9 @@ public final class Timings {
     }
 
     /**
+     * <p>
      * Sets whether or not the Timings should monitor at Verbose level.
-     * <p/>
+     * </p>
      * When Verbose is disabled, high-frequency timings will not be available.
      * Calling this will reset timing data.
      *
@@ -155,8 +159,9 @@ public final class Timings {
     }
 
     /**
+     * <p>
      * Gets the interval between Timing History report generation.
-     * <p/>
+     * </p>
      * Defaults to 5 minutes (6000 ticks)
      *
      * @return Interval in ticks
@@ -166,8 +171,9 @@ public final class Timings {
     }
 
     /**
+     * <p>
      * Sets the interval between Timing History report generations.
-     * <p/>
+     * </p>
      * Defaults to 5 minutes (6000 ticks)
      *
      * This will recheck your history length, so lowering this value will lower your
@@ -235,7 +241,7 @@ public final class Timings {
      * Generates a report and sends it to the specified command sender.
      *
      * If sender is null, ConsoleCommandSender will be used.
-     * @param sender
+     * @param sender sender
      */
     public static void generateReport(CommandSender sender) {
         if (sender == null) {

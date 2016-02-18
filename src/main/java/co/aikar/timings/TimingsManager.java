@@ -147,8 +147,9 @@ public final class TimingsManager {
 
 
     /**
+     * <p>
      * Due to access restrictions, we need a helper method to get a Command TimingHandler with String group
-     * <p/>
+     * </p>
      * Plugins should never call this
      *
      * @param pluginName Plugin this command is associated with

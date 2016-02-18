@@ -87,7 +87,7 @@ public class Door extends MaterialData implements Directional, Openable {
     }
 
     /**
-     * @return BlockFace.SELF
+     * @return BlockFace#SELF
      * @deprecated This method should not be used; use hinge and facing accessors instead.
      */
     @Deprecated
@@ -169,6 +169,7 @@ public class Door extends MaterialData implements Directional, Openable {
      * Set whether the hinge is on the left or right side. Left is false, right is true.
      *
      * Undefined if <code>isTopHalf()</code> is false.
+     * @param hinge hinge
      */
     public void setHinge(boolean hinge) {
         setData((byte) (hinge ? (getData() | 0x1) : (getData() & ~0x1)));

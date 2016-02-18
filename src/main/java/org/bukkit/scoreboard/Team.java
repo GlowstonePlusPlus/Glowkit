@@ -130,7 +130,7 @@ public interface Team {
     /**
      * Gets the color of a team
      * This is only used for the team color sidebar slots
-     * @return
+     * @return color
      * @throws IllegalStateException if this team has been unregistered
      */
     ChatColor getColor() throws IllegalStateException;
@@ -139,7 +139,7 @@ public interface Team {
      * Sets color of a team
      * This is only used for the team color sidebar slots
      *
-     * @param color
+     * @param color color
      * @throws IllegalStateException if this team has been unregistered
      */
      void setColor(ChatColor color) throws IllegalStateException;

@@ -25,7 +25,6 @@ import java.util.*;
  *
  * Do not wrap the backing map with Collections.synchronizedMap.
  *
- * @param <K> Key
  * @param <V> Value
  */
 public class LoadingIntMap<V> extends TIntObjectHashMap<V> {
@@ -33,8 +32,7 @@ public class LoadingIntMap<V> extends TIntObjectHashMap<V> {
 
     /**
      * Initializes an auto loading map using specified loader and backing map
-     * @param backingMap
-     * @param loader
+     * @param loader loader
      */
     public LoadingIntMap(Function<Integer, V> loader) {
         this.loader = loader;
@@ -55,7 +53,7 @@ public class LoadingIntMap<V> extends TIntObjectHashMap<V> {
 
     /**
      * Due to java stuff, you will need to cast it to (Function) for some cases
-     * @param <T>
+     * @param <T> T
      */
     public abstract static class Feeder <T> implements Function<T, T> {
         @Override

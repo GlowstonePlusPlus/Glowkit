@@ -6,7 +6,7 @@ import org.bukkit.TreeSpecies;
 /**
  * Represents the different types of wooden steps.
  *
- * @see Material.WOOD_STEP
+ * @see Material#WOOD_STEP
  */
 public class WoodenStep extends Wood {
 
