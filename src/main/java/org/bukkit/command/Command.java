@@ -6,6 +6,7 @@ import com.google.common.collect.ImmutableList;
 import org.apache.commons.lang3.Validate;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.Server;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.minecart.CommandMinecart;
@@ -32,7 +33,7 @@ public abstract class Command {
     protected String usageMessage;
     private String permission;
     private String permissionMessage;
-    public Timing timings; // Spigot
+    public co.aikar.timings.Timing timings; // Spigot
     public String getTimingName() {return getName();} // Spigot
 
     protected Command(String name) {
@@ -47,7 +48,6 @@ public abstract class Command {
         this.usageMessage = usageMessage;
         this.aliases = aliases;
         this.activeAliases = new ArrayList<String>(aliases);
-        this.timings = Timings.ofSafe("** Command: " + name); // Spigot
     }
 
     /**
@@ -110,6 +110,30 @@ public abstract class Command {
         Collections.sort(matchedPlayers, String.CASE_INSENSITIVE_ORDER);
         return matchedPlayers;
     }
+
+    // PaperSpigot start - location tab-completes
+    /**
+     * Executed on tab completion for this command, returning a list of options the player can tab through. This method
+     * returns the {@link Location} of the block the player is looking at at the time of the tab complete.
+     * <p>
+     * Commands that want to use the Location information in their tab-complete implementations need to override this
+     * method. The Location provided by this method is the block that the player is currently looking at when the player
+     * attempts the tab complete. For this to be valid, the block must be highlighted by the player (i.e. the player is
+     * close enough to interact with the block).
+     *
+     * @param sender Source object which is executing this command
+     * @param alias the alias being used
+     * @param args All arguments passed to the command, split via ' '
+     * @param location the location of the block the player is looking at
+     * @return a list of tab-completions for the specified arguments. This
+     *     will never be null. List may be immutable.
+     * @throws IllegalArgumentException if sender, alias, or args is null
+     */
+    public List<String> tabComplete(CommandSender sender, String alias, String[] args, Location location) throws IllegalArgumentException {
+        // Simply default to the standard tab-complete, subclasses can override this if needed
+        return tabComplete(sender, alias, args);
+    }
+    // PaperSpigot end
 
     /**
      * Returns the name of this command
@@ -231,7 +255,6 @@ public abstract class Command {
     public boolean setLabel(String name) {
         this.nextLabel = name;
         if (!isRegistered()) {
-            this.timings = Timings.ofSafe("** Command: " + name); // Spigot
             this.label = name;
             return true;
         }

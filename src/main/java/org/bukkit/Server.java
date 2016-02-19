@@ -4,6 +4,7 @@ import com.avaje.ebean.config.ServerConfig;
 import com.google.common.collect.ImmutableList;
 import org.bukkit.Warning.WarningState;
 import org.bukkit.command.CommandException;
+import org.bukkit.command.CommandMap;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.command.PluginCommand;
@@ -224,6 +225,22 @@ public interface Server extends PluginMessageRecipient {
      * @return the number of players
      */
     public int broadcastMessage(String message);
+
+    // Paper start
+    /**
+     * Sends the component to the player
+     *
+     * @param component the components to send
+     */
+    public void broadcast(net.md_5.bungee.api.chat.BaseComponent component);
+
+    /**
+     * Sends an array of components as a single message to the player
+     *
+     * @param components the components to send
+     */
+    public void broadcast(net.md_5.bungee.api.chat.BaseComponent... components);
+    // Paper end
 
     /**
      * Gets the name of the update folder. The update folder is used to safely
@@ -912,7 +929,17 @@ public interface Server extends PluginMessageRecipient {
     @Deprecated
     UnsafeValues getUnsafe();
 
-    public class Spigot {
+    // Paper start
+    /**
+     * Gets the active {@link CommandMap}.
+     *
+     * @return the active command map
+     */
+    CommandMap getCommandMap();
+    // Paper end
+
+    public class Spigot
+    {
         @Deprecated
         public org.bukkit.configuration.file.YamlConfiguration getConfig()
         {

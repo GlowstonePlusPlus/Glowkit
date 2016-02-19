@@ -31,8 +31,8 @@ import java.util.ArrayDeque;
 import java.util.Map;
 
 /**
- * Used as a basis for fast HashMap key comparisons for the Timing Map.
- * <p/>
+ * <p>Used as a basis for fast HashMap key comparisons for the Timing Map.</p>
+ *
  * This class uses interned strings giving us the ability to do an identity check instead of equals() on the strings
  */
 final class TimingIdentifier {

@@ -247,17 +247,20 @@ public class VersionCommand extends BukkitCommand {
         }
     }
 
-    private static int getDistance(String repo, String hash) {
+    private static int getDistance(String repo, String currentVerInt) { // PaperSpigot
         try {
             BufferedReader reader = Resources.asCharSource(
-                    new URL("https://hub.spigotmc.org/stash/rest/api/1.0/projects/PAPER/repos/" + repo + "/commits?since=" + URLEncoder.encode(hash, "UTF-8") + "&withCounts=true"), // PaperSpigot
+                    new URL("https://ci.destroystokyo.com/job/PaperSpigot/lastSuccessfulBuild/buildNumber"), // PaperSpigot
                     Charsets.UTF_8
             ).openBufferedStream();
             try {
-                JSONObject obj = (JSONObject) new JSONParser().parse(reader);
-                return ((Number) obj.get("totalCount")).intValue();
-            } catch (ParseException ex) {
-                ex.printStackTrace();
+                // PaperSpigot start
+                int newVer = Integer.decode(reader.readLine());
+                int currentVer = Integer.decode(currentVerInt);
+                return newVer - currentVer;
+            } catch (NumberFormatException ex) {
+                //ex.printStackTrace();
+                // PaperSpigot end
                 return -1;
             } finally {
                 reader.close();

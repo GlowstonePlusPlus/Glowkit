@@ -33,8 +33,8 @@ public interface Timing extends AutoCloseable {
     public void startTiming();
 
     /**
-     * Stops timing and records the data. Propagates the data up to group handlers.
-     * <p/>
+     * <p>Stops timing and records the data. Propagates the data up to group handlers.</p>
+     *
      * Will automatically be called when this Timing is used with try-with-resources
      */
     public void stopTiming();
@@ -47,9 +47,9 @@ public interface Timing extends AutoCloseable {
     public void startTimingIfSync();
 
     /**
-     * Stops timing and records the data. Propagates the data up to group handlers.
-     * <p/>
-     * Will automatically be called when this Timing is used with try-with-resources
+     * <p>Stops timing and records the data. Propagates the data up to group handlers.</p>
+     *
+     * <p>Will automatically be called when this Timing is used with try-with-resources</p>
      *
      * But only if we are on the primary thread.
      */

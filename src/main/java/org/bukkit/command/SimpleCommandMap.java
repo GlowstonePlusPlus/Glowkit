@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang3.Validate;
+import org.bukkit.Location;
 import org.bukkit.Server;
 import org.bukkit.command.defaults.*;
 import org.bukkit.entity.Player;
@@ -210,6 +211,14 @@ public class SimpleCommandMap implements CommandMap {
     }
 
     public List<String> tabComplete(CommandSender sender, String cmdLine) {
+        return tabComplete(sender, cmdLine, null); // PaperSpigot - location tab-completes, code moved below
+    }
+
+    // PaperSpigot start - location tab-completes
+    /*
+        this code was copied, except for the noted change, from tabComplete(CommandSender sender, String cmdLine)
+     */
+    public List<String> tabComplete(CommandSender sender, String cmdLine, Location location) {
         Validate.notNull(sender, "Sender cannot be null");
         Validate.notNull(cmdLine, "Command line cannot null");
 
@@ -254,13 +263,14 @@ public class SimpleCommandMap implements CommandMap {
         String[] args = PATTERN_ON_SPACE.split(argLine, -1);
 
         try {
-            return target.tabComplete(sender, commandName, args);
+            return target.tabComplete(sender, commandName, args, location); // PaperSpigot - add location argument
         } catch (CommandException ex) {
             throw ex;
         } catch (Throwable ex) {
             throw new CommandException("Unhandled exception executing tab-completer for '" + cmdLine + "' in " + target, ex);
         }
     }
+    // PaperSpigot end
 
     public Collection<Command> getCommands() {
         return Collections.unmodifiableCollection(knownCommands.values());

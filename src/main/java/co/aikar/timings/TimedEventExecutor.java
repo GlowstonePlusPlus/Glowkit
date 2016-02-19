@@ -35,7 +35,7 @@ import java.lang.reflect.Method;
 public class TimedEventExecutor implements EventExecutor {
 
     private final EventExecutor executor;
-    private final Timing timings;
+    public final Timing timings;
 
     /**
      * Wraps an event executor and associates a timing handler to it.
@@ -64,8 +64,7 @@ public class TimedEventExecutor implements EventExecutor {
 
         final String eventName = eventClass.getSimpleName();
         boolean verbose = "BlockPhysicsEvent".equals(eventName) || "Drain".equals(eventName) || "Fill".equals(eventName);
-        this.timings = Timings.ofSafe(plugin.getName(), (verbose ? "## " : "") +
-            "Event: " + id + " (" + eventName + ")", null);
+        this.timings = Timings.ofSafe(plugin.getName(), (verbose ? "## " : "") + "Event: " + id + " (" + eventName + ")", null);
     }
 
     @Override

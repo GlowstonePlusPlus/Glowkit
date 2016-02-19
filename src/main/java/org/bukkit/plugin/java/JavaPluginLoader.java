@@ -38,7 +38,6 @@ public final class JavaPluginLoader implements PluginLoader {
     private final Pattern[] fileFilters = new Pattern[] { Pattern.compile("\\.jar$"), };
     private final Map<String, Class<?>> classes = new java.util.concurrent.ConcurrentHashMap<String, Class<?>>(); // Spigot
     private final Map<String, PluginClassLoader> loaders = new LinkedHashMap<String, PluginClassLoader>();
-    public static final Timing pluginParentTimer = Timings.ofSafe("** Plugins"); // Spigot
 
     /**
      * This class was not meant to be constructed explicitly
@@ -280,22 +279,19 @@ public final class JavaPluginLoader implements PluginLoader {
                     break;
                 }
             }
-            final Timing timings = Timings.ofSafe("Plugins", "Plugin: " + plugin.getDescription().getFullName() + " Event: " + listener.getClass().getName() + "::" + method.getName()+"("+eventClass.getSimpleName()+")", pluginParentTimer); // Spigot
-            EventExecutor executor = new TimedEventExecutor((listener1, event) -> {
-                try {
-                    if (!eventClass.isAssignableFrom(event.getClass())) {
-                        return;
+
+            EventExecutor executor = new co.aikar.timings.TimedEventExecutor(new EventExecutor() { // Spigot
+                public void execute(Listener listener, Event event) throws EventException {
+                    try {
+                        if (!eventClass.isAssignableFrom(event.getClass())) {
+                            return;
+                        }
+                        method.invoke(listener, event);
+                    } catch (InvocationTargetException ex) {
+                        throw new EventException(ex.getCause());
+                    } catch (Throwable t) {
+                        throw new EventException(t);
                     }
-                    // Spigot start
-                    boolean isAsync = event.isAsynchronous();
-                    if (!isAsync) timings.startTiming();
-                    method.invoke(listener1, event);
-                    if (!isAsync) timings.stopTiming();
-                    // Spigot end
-                } catch (InvocationTargetException ex) {
-                    throw new EventException(ex.getCause());
-                } catch (Throwable t) {
-                    throw new EventException(t);
                 }
             }, plugin, method, eventClass); // Spigot
             if (false) { // Spigot - RL handles useTimings check now
@@ -325,6 +321,10 @@ public final class JavaPluginLoader implements PluginLoader {
                 jPlugin.setEnabled(true);
             } catch (Throwable ex) {
                 server.getLogger().log(Level.SEVERE, "Error occurred while enabling " + plugin.getDescription().getFullName() + " (Is it up to date?)", ex);
+                // PaperSpigot start - Disable plugins that fail to load
+                disablePlugin(jPlugin);
+                return;
+                // PaperSpigot end
             }
 
             // Perhaps abort here, rather than continue going, but as it stands,

@@ -10,11 +10,8 @@ package co.aikar.util;
 import com.google.common.base.Function;
 import gnu.trove.map.hash.TIntObjectHashMap;
 
-import java.lang.reflect.Constructor;
-import java.util.*;
-
 /**
- * Allows you to pass a Loader function that when a key is accessed that doesn't exists,
+ * Allows you to pass a Loader function that when a key is accessed that doesn't exist,
  * automatically loads the entry into the map by calling the loader Function.
  *
  * .get() Will only return null if the Loader can return null.
@@ -25,7 +22,6 @@ import java.util.*;
  *
  * Do not wrap the backing map with Collections.synchronizedMap.
  *
- * @param <K> Key
  * @param <V> Value
  */
 public class LoadingIntMap<V> extends TIntObjectHashMap<V> {
@@ -33,8 +29,8 @@ public class LoadingIntMap<V> extends TIntObjectHashMap<V> {
 
     /**
      * Initializes an auto loading map using specified loader and backing map
-     * @param backingMap
-     * @param loader
+     *
+     * @param loader The loader
      */
     public LoadingIntMap(Function<Integer, V> loader) {
         this.loader = loader;
@@ -55,6 +51,7 @@ public class LoadingIntMap<V> extends TIntObjectHashMap<V> {
 
     /**
      * Due to java stuff, you will need to cast it to (Function) for some cases
+     *
      * @param <T>
      */
     public abstract static class Feeder <T> implements Function<T, T> {

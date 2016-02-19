@@ -60,10 +60,10 @@ public final class Timings {
     }
 
     /**
-     * Returns a handler that has a groupHandler timer handler. Parent timers should not have their
-     * start/stop methods called directly, as the children will call it for you.
-     * <p/>
-     * Parent Timers are used to group multiple subsections togethers and get a summary of them combined
+     * <p>Returns a handler that has a groupHandler timer handler. Parent timers should not have their
+     * start/stop methods called directly, as the children will call it for you.</p>
+     *
+     * Parent Timers are used to group multiple subsections together and get a summary of them combined
      * Parent Handler can not be changed after first call
      *
      * @param plugin       Plugin to own the Timing
@@ -119,8 +119,8 @@ public final class Timings {
     }
 
     /**
-     * Sets whether or not the Spigot Timings system should be enabled
-     * <p/>
+     * <p>Sets whether or not the Spigot Timings system should be enabled</p>
+     *
      * Calling this will reset timing data.
      *
      * @param enabled Should timings be reported
@@ -131,9 +131,9 @@ public final class Timings {
     }
 
     /**
-     * Gets whether or not the Verbose level of timings is enabled.
-     * <p/>
-     * When Verbose is disabled, high-frequency timings will not be available
+     * <p>Sets whether or not the Timings should monitor at Verbose level.</p>
+     *
+     * <p>When Verbose is disabled, high-frequency timings will not be available.</p>
      *
      * @return Enabled or not
      */
@@ -155,8 +155,8 @@ public final class Timings {
     }
 
     /**
-     * Gets the interval between Timing History report generation.
-     * <p/>
+     * <p>Gets the interval between Timing History report generation.</p>
+     *
      * Defaults to 5 minutes (6000 ticks)
      *
      * @return Interval in ticks
@@ -166,9 +166,9 @@ public final class Timings {
     }
 
     /**
-     * Sets the interval between Timing History report generations.
-     * <p/>
-     * Defaults to 5 minutes (6000 ticks)
+     * <p>Sets the interval between Timing History report generations.</p>
+     *
+     * <p>Defaults to 5 minutes (6000 ticks)</p>
      *
      * This will recheck your history length, so lowering this value will lower your
      * history length if you need more than 60 history windows.
@@ -235,7 +235,8 @@ public final class Timings {
      * Generates a report and sends it to the specified command sender.
      *
      * If sender is null, ConsoleCommandSender will be used.
-     * @param sender
+     *
+     * @param sender The sender to send to, or null to use the ConsoleCommandSender
      */
     public static void generateReport(CommandSender sender) {
         if (sender == null) {
@@ -250,14 +251,11 @@ public final class Timings {
     These do not have isPrimaryThread() checks in the startTiming/stopTiming
     =================
     */
-
-    @Deprecated
-    public static TimingHandler ofSafe(String name) {
+    static TimingHandler ofSafe(String name) {
         return ofSafe(null, name, null);
     }
 
-    @Deprecated
-    public static Timing ofSafe(Plugin plugin, String name) {
+    static Timing ofSafe(Plugin plugin, String name) {
         Timing pluginHandler = null;
         if (plugin != null) {
             pluginHandler = ofSafe(plugin.getName(), "Combined Total", TimingsManager.PLUGIN_GROUP_HANDLER);
@@ -265,13 +263,11 @@ public final class Timings {
         return ofSafe(plugin != null ? plugin.getName() : "Minecraft - Invalid Plugin", name, pluginHandler);
     }
 
-    @Deprecated
-    public static TimingHandler ofSafe(String name, Timing groupHandler) {
+    static TimingHandler ofSafe(String name, Timing groupHandler) {
         return ofSafe(null, name, groupHandler);
     }
 
-    @Deprecated
-    public static TimingHandler ofSafe(String groupName, String name, Timing groupHandler) {
+    static TimingHandler ofSafe(String groupName, String name, Timing groupHandler) {
         return TimingsManager.getHandler(groupName, name, groupHandler, false);
     }
 }

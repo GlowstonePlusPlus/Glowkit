@@ -30,8 +30,8 @@ import java.util.List;
 import static co.aikar.util.JSONUtil.toArray;
 
 /**
- * Lightweight object for tracking timing data
- * <p/>
+ * <p>Lightweight object for tracking timing data</p>
+ *
  * This is broken out to reduce memory usage
  */
 class TimingData {

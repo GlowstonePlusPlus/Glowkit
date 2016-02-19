@@ -332,6 +332,94 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      */
     public void sendMap(MapView map);
 
+    // Paper start
+    /**
+     * Sends the component to the player
+     *
+     * @param component the components to send
+     */
+    public void sendMessage(net.md_5.bungee.api.chat.BaseComponent component);
+
+    /**
+     * Sends an array of components as a single message to the player
+     *
+     * @param components the components to send
+     */
+    public void sendMessage(net.md_5.bungee.api.chat.BaseComponent... components);
+
+    /**
+     * Set the text displayed in the player list header and footer for this player
+     *
+     * @param header content for the top of the player list
+     * @param footer content for the bottom of the player list
+     */
+    public void setPlayerListHeaderFooter(net.md_5.bungee.api.chat.BaseComponent[] header, net.md_5.bungee.api.chat.BaseComponent[] footer);
+
+    /**
+     * Set the text displayed in the player list header and footer for this player
+     *
+     * @param header content for the top of the player list
+     * @param footer content for the bottom of the player list
+     */
+    public void setPlayerListHeaderFooter(net.md_5.bungee.api.chat.BaseComponent header, net.md_5.bungee.api.chat.BaseComponent footer);
+
+    /**
+     * Set the times for titles displayed to the player
+     *
+     * @param fadeInTicks  ticks to fade-in
+     * @param stayTicks    ticks to stay visible
+     * @param fadeOutTicks ticks to fade-out
+     */
+    public void setTitleTimes(int fadeInTicks, int stayTicks, int fadeOutTicks);
+
+    /**
+     * Set the subtitle of titles displayed to the player
+     */
+    public void setSubtitle(net.md_5.bungee.api.chat.BaseComponent[] subtitle);
+
+    /**
+     * Set the subtitle of titles displayed to the player
+     */
+    public void setSubtitle(net.md_5.bungee.api.chat.BaseComponent subtitle);
+
+    /**
+     * Show the given title to the player, along with the last subtitle set, using the last set times
+     */
+    public void showTitle(net.md_5.bungee.api.chat.BaseComponent[] title);
+
+    /**
+     * Show the given title to the player, along with the last subtitle set, using the last set times
+     */
+    public void showTitle(net.md_5.bungee.api.chat.BaseComponent title);
+
+    /**
+     * Show the given title and subtitle to the player using the given times
+     *
+     * @param title        big text
+     * @param subtitle     little text under it
+     * @param fadeInTicks  ticks to fade-in
+     * @param stayTicks    ticks to stay visible
+     * @param fadeOutTicks ticks to fade-out
+     */
+    public void showTitle(net.md_5.bungee.api.chat.BaseComponent[] title, net.md_5.bungee.api.chat.BaseComponent[] subtitle, int fadeInTicks, int stayTicks, int fadeOutTicks);
+
+    /**
+     * Show the given title and subtitle to the player using the given times
+     *
+     * @param title        big text
+     * @param subtitle     little text under it
+     * @param fadeInTicks  ticks to fade-in
+     * @param stayTicks    ticks to stay visible
+     * @param fadeOutTicks ticks to fade-out
+     */
+    public void showTitle(net.md_5.bungee.api.chat.BaseComponent title, net.md_5.bungee.api.chat.BaseComponent subtitle, int fadeInTicks, int stayTicks, int fadeOutTicks);
+
+    /**
+     * Hide any title that is currently visible to the player
+     */
+    public void hideTitle();
+    // Paper end
+
     /**
      * Forces an update of the player's entire inventory.
      *
@@ -1111,9 +1199,8 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
 
     /**
      * Resets the title displayed to the player.
-     * @deprecated API subject to change.
      */
-    @Deprecated
+    // Paper - Undeprecate
     public void resetTitle();
 
     /**
