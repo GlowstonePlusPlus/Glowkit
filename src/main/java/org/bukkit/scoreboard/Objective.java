@@ -132,6 +132,7 @@ public interface Objective {
      * @param entry The entry to check for
      * @throws IllegalArgumentException if entry is null
      * @throws IllegalStateException if this objective has been unregistered
+     * @return true if the entry is in this objective
      */
     boolean hasScore(String entry) throws IllegalArgumentException, IllegalStateException;
 

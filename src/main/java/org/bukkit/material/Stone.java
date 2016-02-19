@@ -12,12 +12,16 @@ public class Stone extends MaterialData {
         super(Material.STONE);
     }
 
+    /**
+     * @param stone type
+     */
     public Stone(StoneType stone) {
         this();
         setType(stone);
     }
 
     /**
+     * @param type type
      * @deprecated Magic value
      */
     @Deprecated
@@ -25,11 +29,16 @@ public class Stone extends MaterialData {
         super(type);
     }
 
+    /**
+     * @param type type
+     */
     public Stone(final Material type) {
         super(type);
     }
 
     /**
+     * @param type type
+     * @param data data
      * @deprecated Magic value
      */
     @Deprecated
@@ -38,6 +47,8 @@ public class Stone extends MaterialData {
     }
 
     /**
+     * @param type type
+     * @param data data
      * @deprecated Magic value
      */
     @Deprecated

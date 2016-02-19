@@ -12,12 +12,16 @@ public class DoublePlant extends MaterialData {
         super(Material.DOUBLE_PLANT);
     }
 
+    /**
+     * @param species type
+     */
     public DoublePlant(DoublePlantSpecies species) {
         this();
         setSpecies(species);
     }
 
     /**
+     * @param type type
      * @deprecated Magic value
      */
     @Deprecated
@@ -25,11 +29,16 @@ public class DoublePlant extends MaterialData {
         super(type);
     }
 
+    /**
+     * @param type type
+     */
     public DoublePlant(final Material type) {
         super(type);
     }
 
     /**
+     * @param type type
+     * @param data data
      * @deprecated Magic value
      */
     @Deprecated
@@ -38,6 +47,8 @@ public class DoublePlant extends MaterialData {
     }
 
     /**
+     * @param type type
+     * @param data data
      * @deprecated Magic value
      */
     @Deprecated

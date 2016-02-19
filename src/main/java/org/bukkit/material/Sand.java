@@ -12,13 +12,16 @@ public class Sand extends MaterialData {
         super(Material.SAND);
     }
 
+    /**
+     * @param type type
+     */
     public Sand(SandType type) {
         this();
         setType(type);
     }
 
     /**
-     *
+     * @param type type
      * @deprecated Magic value
      */
     @Deprecated
@@ -26,12 +29,16 @@ public class Sand extends MaterialData {
         super(type);
     }
 
+    /**
+     * @param type type
+     */
     public Sand(final Material type) {
         super(type);
     }
 
     /**
-     *
+     * @param type type
+     * @param data data
      * @deprecated Magic value
      */
     @Deprecated
@@ -40,7 +47,8 @@ public class Sand extends MaterialData {
     }
 
     /**
-     *
+     * @param type type
+     * @param data data
      * @deprecated Magic value
      */
     @Deprecated

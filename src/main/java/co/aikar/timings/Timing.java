@@ -63,7 +63,7 @@ public interface Timing extends AutoCloseable {
     /**
      * Used internally to get the actual backing Handler in the case of delegated Handlers
      *
-     * @return TimingHandler
+     * @return TimingHandler TimingHandler
      */
     TimingHandler getTimingHandler();
 

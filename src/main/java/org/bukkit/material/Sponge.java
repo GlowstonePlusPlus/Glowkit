@@ -12,13 +12,16 @@ public class Sponge extends MaterialData {
         super(Material.SPONGE);
     }
 
+    /**
+     * @param type type
+     */
     public Sponge(SpongeType type) {
         this();
         setType(type);
     }
 
     /**
-     *
+     * @param type type
      * @deprecated Magic value
      */
     @Deprecated
@@ -31,7 +34,8 @@ public class Sponge extends MaterialData {
     }
 
     /**
-     *
+     * @param type type
+     * @param data data
      * @deprecated Magic value
      */
     @Deprecated
@@ -40,7 +44,8 @@ public class Sponge extends MaterialData {
     }
 
     /**
-     *
+     * @param type type
+     * @param data data
      * @deprecated Magic value
      */
     @Deprecated

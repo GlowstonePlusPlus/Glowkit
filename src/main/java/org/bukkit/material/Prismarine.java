@@ -11,13 +11,16 @@ public class Prismarine extends MaterialData {
         super(Material.PRISMARINE);
     }
 
+    /**
+     * @param type type
+     */
     public Prismarine(PrismarineType type) {
         this();
         setType(type);
     }
 
     /**
-     *
+     * @param type type
      * @deprecated Magic value
      */
     @Deprecated
@@ -30,7 +33,8 @@ public class Prismarine extends MaterialData {
     }
 
     /**
-     *
+     * @param type type
+     * @param data data
      * @deprecated Magic value
      */
     @Deprecated
@@ -39,7 +43,8 @@ public class Prismarine extends MaterialData {
     }
 
     /**
-     *
+     * @param type type
+     * @param data data
      * @deprecated Magic value
      */
     @Deprecated

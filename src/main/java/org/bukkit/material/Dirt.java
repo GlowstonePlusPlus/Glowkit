@@ -18,6 +18,7 @@ public class Dirt extends MaterialData {
     }
 
     /**
+     * @param type type
      * @deprecated Magic value
      */
     @Deprecated
@@ -25,11 +26,16 @@ public class Dirt extends MaterialData {
         super(type);
     }
 
+    /**
+     * @param type type
+     */
     public Dirt(final Material type) {
         super(type);
     }
 
     /**
+     * @param type type
+     * @param data data
      * @deprecated Magic value
      */
     @Deprecated
@@ -38,6 +44,8 @@ public class Dirt extends MaterialData {
     }
 
     /**
+     * @param type type
+     * @param data data
      * @deprecated Magic value
      */
     @Deprecated

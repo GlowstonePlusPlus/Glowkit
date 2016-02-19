@@ -20,9 +20,9 @@ public final class JSONUtil {
 
     /**
      * Creates a key/value "JSONPair" object
-     * @param key
-     * @param obj
-     * @return
+     * @param key key
+     * @param obj obj
+     * @return pair
      */
     public static JSONPair pair(String key, Object obj) {
         return new JSONPair(key, obj);
@@ -34,8 +34,8 @@ public final class JSONUtil {
 
     /**
      * Creates a new JSON object from multiple JsonPair key/value pairs
-     * @param data
-     * @return
+     * @param data data
+     * @return map
      */
     public static Map createObject(JSONPair... data) {
         return appendObjectData(new LinkedHashMap(), data);
@@ -43,9 +43,9 @@ public final class JSONUtil {
 
     /**
      * This appends multiple key/value Obj pairs into a JSON Object
-     * @param parent
-     * @param data
-     * @return
+     * @param parent parent
+     * @param data data
+     * @return map
      */
     public static Map appendObjectData(Map parent, JSONPair... data) {
         for (JSONPair JSONPair : data) {
@@ -56,8 +56,8 @@ public final class JSONUtil {
 
     /**
      * This builds a JSON array from a set of data
-     * @param data
-     * @return
+     * @param data data
+     * @return list
      */
     public static List toArray(Object... data) {
         return Lists.newArrayList(data);
@@ -65,10 +65,10 @@ public final class JSONUtil {
 
     /**
      * These help build a single JSON array using a mapper function
-     * @param collection
-     * @param mapper
-     * @param <E>
-     * @return
+     * @param collection collection
+     * @param mapper mapper
+     * @param <E> E
+     * @return list
      */
     public static <E> List toArrayMapper(E[] collection, Function<E, Object> mapper) {
         return toArrayMapper(Lists.newArrayList(collection), mapper);
@@ -87,10 +87,10 @@ public final class JSONUtil {
 
     /**
      * These help build a single JSON Object from a collection, using a mapper function
-     * @param collection
-     * @param mapper
-     * @param <E>
-     * @return
+     * @param collection collection
+     * @param mapper mapper
+     * @param <E> E
+     * @return map
      */
     public static <E> Map toObjectMapper(E[] collection, Function<E, JSONPair> mapper) {
         return toObjectMapper(Lists.newArrayList(collection), mapper);

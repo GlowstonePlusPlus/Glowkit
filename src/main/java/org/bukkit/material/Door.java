@@ -247,7 +247,7 @@ public class Door extends MaterialData implements Directional, Openable {
     }
 
     /**
-     * @return BlockFace.SELF
+     * @return BlockFace#SELF
      * @deprecated This method should not be used; use hinge and facing accessors instead.
      */
     @Deprecated

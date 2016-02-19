@@ -43,6 +43,7 @@ public class PlayerLoginEvent extends PlayerEvent {
      * @param hostname The hostname that was used to connect to the server
      * @param address The address the player used to connect, provided for
      *     timing issues
+     * @param realAddress The real address the player used to connect
      */
     public PlayerLoginEvent(final Player player, final String hostname, final InetAddress address, final InetAddress realAddress) { // Spigot
         super(player);
@@ -78,6 +79,7 @@ public class PlayerLoginEvent extends PlayerEvent {
      *     timing issues
      * @param result The result status for this event
      * @param message The message to be displayed if result denies login
+     * @param realAddress The real address the player used to connect
      */
     public PlayerLoginEvent(final Player player, String hostname, final InetAddress address, final Result result, final String message, final InetAddress realAddress) { // Spigot
         this(player, hostname, address, realAddress); // Spigot
