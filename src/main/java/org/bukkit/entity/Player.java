@@ -1,26 +1,14 @@
 package org.bukkit.entity;
 
-import java.net.InetSocketAddress;
-
-import org.bukkit.Achievement;
-import org.bukkit.ChatColor;
-import org.bukkit.Effect;
-import org.bukkit.GameMode;
-import org.bukkit.Instrument;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.Note;
-import org.bukkit.OfflinePlayer;
-import org.bukkit.Sound;
-import org.bukkit.Statistic;
-import org.bukkit.WeatherType;
+import org.bukkit.*;
 import org.bukkit.command.CommandSender;
 import org.bukkit.conversations.Conversable;
 import org.bukkit.map.MapView;
 import org.bukkit.plugin.messaging.PluginMessageRecipient;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.title.Title;
-import org.bukkit.title.TitleOptions;
+
+import java.net.InetSocketAddress;
 
 /**
  * Represents a player, connected or not
@@ -1215,41 +1203,6 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * @return the current title
      */
     public Title getTitle();
-
-    /**
-     * Sets the title to be shown to the player. Upon setting, the title will
-     * be shown if the title's heading differs from the last sent title. Only
-     * changing the subtitle has no effect.
-     *
-     * @param title the title to show the player
-     */
-    public void setTitle(Title title);
-
-    /**
-     * Sets the title to be shown the player. If forceUpdate is true, this
-     * will update the player immediately, otherwise the player will only
-     * be updated if the header has been changed from the last sent title.
-     *
-     * @param title the title to show the player
-     * @param forceUpdate true to force update the player, false otherwise
-     */
-    public void setTitle(Title title, boolean forceUpdate);
-
-    /**
-     * Gets the player's current title options.
-     *
-     * @return the current title options
-     */
-    public TitleOptions getTitleOptions();
-
-    /**
-     * Sets the player's title options. Upon setting, the new options will be
-     * sent to the player. Setting this to null will result in the default
-     * settings being applied.
-     *
-     * @param options the new options for the player
-     */
-    public void setTitleOptions(TitleOptions options);
 
     /**
      * Sends an action bar message to the player.

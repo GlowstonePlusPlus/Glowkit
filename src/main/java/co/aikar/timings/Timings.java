@@ -236,12 +236,8 @@ public final class Timings {
      * Generates a report and sends it to the specified command sender.
      *
      * If sender is null, ConsoleCommandSender will be used.
-<<<<<<< HEAD
      *
      * @param sender The sender to send to, or null to use the ConsoleCommandSender
-=======
-     * @param sender sender
->>>>>>> c80a05d9bb2934b56d36738d19dda2329e06d353
      */
     public static void generateReport(CommandSender sender) {
         if (sender == null) {
