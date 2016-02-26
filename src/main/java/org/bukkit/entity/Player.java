@@ -363,21 +363,29 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
 
     /**
      * Set the subtitle of titles displayed to the player
+     *
+     * @param subtitle The subtitle. (little text under a title)
      */
     public void setSubtitle(net.md_5.bungee.api.chat.BaseComponent[] subtitle);
 
     /**
      * Set the subtitle of titles displayed to the player
+     *
+     * @param subtitle The subtitle. (little text under a title)
      */
     public void setSubtitle(net.md_5.bungee.api.chat.BaseComponent subtitle);
 
     /**
      * Show the given title to the player, along with the last subtitle set, using the last set times
+     *
+     * @param title The title. (big text)
      */
     public void showTitle(net.md_5.bungee.api.chat.BaseComponent[] title);
 
     /**
      * Show the given title to the player, along with the last subtitle set, using the last set times
+     *
+     * @param title The title. (big text)
      */
     public void showTitle(net.md_5.bungee.api.chat.BaseComponent title);
 
