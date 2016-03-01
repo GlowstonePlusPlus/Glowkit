@@ -14,7 +14,7 @@ import static com.google.common.base.Preconditions.checkState;
  * <p>
  * <p>A title can be sent without subtitle text.</p>
  */
-public final class Title {
+public final class Title implements Cloneable {
 
     /**
      * The default number of ticks for the title to fade in.
