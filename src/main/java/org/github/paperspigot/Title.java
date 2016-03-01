@@ -224,6 +224,15 @@ public final class Title implements Cloneable {
         return new Builder();
     }
 
+    @Override
+    public Title clone() {
+        try {
+            return (Title) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new Error(e);
+        }
+    }
+
     /**
      * A builder for creating titles
      */

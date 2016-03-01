@@ -91,7 +91,7 @@ public class MRUMapCache<K, V> extends AbstractMap<K, V> {
     /**
      * Wraps the specified map with a most recently used cache
      *
-     * @param map
+     * @param map The map used to create the MRU map.
      * @param <K> Key Type of the Map
      * @param <V> Value Type of the Map
      * @return The most recently used cache map.
