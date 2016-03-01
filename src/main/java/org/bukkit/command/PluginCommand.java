@@ -3,6 +3,7 @@ package org.bukkit.command;
 import java.util.List;
 
 import org.apache.commons.lang.Validate;
+import org.bukkit.Location;
 import org.bukkit.plugin.Plugin;
 
 /**
@@ -122,6 +123,15 @@ public final class PluginCommand extends Command implements PluginIdentifiableCo
      */
     @Override
     public java.util.List<String> tabComplete(CommandSender sender, String alias, String[] args) throws CommandException, IllegalArgumentException {
+        return tabComplete(sender, alias, args, null); // Paper - The code from this method has been (slightly modified) moved to the Location method.
+    }
+
+    // PaperSpigot start - location tab-completes
+    /**
+     * This code was copied from tabComplete(CommandSender sender, String alias, String[] args)
+     */
+    @Override
+    public List<String> tabComplete(CommandSender sender, String alias, String[] args, Location location) throws CommandException, IllegalArgumentException {
         Validate.notNull(sender, "Sender cannot be null");
         Validate.notNull(args, "Arguments cannot be null");
         Validate.notNull(alias, "Alias cannot be null");
@@ -129,10 +139,10 @@ public final class PluginCommand extends Command implements PluginIdentifiableCo
         List<String> completions = null;
         try {
             if (completer != null) {
-                completions = completer.onTabComplete(sender, this, alias, args);
+                completions = completer.onTabComplete(sender, this, alias, args, location); // Paper - add location argument
             }
             if (completions == null && executor instanceof TabCompleter) {
-                completions = ((TabCompleter) executor).onTabComplete(sender, this, alias, args);
+                completions = ((TabCompleter) executor).onTabComplete(sender, this, alias, args, location); // Paper - add location argument
             }
         } catch (Throwable ex) {
             StringBuilder message = new StringBuilder();
@@ -149,6 +159,7 @@ public final class PluginCommand extends Command implements PluginIdentifiableCo
         }
         return completions;
     }
+    // Paper end
 
     @Override
     public String toString() {
