@@ -9,9 +9,8 @@ import org.bukkit.TreeSpecies;
  * @see Material#WOOD_STEP
  */
 public class WoodenStep extends Wood {
-
+    protected static final Material DEFAULT_TYPE = Material.WOOD_STEP;
     protected static final boolean DEFAULT_INVERTED = false;
-
     /**
      * Constructs a wooden step.
      */
@@ -36,7 +35,7 @@ public class WoodenStep extends Wood {
      * @param inv true the step is at the top of the block
      */
     public WoodenStep(final TreeSpecies species, boolean inv) {
-        super(Material.WOOD_STEP, species);
+        super(DEFAULT_TYPE, species);
         setInverted(inv);
     }
 
@@ -74,6 +73,7 @@ public class WoodenStep extends Wood {
      *
      * @return true if inverted (top half), false if normal (bottom half)
      */
+    @SuppressWarnings("deprecation")
     public boolean isInverted() {
         return ((getData() & 0x8) != 0);
     }
@@ -84,6 +84,7 @@ public class WoodenStep extends Wood {
      * @param inv - true if step is inverted (top half), false if step is normal
      * (bottom half)
      */
+    @SuppressWarnings("deprecation")
     public void setInverted(boolean inv) {
         int dat = getData() & 0x7;
         if (inv) {

@@ -343,6 +343,20 @@ public interface Entity extends Metadatable, CommandSender {
      */
     public boolean isCustomNameVisible();
 
+    /**
+     * Sets whether the entity has a team colored (default: white) glow.
+     *
+     * @param flag if the entity is glowing
+     */
+    void setGlowing(boolean flag);
+
+    /**
+     * Gets whether the entity is glowing or not.
+     *
+     * @return whether the entity is glowing
+     */
+    boolean isGlowing();
+
     // Spigot Start
     public class Spigot
     {

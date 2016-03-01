@@ -11,7 +11,6 @@ import org.bukkit.block.BlockFace;
  * @see Material#LOG_2
  */
 public class Tree extends Wood {
-
     protected static final Material DEFAULT_TYPE = Material.LOG;
     protected static final BlockFace DEFAULT_DIRECTION = BlockFace.UP;
 
@@ -57,7 +56,7 @@ public class Tree extends Wood {
      * @param type the type of tree block
      */
     public Tree(final Material type) {
-        this(type, TreeSpecies.getByData((byte) 0x0), DEFAULT_DIRECTION);
+        this(type, DEFAULT_SPECIES, DEFAULT_DIRECTION);
     }
 
     /**
@@ -114,6 +113,7 @@ public class Tree extends Wood {
      * <li>BlockFace.SELF (directionless)
      * </ul>
      */
+    @SuppressWarnings("deprecation")
     public BlockFace getDirection() {
         switch ((getData() >> 2) & 0x3) {
             case 0: // Up-down
@@ -133,6 +133,7 @@ public class Tree extends Wood {
      *
      * @param dir - direction of end of log (BlockFace.SELF for no direction)
      */
+    @SuppressWarnings("deprecation")
     public void setDirection(BlockFace dir) {
         int dat;
         switch (dir) {

@@ -11,7 +11,6 @@ import org.bukkit.TreeSpecies;
  * @see Material#LEAVES_2
  */
 public class Leaves extends Wood {
-
     protected static final Material DEFAULT_TYPE = Material.LEAVES;
     protected static final boolean DEFAULT_DECAYABLE = true;
 
@@ -119,9 +118,8 @@ public class Leaves extends Wood {
      */
     public void setDecaying(boolean isDecaying) {
         setData((byte) ((getData() & 0x3) | (isDecaying
-                ? 0x8
-                : // Clear the permanent flag to make this a decayable flag and set the decaying flag
-                (getData() & 0x4)))); // Only persist the decayable flag if this is not a decaying block
+                ? 0x8 // Clear the permanent flag to make this a decayable flag and set the decaying flag
+                : (getData() & 0x4)))); // Only persist the decayable flag if this is not a decaying block
     }
 
     /**
@@ -142,9 +140,8 @@ public class Leaves extends Wood {
      */
     public void setDecayable(boolean isDecayable) {
         setData((byte) ((getData() & 0x3) | (isDecayable
-                ? (getData() & 0x8)
-                : // Only persist the decaying flag if this is a decayable block
-                0x4)));
+                ? (getData() & 0x8) // Only persist the decaying flag if this is a decayable block
+                : 0x4)));
     }
 
     @Override

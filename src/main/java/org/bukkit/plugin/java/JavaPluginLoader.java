@@ -15,7 +15,17 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.server.PluginDisableEvent;
 import org.bukkit.event.server.PluginEnableEvent;
-import org.bukkit.plugin.*;
+import org.bukkit.plugin.AuthorNagException;
+import org.bukkit.plugin.EventExecutor;
+import org.bukkit.plugin.InvalidDescriptionException;
+import org.bukkit.plugin.InvalidPluginException;
+import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.PluginDescriptionFile;
+import org.bukkit.plugin.PluginLoader;
+import org.bukkit.plugin.RegisteredListener;
+import org.bukkit.plugin.TimedRegisteredListener;
+import org.bukkit.plugin.UnknownDependencyException;
+import org.spigotmc.CustomTimingsHandler; // Spigot
 import org.yaml.snakeyaml.error.YAMLException;
 
 import java.io.File;
@@ -38,6 +48,7 @@ public final class JavaPluginLoader implements PluginLoader {
     private final Pattern[] fileFilters = new Pattern[] { Pattern.compile("\\.jar$"), };
     private final Map<String, Class<?>> classes = new java.util.concurrent.ConcurrentHashMap<String, Class<?>>(); // Spigot
     private final Map<String, PluginClassLoader> loaders = new LinkedHashMap<String, PluginClassLoader>();
+    public static final CustomTimingsHandler pluginParentTimer = new CustomTimingsHandler("** Plugins"); // Spigot
 
     /**
      * This class was not meant to be constructed explicitly
@@ -279,7 +290,6 @@ public final class JavaPluginLoader implements PluginLoader {
                     break;
                 }
             }
-
             EventExecutor executor = new co.aikar.timings.TimedEventExecutor(new EventExecutor() { // Spigot
                 public void execute(Listener listener, Event event) throws EventException {
                     try {

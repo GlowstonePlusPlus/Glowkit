@@ -45,7 +45,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.management.GarbageCollectorMXBean;
 import java.lang.management.ManagementFactory;
-import java.lang.management.OperatingSystemMXBean;
 import java.lang.management.RuntimeMXBean;
 import java.net.HttpURLConnection;
 import java.net.InetAddress;
@@ -200,9 +199,7 @@ class TimingsExport extends Thread {
         // Information on the users Config
 
         parent.put("config", createObject(
-            pair("spigot", mapAsJSON(Bukkit.spigot().getSpigotConfig(), null)),
-            pair("bukkit", mapAsJSON(Bukkit.spigot().getBukkitConfig(), null)),
-            pair("paperspigot", mapAsJSON(Bukkit.spigot().getPaperSpigotConfig(), null))
+            pair("config", mapAsJSON(Bukkit.spigot().getConfig(), null))
         ));
 
         new TimingsExport(sender, parent, history).start();

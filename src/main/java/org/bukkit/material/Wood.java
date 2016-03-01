@@ -11,23 +11,23 @@ import org.bukkit.TreeSpecies;
  * @see Material#WOOD_DOUBLE_STEP
  */
 public class Wood extends MaterialData {
-
+    protected static final Material DEFAULT_TYPE = Material.WOOD;
     protected static final TreeSpecies DEFAULT_SPECIES = TreeSpecies.GENERIC;
 
     /**
      * Constructs a wood block.
      */
     public Wood() {
-        this(Material.WOOD, DEFAULT_SPECIES);
+        this(DEFAULT_TYPE, DEFAULT_SPECIES);
     }
 
     /**
      * Constructs a wood block of the given tree species.
-     *
+     * 
      * @param species the species of the wood block
      */
     public Wood(TreeSpecies species) {
-        this(Material.WOOD, species);
+        this(DEFAULT_TYPE, species);
     }
 
     /**
@@ -55,6 +55,7 @@ public class Wood extends MaterialData {
      * @param species the species of the wood block
      */
     public Wood(final Material type, final TreeSpecies species) {
+        // Ensure only valid species-type combinations
         super(getSpeciesType(type, species));
         setSpecies(species);
     }

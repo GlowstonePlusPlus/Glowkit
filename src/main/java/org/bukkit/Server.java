@@ -3,6 +3,10 @@ package org.bukkit;
 import com.avaje.ebean.config.ServerConfig;
 import com.google.common.collect.ImmutableList;
 import org.bukkit.Warning.WarningState;
+import org.bukkit.boss.BarColor;
+import org.bukkit.boss.BarFlag;
+import org.bukkit.boss.BarStyle;
+import org.bukkit.boss.BossBar;
 import org.bukkit.command.CommandException;
 import org.bukkit.command.CommandMap;
 import org.bukkit.command.CommandSender;
@@ -923,6 +927,18 @@ public interface Server extends PluginMessageRecipient {
     public ChunkGenerator.ChunkData createChunkData(World world);
 
     /**
+     * Creates a boss bar instance to display to players. The progress
+     * defaults to 1.0
+     *
+     * @param title the title of the boss bar
+     * @param color the color of the boss bar
+     * @param style the style of the boss bar
+     * @param flags an optional list of flags to set on the boss bar
+     * @return the created boss bar
+     */
+    BossBar createBossBar(String title, BarColor color, BarStyle style, BarFlag ...flags);
+
+    /**
      * @see UnsafeValues
      * @return the unsafe values instance
      */
@@ -938,27 +954,13 @@ public interface Server extends PluginMessageRecipient {
     CommandMap getCommandMap();
     // Paper end
 
+
     public class Spigot
     {
-        @Deprecated
+
         public org.bukkit.configuration.file.YamlConfiguration getConfig()
         {
             throw new UnsupportedOperationException( "Not supported yet." );
-        }
-
-        public org.bukkit.configuration.file.YamlConfiguration getBukkitConfig()
-        {
-            throw new UnsupportedOperationException( "Not supported yet." );
-        }
-
-        public org.bukkit.configuration.file.YamlConfiguration getSpigotConfig()
-        {
-            throw new UnsupportedOperationException("Not supported yet.");
-        }
-
-        public org.bukkit.configuration.file.YamlConfiguration getPaperSpigotConfig()
-        {
-            throw new UnsupportedOperationException("Not supported yet.");
         }
 
         /**

@@ -9,7 +9,7 @@ import org.bukkit.material.MaterialData;
 public class FurnaceRecipe implements Recipe {
     private ItemStack output;
     private ItemStack ingredient;
-    private float xp;
+    private float experience;
 
     /**
      * Create a furnace recipe to craft the specified ItemStack.
@@ -30,16 +30,16 @@ public class FurnaceRecipe implements Recipe {
     public FurnaceRecipe(ItemStack result, MaterialData source) {
         this(result, source.getItemType(), source.getData(), 0);
     }
-    
+
     /**
      * Create a furnace recipe to craft the specified ItemStack.
      *
      * @param result The item you want the recipe to create.
      * @param source The input material.
-     * @param xp The xp
+     * @param experience The experience given by this recipe
      */
-    public FurnaceRecipe(ItemStack result, MaterialData source, float xp) {
-        this(result, source.getItemType(), source.getData(), xp);
+    public FurnaceRecipe(ItemStack result, MaterialData source, float experience) {
+        this(result, source.getItemType(), source.getData(), experience);
     }
 
     /**
@@ -55,7 +55,7 @@ public class FurnaceRecipe implements Recipe {
     public FurnaceRecipe(ItemStack result, Material source, int data) {
         this(result, source, data, 0);
     }
-    
+
     /**
      * Create a furnace recipe to craft the specified ItemStack.
      *
@@ -63,14 +63,14 @@ public class FurnaceRecipe implements Recipe {
      * @param source The input material.
      * @param data The data value. (Note: This is currently ignored by the
      *     CraftBukkit server.)
-     * @param xp The xp
+     * @param experience The experience given by this recipe
      * @deprecated Magic value
      */
     @Deprecated
-    public FurnaceRecipe(ItemStack result, Material source, int data, float xp) {
+    public FurnaceRecipe(ItemStack result, Material source, int data, float experience) {
         this.output = new ItemStack(result);
         this.ingredient = new ItemStack(source, 1, (short) data);
-        this.xp = xp;
+        this.experience = experience;
     }
 
     /**
@@ -107,15 +107,6 @@ public class FurnaceRecipe implements Recipe {
         this.ingredient = new ItemStack(input, 1, (short) data);
         return this;
     }
-    
-    /**
-     * Sets the xp of this furnace recipe.
-     * 
-     * @param xp The xp
-     */
-    public void setXp(float xp) {
-        this.xp = xp;
-    }
 
     /**
      * Get the input material.
@@ -136,11 +127,20 @@ public class FurnaceRecipe implements Recipe {
     }
 
     /**
-     * Get the xp of this recipe
-     * 
-     * @return The xp
+     * Sets the experience given by this recipe.
+     *
+     * @param experience the experience level
      */
-    public float getXp() {
-        return xp;
+    public void setExperience(float experience) {
+        this.experience = experience;
+    }
+
+    /**
+     * Get the experience given by this recipe.
+     *
+     * @return experience level
+     */
+    public float getExperience() {
+        return experience;
     }
 }

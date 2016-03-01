@@ -1,7 +1,6 @@
 package org.bukkit.event.entity;
 
 import org.bukkit.Location;
-import org.bukkit.entity.CreatureType;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 
@@ -18,27 +17,9 @@ public class CreatureSpawnEvent extends EntitySpawnEvent {
         this.spawnReason = spawnReason;
     }
 
-    @Deprecated
-    public CreatureSpawnEvent(Entity spawnee, CreatureType type, Location loc, SpawnReason reason) {
-        super(spawnee);
-        spawnReason = reason;
-    }
-
     @Override
     public LivingEntity getEntity() {
         return (LivingEntity) entity;
-    }
-
-    /**
-     * Gets the type of creature being spawned.
-     *
-     * @return A CreatureType value detailing the type of creature being
-     *     spawned
-     * @deprecated In favour of {@link #getEntityType()}.
-     */
-    @Deprecated
-    public CreatureType getCreatureType() {
-        return CreatureType.fromEntityType(getEntityType());
     }
 
     /**
