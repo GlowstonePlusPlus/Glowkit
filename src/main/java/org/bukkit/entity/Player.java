@@ -6,10 +6,12 @@ import org.bukkit.conversations.Conversable;
 import org.bukkit.map.MapView;
 import org.bukkit.plugin.messaging.PluginMessageRecipient;
 import org.bukkit.scoreboard.Scoreboard;
-import org.bukkit.title.Title;
-import org.bukkit.title.TitleOptions;
+import org.github.paperspigot.Title;
 
 import java.net.InetSocketAddress;
+
+// PaperSpigot start
+// PaperSpigot end
 
 /**
  * Represents a player, connected or not
@@ -353,40 +355,42 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
     public void setPlayerListHeaderFooter(net.md_5.bungee.api.chat.BaseComponent header, net.md_5.bungee.api.chat.BaseComponent footer);
 
     /**
-     * Set the times for titles displayed to the player
+     * Update the times for titles displayed to the player
      *
      * @param fadeInTicks  ticks to fade-in
      * @param stayTicks    ticks to stay visible
      * @param fadeOutTicks ticks to fade-out
+     * @deprecated Use {@link #updateTitle(Title)}
      */
+    @Deprecated
     public void setTitleTimes(int fadeInTicks, int stayTicks, int fadeOutTicks);
 
     /**
-     * Set the subtitle of titles displayed to the player
-     *
-     * @param subtitle The subtitle. (little text under a title)
+     * Update the subtitle of titles displayed to the player
+     * @deprecated Use {@link #updateTitle(Title)}
      */
+    @Deprecated
     public void setSubtitle(net.md_5.bungee.api.chat.BaseComponent[] subtitle);
 
     /**
-     * Set the subtitle of titles displayed to the player
-     *
-     * @param subtitle The subtitle. (little text under a title)
+     * Update the subtitle of titles displayed to the player
+     * @deprecated Use {@link #updateTitle(Title)}
      */
+    @Deprecated
     public void setSubtitle(net.md_5.bungee.api.chat.BaseComponent subtitle);
 
     /**
      * Show the given title to the player, along with the last subtitle set, using the last set times
-     *
-     * @param title The title. (big text)
+     * @deprecated Use {@link #sendTitle(Title)} or {@link #updateTitle(Title)}
      */
+    @Deprecated
     public void showTitle(net.md_5.bungee.api.chat.BaseComponent[] title);
 
     /**
      * Show the given title to the player, along with the last subtitle set, using the last set times
-     *
-     * @param title The title. (big text)
+     * @deprecated Use {@link #sendTitle(Title)} or {@link #updateTitle(Title)}
      */
+    @Deprecated
     public void showTitle(net.md_5.bungee.api.chat.BaseComponent title);
 
     /**
@@ -397,7 +401,9 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * @param fadeInTicks  ticks to fade-in
      * @param stayTicks    ticks to stay visible
      * @param fadeOutTicks ticks to fade-out
+     * @deprecated Use {@link #sendTitle(Title)} or {@link #updateTitle(Title)}
      */
+    @Deprecated
     public void showTitle(net.md_5.bungee.api.chat.BaseComponent[] title, net.md_5.bungee.api.chat.BaseComponent[] subtitle, int fadeInTicks, int stayTicks, int fadeOutTicks);
 
     /**
@@ -408,8 +414,30 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * @param fadeInTicks  ticks to fade-in
      * @param stayTicks    ticks to stay visible
      * @param fadeOutTicks ticks to fade-out
+     * @deprecated Use {@link #sendTitle(Title)} or {@link #updateTitle(Title)}
      */
+    @Deprecated
     public void showTitle(net.md_5.bungee.api.chat.BaseComponent title, net.md_5.bungee.api.chat.BaseComponent subtitle, int fadeInTicks, int stayTicks, int fadeOutTicks);
+
+    /**
+     * Show the title to the player, overriding any previously displayed title.
+     *
+     * <p>This method overrides any previous title, use {@link #updateTitle(Title)} to change the existing one.</p>
+     *
+     * @param title the title to send
+     * @throws NullPointerException if the title is null
+     */
+    void sendTitle(Title title);
+
+    /**
+     * Show the title to the player, overriding any previously displayed title.
+     *
+     * <p>This method doesn't override previous titles, but changes their values.</p>
+     *
+     * @param title the title to send
+     * @throws NullPointerException if title is null
+     */
+    void updateTitle(Title title);
 
     /**
      * Hide any title that is currently visible to the player
@@ -419,7 +447,6 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
 
     /**
      * Forces an update of the player's entire inventory.
-     *
      */
     //@Deprecated // Spigot - undeprecate
     public void updateInventory();
@@ -1189,7 +1216,7 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      *
      * @param title Title text
      * @param subtitle Subtitle text
-     * @deprecated API subject to change
+     * @deprecated Use {@link #sendTitle(Title)} or {@link #updateTitle(Title)}
      */
     @Deprecated
     public void sendTitle(String title, String subtitle);
@@ -1201,52 +1228,11 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
     public void resetTitle();
 
     /**
-     * Removes the title from the player's view. This does not reset the values
-     * the player sees.
-     */
-    public void clearTitle();
-
-    /**
      * Gets the title currently set on the player
      *
      * @return the current title
      */
     public Title getTitle();
-
-    /**
-     * Sets the title to be shown to the player. Upon setting, the title will
-     * be shown if the title's heading differs from the last sent title. Only
-     * changing the subtitle has no effect.
-     *
-     * @param title the title to show the player
-     */
-    public void setTitle(Title title);
-
-    /**
-     * Sets the title to be shown the player. If forceUpdate is true, this
-     * will update the player immediately, otherwise the player will only
-     * be updated if the header has been changed from the last sent title.
-     *
-     * @param title the title to show the player
-     * @param forceUpdate true to force update the player, false otherwise
-     */
-    public void setTitle(Title title, boolean forceUpdate);
-
-    /**
-     * Gets the player's current title options.
-     *
-     * @return the current title options
-     */
-    public TitleOptions getTitleOptions();
-
-    /**
-     * Sets the player's title options. Upon setting, the new options will be
-     * sent to the player. Setting this to null will result in the default
-     * settings being applied.
-     *
-     * @param options the new options for the player
-     */
-    public void setTitleOptions(TitleOptions options);
 
     /**
      * Sends an action bar message to the player.

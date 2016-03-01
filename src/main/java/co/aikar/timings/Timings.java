@@ -252,6 +252,7 @@ public final class Timings {
     These do not have isPrimaryThread() checks in the startTiming/stopTiming
     =================
     */
+
     static TimingHandler ofSafe(String name) {
         return ofSafe(null, name, null);
     }

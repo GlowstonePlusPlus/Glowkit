@@ -187,16 +187,15 @@ public class VersionCommand extends BukkitCommand {
         if (version == null) version = "Custom";
         // PaperSpigot start
         if (version.startsWith("git-PaperSpigot-")) {
-            String[] parts = version.substring("git-PaperSpigot-".length()).split("-");
-            int cbVersions = getDistance("craftbukkit", parts[1].substring(0, parts[1].indexOf(' ')));
+            String[] parts = version.substring("git-PaperSpigot-".length()).split("[-\\s]");
             int paperSpigotVersions = getDistance("paperspigot", parts[0]);
-            if (cbVersions == -1 || paperSpigotVersions == -1) {
+            if (paperSpigotVersions == -1) {
                 setVersionMessage("Error obtaining version information");
             } else {
-                if (cbVersions == 0 && paperSpigotVersions == 0) {
+                if (paperSpigotVersions == 0) {
                     setVersionMessage("You are running the latest version");
                 } else {
-                    setVersionMessage("You are " + (cbVersions + paperSpigotVersions) + " version(s) behind");
+                    setVersionMessage("You are " + paperSpigotVersions + " version(s) behind");
                 }
             }
         } else if (version.startsWith("git-Spigot-")) {

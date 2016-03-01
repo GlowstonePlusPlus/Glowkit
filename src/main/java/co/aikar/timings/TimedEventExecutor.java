@@ -35,15 +35,15 @@ import java.lang.reflect.Method;
 public class TimedEventExecutor implements EventExecutor {
 
     private final EventExecutor executor;
-    public final Timing timings;
+    private final Timing timings;
 
     /**
      * Wraps an event executor and associates a timing handler to it.
      *
-     * @param executor executor
-     * @param plugin plugin
-     * @param method method
-     * @param eventClass eventClass
+     * @param executor The event executor.
+     * @param plugin The plugin associated with the method.
+     * @param method The method to profile.
+     * @param eventClass The class of the event.
      */
     public TimedEventExecutor(EventExecutor executor, Plugin plugin, Method method, Class<? extends Event> eventClass) {
         this.executor = executor;
@@ -64,7 +64,8 @@ public class TimedEventExecutor implements EventExecutor {
 
         final String eventName = eventClass.getSimpleName();
         boolean verbose = "BlockPhysicsEvent".equals(eventName) || "Drain".equals(eventName) || "Fill".equals(eventName);
-        this.timings = Timings.ofSafe(plugin.getName(), (verbose ? "## " : "") + "Event: " + id + " (" + eventName + ")", null);
+        this.timings = Timings.ofSafe(plugin.getName(), (verbose ? "## " : "") +
+            "Event: " + id + " (" + eventName + ")", null);
     }
 
     @Override

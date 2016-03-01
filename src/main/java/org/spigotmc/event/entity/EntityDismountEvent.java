@@ -3,9 +3,11 @@ package org.spigotmc.event.entity;
 import org.bukkit.entity.Entity;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.entity.EntityEvent;
+
 // PaperSpigot start
 import org.bukkit.event.Cancellable;
 // PaperSpigot end
+
 /**
  * Called when an entity stops riding another entity.
  *

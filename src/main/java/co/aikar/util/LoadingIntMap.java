@@ -52,7 +52,7 @@ public class LoadingIntMap<V> extends TIntObjectHashMap<V> {
     /**
      * Due to java stuff, you will need to cast it to (Function) for some cases
      *
-     * @param <T> The type
+     * @param <T> The type.
      */
     public abstract static class Feeder <T> implements Function<T, T> {
         @Override

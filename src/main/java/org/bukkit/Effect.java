@@ -62,7 +62,7 @@ public enum Effect {
     /**
      * Sound of a Wither spawning.
      */
-    WITHER_SPAWN(1013, Type.SOUND, true),
+    WITHER_SPAWN(1013, Type.SOUND),
     /**
      * Sound of a Wither firing.
      */
@@ -82,7 +82,7 @@ public enum Effect {
     /**
      * Sound of an Enderdragon dying.
      */
-    ENDERDRAGON_DIE(1018, Type.SOUND, true),
+    ENDERDRAGON_DIE(1018, Type.SOUND),
     /**
      * Sound of an anvil breaking.
      */
@@ -300,7 +300,6 @@ public enum Effect {
     private final int id;
     private final Type type;
     private final Class<?> data;
-    private final boolean distanceIgnored;
     private static final Map<Integer, Effect> BY_ID = Maps.newHashMap();
     private static final Map<String, Effect> BY_NAME = Maps.newHashMap();
     private final String particleName;
@@ -309,20 +308,11 @@ public enum Effect {
         this(id,type,null);
     }
 
-    Effect(int id, Type type, boolean distanceIgnored) {
-        this(id, type, null, distanceIgnored);
-    }
-
     private Effect(int id, Type type, Class<?> data) {
-        this(id, type, data, false);
-    }
-
-    private Effect(int id, Type type, Class<?> data, boolean distanceIgnored) {
         this.id = id;
         this.type = type;
         this.data = data;
-        this.distanceIgnored = distanceIgnored;
-        this.particleName = null;
+        particleName = null;
     }
 
     private Effect(String particleName, Type type, Class<?> data) {
@@ -330,7 +320,6 @@ public enum Effect {
         this.type = type;
         id = 0;
         this.data = data;
-        distanceIgnored = false;
     }
 
     private Effect(String particleName, Type type) {
@@ -338,7 +327,6 @@ public enum Effect {
         this.type = type;
         id = 0;
         this.data = null;
-        distanceIgnored = false;
     }
 
     /**
@@ -373,17 +361,6 @@ public enum Effect {
      */
     public Class<?> getData() {
         return this.data;
-    }
-
-    /**
-     * Gets whether or not the distance to the player is ignored by this
-     * effect. If distance is ignored, the player will hear/see the effect
-     * regardless of how far away the effect is played from them.
-     *
-     * @return True if effect ignores distance
-     */
-    public boolean isDistanceIgnored() {
-        return this.distanceIgnored;
     }
 
     /**

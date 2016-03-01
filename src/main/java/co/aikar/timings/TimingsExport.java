@@ -210,7 +210,7 @@ class TimingsExport extends Thread {
 
     static long getCost() {
         // Benchmark the users System.nanotime() for cost basis
-        int passes = 500000;
+        int passes = 100;
         TimingHandler SAMPLER1 = Timings.ofSafe("Timings Sampler 1");
         TimingHandler SAMPLER2 = Timings.ofSafe("Timings Sampler 2");
         TimingHandler SAMPLER3 = Timings.ofSafe("Timings Sampler 3");

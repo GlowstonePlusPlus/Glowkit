@@ -3,10 +3,7 @@ package co.aikar.util;
 import com.google.common.base.Function;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,9 +17,9 @@ public final class JSONUtil {
 
     /**
      * Creates a key/value "JSONPair" object
-     * @param key key
-     * @param obj obj
-     * @return pair
+     * @param key The key.
+     * @param obj The value object.
+     * @return The resultant JSON key/value map.
      */
     public static JSONPair pair(String key, Object obj) {
         return new JSONPair(key, obj);
@@ -34,8 +31,8 @@ public final class JSONUtil {
 
     /**
      * Creates a new JSON object from multiple JsonPair key/value pairs
-     * @param data data
-     * @return map
+     * @param data The key-value map in JSON.
+     * @return map The Java equivalent for this map.
      */
     public static Map createObject(JSONPair... data) {
         return appendObjectData(new LinkedHashMap(), data);
@@ -43,9 +40,9 @@ public final class JSONUtil {
 
     /**
      * This appends multiple key/value Obj pairs into a JSON Object
-     * @param parent parent
-     * @param data data
-     * @return map
+     * @param parent The original map in Java.
+     * @param data The key/value map in JSON to add to the original map.
+     * @return The resultant map.
      */
     public static Map appendObjectData(Map parent, JSONPair... data) {
         for (JSONPair JSONPair : data) {
@@ -56,8 +53,8 @@ public final class JSONUtil {
 
     /**
      * This builds a JSON array from a set of data
-     * @param data data
-     * @return list
+     * @param data The Java objects to collect into the list.
+     * @return The resultant list.
      */
     public static List toArray(Object... data) {
         return Lists.newArrayList(data);
@@ -65,10 +62,10 @@ public final class JSONUtil {
 
     /**
      * These help build a single JSON array using a mapper function
-     * @param collection collection
-     * @param mapper mapper
-     * @param <E> E
-     * @return list
+     * @param collection An array of objects of type E.
+     * @param mapper The function to use to map the array of objects.
+     * @param <E> The type of the objects.
+     * @return The resultant list.
      */
     public static <E> List toArrayMapper(E[] collection, Function<E, Object> mapper) {
         return toArrayMapper(Lists.newArrayList(collection), mapper);
@@ -87,10 +84,10 @@ public final class JSONUtil {
 
     /**
      * These help build a single JSON Object from a collection, using a mapper function
-     * @param collection collection
-     * @param mapper mapper
-     * @param <E> E
-     * @return map
+     * @param collection An array of objects of type E.
+     * @param mapper The function to use to map the array of objects.
+     * @param <E> The type of the objects.
+     * @return The resultant list.
      */
     public static <E> Map toObjectMapper(E[] collection, Function<E, JSONPair> mapper) {
         return toObjectMapper(Lists.newArrayList(collection), mapper);
