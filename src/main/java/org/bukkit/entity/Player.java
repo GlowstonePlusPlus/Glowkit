@@ -1222,6 +1222,12 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
     public void sendTitle(String title, String subtitle);
 
     /**
+     * Removes the title from the player's view. This does not reset the values
+     * the player sees.
+     */
+    public void clearTitle();
+
+    /**
      * Resets the title displayed to the player.
      */
     // Paper - Undeprecate
