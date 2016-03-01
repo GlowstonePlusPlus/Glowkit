@@ -238,6 +238,22 @@ public interface Server extends PluginMessageRecipient {
      */
     public int broadcastMessage(String message);
 
+    // Paper start
+    /**
+     * Sends the component to the player
+     *
+     * @param component the components to send
+     */
+    public void broadcast(net.md_5.bungee.api.chat.BaseComponent component);
+
+    /**
+     * Sends an array of components as a single message to the player
+     *
+     * @param components the components to send
+     */
+    public void broadcast(net.md_5.bungee.api.chat.BaseComponent... components);
+    // Paper end
+
     /**
      * Gets the name of the update folder. The update folder is used to safely
      * update plugins at the right moment on a plugin load.

@@ -331,6 +331,22 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      */
     public void sendMap(MapView map);
 
+    // Paper start
+    /**
+     * Sends the component to the player
+     *
+     * @param component the components to send
+     */
+    public void sendMessage(net.md_5.bungee.api.chat.BaseComponent component);
+
+    /**
+     * Sends an array of components as a single message to the player
+     *
+     * @param components the components to send
+     */
+    public void sendMessage(net.md_5.bungee.api.chat.BaseComponent... components);
+    // Paper end
+
     /**
      * Forces an update of the player's entire inventory.
      *
