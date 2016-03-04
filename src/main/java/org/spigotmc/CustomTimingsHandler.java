@@ -1,19 +1,12 @@
 package org.spigotmc;
 
-import org.bukkit.command.defaults.TimingsCommand;
-import org.bukkit.event.HandlerList;
-import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.RegisteredListener;
-import org.bukkit.plugin.TimedRegisteredListener;
-import java.io.PrintStream;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
-
 import org.bukkit.Bukkit;
 import org.bukkit.World;
+import org.bukkit.command.defaults.TimingsCommand;
+
+import java.io.PrintStream;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
  * Provides custom timing sections for /timings merged.
@@ -47,7 +40,7 @@ public class CustomTimingsHandler
     /**
      * Prints the timings and extra data to the given stream.
      *
-     * @param printStream
+     * @param printStream The PrintStream to log output to.
      */
     public static void printTimings(PrintStream printStream)
     {

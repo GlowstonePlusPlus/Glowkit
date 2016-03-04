@@ -1,9 +1,10 @@
 package org.bukkit.entity;
 
-import java.util.List;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.MerchantRecipe;
+
+import java.util.List;
 
 /**
  * Represents a villager NPC
@@ -46,7 +47,7 @@ public interface Villager extends Ageable, NPC, InventoryHolder {
      *
      * @param i the index
      * @return the recipe
-     * @throws IndexOutOfBoundsException
+     * @throws IndexOutOfBoundsException thrown when the index is not within the bounds of the villager's trade list
      */
     MerchantRecipe getRecipe(int i) throws IndexOutOfBoundsException;
 
@@ -55,7 +56,7 @@ public interface Villager extends Ageable, NPC, InventoryHolder {
      *
      * @param i the index
      * @param recipe the recipe
-     * @throws IndexOutOfBoundsException
+     * @throws IndexOutOfBoundsException thrown when the index is not within the bounds of the villager's trade list
      */
     void setRecipe(int i, MerchantRecipe recipe) throws IndexOutOfBoundsException;
 
@@ -72,7 +73,7 @@ public interface Villager extends Ageable, NPC, InventoryHolder {
      * Note that this inventory is not the Merchant inventory, rather, it is the
      * items that a villager might have collected (from harvesting crops, etc.)
      *
-     * @inheritDoc
+     * {@inheritDoc}
      */
     @Override
     Inventory getInventory();

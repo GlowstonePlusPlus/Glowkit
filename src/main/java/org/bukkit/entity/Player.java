@@ -1,20 +1,6 @@
 package org.bukkit.entity;
 
-import java.net.InetSocketAddress;
-
-import org.bukkit.Achievement;
-import org.bukkit.ChatColor;
-import org.bukkit.Effect;
-import org.bukkit.GameMode;
-import org.bukkit.Instrument;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.Note;
-import org.bukkit.OfflinePlayer;
-import org.bukkit.Particle;
-import org.bukkit.Sound;
-import org.bukkit.Statistic;
-import org.bukkit.WeatherType;
+import org.bukkit.*;
 import org.bukkit.command.CommandSender;
 import org.bukkit.conversations.Conversable;
 import org.bukkit.map.MapView;
@@ -381,13 +367,18 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
 
     /**
      * Update the subtitle of titles displayed to the player
+     *
+     * @param subtitle little text under the title
      * @deprecated Use {@link #updateTitle(Title)}
+     *
      */
     @Deprecated
     public void setSubtitle(net.md_5.bungee.api.chat.BaseComponent[] subtitle);
 
     /**
      * Update the subtitle of titles displayed to the player
+     *
+     * @param subtitle little text under the title
      * @deprecated Use {@link #updateTitle(Title)}
      */
     @Deprecated
@@ -395,6 +386,8 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
 
     /**
      * Show the given title to the player, along with the last subtitle set, using the last set times
+     *
+     * @param title big text
      * @deprecated Use {@link #sendTitle(Title)} or {@link #updateTitle(Title)}
      */
     @Deprecated
@@ -402,6 +395,8 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
 
     /**
      * Show the given title to the player, along with the last subtitle set, using the last set times
+     *
+     * @param title big text
      * @deprecated Use {@link #sendTitle(Title)} or {@link #updateTitle(Title)}
      */
     @Deprecated
@@ -1356,6 +1351,7 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * @param offsetZ the maximum random offset on the Z axis
      * @param data the data to use for the particle or null,
      *             the type of this depends on {@link Particle#getDataType()}
+     * @param <T> the data type for this particle
      */
     public <T> void spawnParticle(Particle particle, Location location, int count, double offsetX, double offsetY, double offsetZ, T data);
 
@@ -1375,6 +1371,7 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * @param offsetZ the maximum random offset on the Z axis
      * @param data the data to use for the particle or null,
      *             the type of this depends on {@link Particle#getDataType()}
+     * @param <T> the data type for this particle
      */
     public <T> void spawnParticle(Particle particle, double x, double y, double z, int count, double offsetX, double offsetY, double offsetZ, T data);
 
@@ -1430,6 +1427,7 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      *              particle used (normally speed)
      * @param data the data to use for the particle or null,
      *             the type of this depends on {@link Particle#getDataType()}
+     * @param <T> the data type for this particle
      */
     public <T> void spawnParticle(Particle particle, Location location, int count, double offsetX, double offsetY, double offsetZ, double extra, T data);
 
@@ -1451,6 +1449,7 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      *              particle used (normally speed)
      * @param data the data to use for the particle or null,
      *             the type of this depends on {@link Particle#getDataType()}
+     * @param <T> the data type for this particle
      */
     public <T> void spawnParticle(Particle particle, double x, double y, double z, int count, double offsetX, double offsetY, double offsetZ, double extra, T data);
 
