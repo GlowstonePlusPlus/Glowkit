@@ -1287,6 +1287,7 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * @param count the number of particles
      * @param data the data to use for the particle or null,
      *             the type of this depends on {@link Particle#getDataType()}
+     * @param <T> the data type for this particle
      */
     public <T> void spawnParticle(Particle particle, Location location, int count, T data);
 
@@ -1302,6 +1303,7 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * @param count the number of particles
      * @param data the data to use for the particle or null,
      *             the type of this depends on {@link Particle#getDataType()}
+     * @param <T> the data type for this particle
      */
     public <T> void spawnParticle(Particle particle, double x, double y, double z, int count, T data);
 
