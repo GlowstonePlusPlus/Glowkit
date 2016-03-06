@@ -142,9 +142,8 @@ public final class Timings {
     }
 
     /**
-     * <p>
      * Sets whether or not the Timings should monitor at Verbose level.
-     * </p>
+     * <br>
      * When Verbose is disabled, high-frequency timings will not be available.
      * Calling this will reset timing data.
      *

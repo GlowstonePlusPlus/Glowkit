@@ -185,44 +185,17 @@ public class VersionCommand extends BukkitCommand {
     private void obtainVersion() {
         String version = Bukkit.getVersion();
         if (version == null) version = "Custom";
-        // PaperSpigot start
-        if (version.startsWith("git-PaperSpigot-")) {
-            String[] parts = version.substring("git-PaperSpigot-".length()).split("[-\\s]");
-            int paperSpigotVersions = getDistance("paperspigot", parts[0]);
-            if (paperSpigotVersions == -1) {
+        // Paper start
+        if (version.startsWith("git-Paper-")) {
+            String[] parts = version.substring("git-Paper-".length()).split("[-\\s]");
+            int paperVersions = getDistance("paper", parts[0]);
+            if (paperVersions == -1) {
                 setVersionMessage("Error obtaining version information");
             } else {
-                if (paperSpigotVersions == 0) {
+                if (paperVersions == 0) {
                     setVersionMessage("You are running the latest version");
                 } else {
-                    setVersionMessage("You are " + paperSpigotVersions + " version(s) behind");
-                }
-            }
-        } else if (version.startsWith("git-Spigot-")) {
-        // PaperSpigot end
-            String[] parts = version.substring("git-Spigot-".length()).split("-");
-            int cbVersions = getDistance("craftbukkit", parts[1].substring(0, parts[1].indexOf(' ')));
-            int spigotVersions = getDistance("spigot", parts[0]);
-            if (cbVersions == -1 || spigotVersions == -1) {
-                setVersionMessage("Error obtaining version information");
-            } else {
-                if (cbVersions == 0 && spigotVersions == 0) {
-                    setVersionMessage("You are running the latest version");
-                } else {
-                    setVersionMessage("You are " + (cbVersions + spigotVersions) + " version(s) behind");
-                }
-            }
-
-        } else if (version.startsWith("git-Bukkit-")) {
-            version = version.substring("git-Bukkit-".length());
-            int cbVersions = getDistance("craftbukkit", version.substring(0, version.indexOf(' ')));
-            if (cbVersions == -1) {
-                setVersionMessage("Error obtaining version information");
-            } else {
-                if (cbVersions == 0) {
-                    setVersionMessage("You are running the latest version");
-                } else {
-                    setVersionMessage("You are " + cbVersions + " version(s) behind");
+                    setVersionMessage("You are " + paperVersions + " version(s) behind");
                 }
             }
         } else {
@@ -246,20 +219,20 @@ public class VersionCommand extends BukkitCommand {
         }
     }
 
-    private static int getDistance(String repo, String currentVerInt) { // PaperSpigot
+    private static int getDistance(String repo, String currentVerInt) { // Paper
         try {
             BufferedReader reader = Resources.asCharSource(
-                    new URL("https://ci.destroystokyo.com/job/PaperSpigot/lastSuccessfulBuild/buildNumber"), // PaperSpigot
+                    new URL("https://ci.destroystokyo.com/job/PaperSpigot/lastSuccessfulBuild/buildNumber"), // Paper
                     Charsets.UTF_8
             ).openBufferedStream();
             try {
-                // PaperSpigot start
+                // Paper start
                 int newVer = Integer.decode(reader.readLine());
                 int currentVer = Integer.decode(currentVerInt);
                 return newVer - currentVer;
             } catch (NumberFormatException ex) {
                 //ex.printStackTrace();
-                // PaperSpigot end
+                // Paper end
                 return -1;
             } finally {
                 reader.close();

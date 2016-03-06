@@ -1,8 +1,9 @@
 package org.bukkit.scoreboard;
 
 /**
- * Possible nametag visibilities for {@link Team}s.
+ * @deprecated replaced by {@link Team.OptionStatus}
  */
+@Deprecated
 public enum NameTagVisibility {
     /**
      * Always show nametags for those on this team.

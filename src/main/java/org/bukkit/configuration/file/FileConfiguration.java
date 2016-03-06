@@ -101,10 +101,6 @@ public abstract class FileConfiguration extends MemoryConfiguration {
      * <p>
      * If the file cannot be loaded for any reason, an exception will be
      * thrown.
-     * <p>
-     * This will attempt to use the {@link Charset#defaultCharset()} for
-     * files, unless {@code UTF8_OVERRIDE} but not {@code UTF_BIG} is
-     * specified.
      *
      * @param file File to load from.
      * @throws FileNotFoundException Thrown when the given file cannot be
@@ -128,9 +124,6 @@ public abstract class FileConfiguration extends MemoryConfiguration {
      * All the values contained within this configuration will be removed,
      * leaving only settings and defaults, and the new values will be loaded
      * from the given stream.
-     * <p>
-     * This will attempt to use the {@link Charset#defaultCharset()}, unless
-     * {@code UTF8_OVERRIDE} or {@code UTF_BIG} is specified.
      *
      * @param stream Stream to load from
      * @throws IOException Thrown when the given file cannot be read.

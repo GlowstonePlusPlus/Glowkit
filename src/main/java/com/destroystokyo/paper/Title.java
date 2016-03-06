@@ -1,4 +1,4 @@
-package org.github.paperspigot;
+package com.destroystokyo.paper;
 
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -11,7 +11,7 @@ import static com.google.common.base.Preconditions.checkState;
 
 /**
  * Represents a title to may be sent to a {@link Player}.
- *
+ * <p>
  * <p>A title can be sent without subtitle text.</p>
  */
 public final class Title implements Cloneable {
@@ -37,7 +37,7 @@ public final class Title implements Cloneable {
 
     /**
      * Create a title with the default time values and no subtitle.
-
+     * <p>
      * <p>Times use default values.</p>
      *
      * @param title the main text of the title
@@ -49,7 +49,7 @@ public final class Title implements Cloneable {
 
     /**
      * Create a title with the default time values and no subtitle.
-     *
+     * <p>
      * <p>Times use default values.</p>
      *
      * @param title the main text of the title
@@ -61,7 +61,7 @@ public final class Title implements Cloneable {
 
     /**
      * Create a title with the default time values and no subtitle.
-     *
+     * <p>
      * <p>Times use default values.</p>
      *
      * @param title the main text of the title
@@ -73,7 +73,7 @@ public final class Title implements Cloneable {
 
     /**
      * Create a title with the default time values.
-     *
+     * <p>
      * <p>Times use default values.</p>
      *
      * @param title    the main text of the title
@@ -85,7 +85,7 @@ public final class Title implements Cloneable {
 
     /**
      * Create a title with the default time values.
-     *
+     * <p>
      * <p>Times use default values.</p>
      *
      * @param title    the main text of the title
@@ -97,7 +97,7 @@ public final class Title implements Cloneable {
 
     /**
      * Create a title with the default time values.
-     *
+     * <p>
      * <p>Times use default values.</p>
      *
      * @param title    the main text of the title
@@ -150,8 +150,8 @@ public final class Title implements Cloneable {
 
     /**
      * Creates a new title.
-     *
-     * <p>It is recommended to the {@link BaseComponent} constructors.</p>
+     * <p>
+     * <p>It is recommended to the {@link BaseComponent} constrctors.</p>
      *
      * @param title    the main text of the title
      * @param subtitle the secondary text of the title
@@ -189,7 +189,7 @@ public final class Title implements Cloneable {
 
     /**
      * Gets the number of ticks to fade in.
-     *
+     * <p>
      * <p>The returned value is never negative.</p>
      *
      * @return the number of ticks to fade in
@@ -200,7 +200,7 @@ public final class Title implements Cloneable {
 
     /**
      * Gets the number of ticks to stay.
-     *
+     * <p>
      * <p>The returned value is never negative.</p>
      *
      * @return the number of ticks to stay
@@ -211,7 +211,7 @@ public final class Title implements Cloneable {
 
     /**
      * Gets the number of ticks to fade out.
-     *
+     * <p>
      * <p>The returned value is never negative.</p>
      *
      * @return the number of ticks to fade out
@@ -269,7 +269,7 @@ public final class Title implements Cloneable {
 
         /**
          * Sets the title to the given text.
-         *
+         * <p>
          * <p>It is recommended to the {@link BaseComponent} methods.</p>
          *
          * @param title the title text
@@ -303,7 +303,7 @@ public final class Title implements Cloneable {
 
         /**
          * Sets the subtitle to the given text.
-         *
+         * <p>
          * <p>It is recommended to the {@link BaseComponent} methods.</p>
          *
          * @param subtitle the title text

@@ -123,7 +123,7 @@ public final class PluginCommand extends Command implements PluginIdentifiableCo
      */
     @Override
     public java.util.List<String> tabComplete(CommandSender sender, String alias, String[] args) throws CommandException, IllegalArgumentException {
-        return tabComplete(sender, alias, args, null); // PaperSpigot - The code from this method has been (slightly modified) moved to the Location method.
+        return tabComplete(sender, alias, args, null); // Paper - The code from this method has been (slightly modified) moved to the Location method.
     }
 
     // PaperSpigot start - location tab-completes
@@ -139,10 +139,10 @@ public final class PluginCommand extends Command implements PluginIdentifiableCo
         List<String> completions = null;
         try {
             if (completer != null) {
-                completions = completer.onTabComplete(sender, this, alias, args, location); // PaperSpigot - add location argument
+                completions = completer.onTabComplete(sender, this, alias, args, location); // Paper - add location argument
             }
             if (completions == null && executor instanceof TabCompleter) {
-                completions = ((TabCompleter) executor).onTabComplete(sender, this, alias, args, location); // PaperSpigot - add location argument
+                completions = ((TabCompleter) executor).onTabComplete(sender, this, alias, args, location); // Paper - add location argument
             }
         } catch (Throwable ex) {
             StringBuilder message = new StringBuilder();
@@ -159,7 +159,7 @@ public final class PluginCommand extends Command implements PluginIdentifiableCo
         }
         return completions;
     }
-    // PaperSpigot end
+    // Paper end
 
     @Override
     public String toString() {

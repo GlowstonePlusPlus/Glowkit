@@ -1,8 +1,5 @@
 package org.bukkit.plugin.java;
 
-import co.aikar.timings.TimedEventExecutor;
-import co.aikar.timings.Timing;
-import co.aikar.timings.Timings;
 import org.apache.commons.lang3.Validate;
 import org.bukkit.Server;
 import org.bukkit.Warning;
@@ -15,17 +12,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.server.PluginDisableEvent;
 import org.bukkit.event.server.PluginEnableEvent;
-import org.bukkit.plugin.AuthorNagException;
-import org.bukkit.plugin.EventExecutor;
-import org.bukkit.plugin.InvalidDescriptionException;
-import org.bukkit.plugin.InvalidPluginException;
-import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.PluginDescriptionFile;
-import org.bukkit.plugin.PluginLoader;
-import org.bukkit.plugin.RegisteredListener;
-import org.bukkit.plugin.TimedRegisteredListener;
-import org.bukkit.plugin.UnknownDependencyException;
-import org.spigotmc.CustomTimingsHandler; // Spigot
+import org.bukkit.plugin.*;
+import org.spigotmc.CustomTimingsHandler;
 import org.yaml.snakeyaml.error.YAMLException;
 
 import java.io.File;
@@ -290,6 +278,7 @@ public final class JavaPluginLoader implements PluginLoader {
                     break;
                 }
             }
+
             EventExecutor executor = new co.aikar.timings.TimedEventExecutor(new EventExecutor() { // Spigot
                 public void execute(Listener listener, Event event) throws EventException {
                     try {
@@ -331,10 +320,10 @@ public final class JavaPluginLoader implements PluginLoader {
                 jPlugin.setEnabled(true);
             } catch (Throwable ex) {
                 server.getLogger().log(Level.SEVERE, "Error occurred while enabling " + plugin.getDescription().getFullName() + " (Is it up to date?)", ex);
-                // PaperSpigot start - Disable plugins that fail to load
+                // Paper start - Disable plugins that fail to load
                 disablePlugin(jPlugin);
                 return;
-                // PaperSpigot end
+                // Paper end
             }
 
             // Perhaps abort here, rather than continue going, but as it stands,

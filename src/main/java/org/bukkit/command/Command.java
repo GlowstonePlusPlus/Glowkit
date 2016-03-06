@@ -109,7 +109,8 @@ public abstract class Command {
         return matchedPlayers;
     }
 
-    // PaperSpigot start - location tab-completes
+    // Paper start - location tab-completes
+
     /**
      * Executed on tab completion for this command, returning a list of options the player can tab through. This method
      * returns the {@link Location} of the block the player is looking at at the time of the tab complete.
@@ -119,19 +120,19 @@ public abstract class Command {
      * attempts the tab complete. For this to be valid, the block must be highlighted by the player (i.e. the player is
      * close enough to interact with the block).
      *
-     * @param sender Source object which is executing this command
-     * @param alias the alias being used
-     * @param args All arguments passed to the command, split via ' '
+     * @param sender   Source object which is executing this command
+     * @param alias    the alias being used
+     * @param args     All arguments passed to the command, split via ' '
      * @param location the location of the block the player is looking at
      * @return a list of tab-completions for the specified arguments. This
-     *     will never be null. List may be immutable.
+     * will never be null. List may be immutable.
      * @throws IllegalArgumentException if sender, alias, or args is null
      */
     public List<String> tabComplete(CommandSender sender, String alias, String[] args, Location location) throws IllegalArgumentException {
         // Simply default to the standard tab-complete, subclasses can override this if needed
         return tabComplete(sender, alias, args);
     }
-    // PaperSpigot end
+    // Paper end
 
     /**
      * Returns the name of this command

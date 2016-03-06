@@ -29,6 +29,7 @@ import com.google.common.base.Function;
 import java.lang.reflect.Constructor;
 import java.util.*;
 
+
 /**
  * Allows you to pass a Loader function that when a key is accessed that doesn't exists,
  * automatically loads the entry into the map by calling the loader Function.
@@ -166,7 +167,6 @@ public class LoadingMap <K,V> extends AbstractMap<K, V> {
      * @param loadFactor The HashMap's load factor.
      * @param <K> Key Type of the Map
      * @param <V> Value Type of the Map
-     * @return HashMap that auto instantiates on .get()
      */
     public static <K, V> Map<K, V> newHashAutoMap(final Class<? extends V> valueClass, int initialCapacity, float loadFactor) {
         return newHashAutoMap(null, valueClass, initialCapacity, loadFactor);

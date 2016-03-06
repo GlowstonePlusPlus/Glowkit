@@ -32,7 +32,7 @@ public interface AttributeInstance {
     /**
      * Get all modifiers present on this instance.
      *
-     * @return the collection of attribute modifiers
+     * @return a copied collection of all modifiers
      */
     Collection<AttributeModifier> getModifiers();
 

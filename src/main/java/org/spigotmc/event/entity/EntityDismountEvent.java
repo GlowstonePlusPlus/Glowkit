@@ -1,18 +1,15 @@
 package org.spigotmc.event.entity;
 
 import org.bukkit.entity.Entity;
+import org.bukkit.event.Cancellable;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.entity.EntityEvent;
-
-// PaperSpigot start
-import org.bukkit.event.Cancellable;
-// PaperSpigot end
 
 /**
  * Called when an entity stops riding another entity.
  *
  */
-public class EntityDismountEvent extends EntityEvent implements Cancellable // PaperSpigot - implement Cancellable
+public class EntityDismountEvent extends EntityEvent implements Cancellable // Paper - implement Cancellable
 {
 
     private static final HandlerList handlers = new HandlerList();
@@ -41,7 +38,7 @@ public class EntityDismountEvent extends EntityEvent implements Cancellable // P
         return handlers;
     }
 
-    // PaperSpigot start - implement Cancellable methods
+    // Paper start - Implement cancellable methods
     @Override
     public boolean isCancelled() {
         return cancelled;
@@ -51,5 +48,5 @@ public class EntityDismountEvent extends EntityEvent implements Cancellable // P
     public void setCancelled(boolean cancelled) {
         this.cancelled = cancelled;
     }
-    // PaperSpigot end
+    // Paper end
 }

@@ -1,4 +1,4 @@
-package org.github.paperspigot.event.block;
+package com.destroystokyo.paper.event.block;
 
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;

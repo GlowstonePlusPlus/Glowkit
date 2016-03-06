@@ -939,6 +939,13 @@ public interface Server extends PluginMessageRecipient {
     BossBar createBossBar(String title, BarColor color, BarStyle style, BarFlag ...flags);
 
     /**
+     * Gets the current server TPS
+     *
+     * @return current server TPS (1m, 5m, 15m in Paper-Server)
+     */
+    public double[] getTPS();
+
+    /**
      * @see UnsafeValues
      * @return the unsafe values instance
      */
@@ -956,7 +963,7 @@ public interface Server extends PluginMessageRecipient {
 
     public class Spigot
     {
-
+        @Deprecated
         public org.bukkit.configuration.file.YamlConfiguration getConfig()
         {
             throw new UnsupportedOperationException( "Not supported yet." );

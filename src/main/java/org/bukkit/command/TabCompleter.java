@@ -22,9 +22,9 @@ public interface TabCompleter {
      */
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args);
 
-    // PaperSpigot start - location tab-completes
+    // Paper start - location tab-completes
     default List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args, Location location) {
         return onTabComplete(sender, command, alias, args);
     }
-    // PaperSpigot end
+    // Paper end
 }

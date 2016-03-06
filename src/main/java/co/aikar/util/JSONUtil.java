@@ -32,7 +32,7 @@ public final class JSONUtil {
     /**
      * Creates a new JSON object from multiple JsonPair key/value pairs
      * @param data The key-value map in JSON.
-     * @return map The Java equivalent for this map.
+     * @return The Java equivalent for this map.
      */
     public static Map createObject(JSONPair... data) {
         return appendObjectData(new LinkedHashMap(), data);

@@ -6,7 +6,7 @@ import org.bukkit.conversations.Conversable;
 import org.bukkit.map.MapView;
 import org.bukkit.plugin.messaging.PluginMessageRecipient;
 import org.bukkit.scoreboard.Scoreboard;
-import org.github.paperspigot.Title;
+import com.destroystokyo.paper.Title;
 
 import java.net.InetSocketAddress;
 
@@ -368,9 +368,7 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
     /**
      * Update the subtitle of titles displayed to the player
      *
-     * @param subtitle little text under the title
      * @deprecated Use {@link #updateTitle(Title)}
-     *
      */
     @Deprecated
     public void setSubtitle(net.md_5.bungee.api.chat.BaseComponent[] subtitle);
@@ -378,7 +376,6 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
     /**
      * Update the subtitle of titles displayed to the player
      *
-     * @param subtitle little text under the title
      * @deprecated Use {@link #updateTitle(Title)}
      */
     @Deprecated
@@ -430,7 +427,7 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
 
     /**
      * Show the title to the player, overriding any previously displayed title.
-     *
+     * <br>
      * <p>This method overrides any previous title, use {@link #updateTitle(Title)} to change the existing one.</p>
      *
      * @param title the title to send
@@ -440,7 +437,7 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
 
     /**
      * Show the title to the player, overriding any previously displayed title.
-     *
+     * <br>
      * <p>This method doesn't override previous titles, but changes their values.</p>
      *
      * @param title the title to send
@@ -456,6 +453,7 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
 
     /**
      * Forces an update of the player's entire inventory.
+     *
      */
     //@Deprecated // Spigot - undeprecate
     public void updateInventory();
@@ -1239,7 +1237,7 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
     /**
      * Resets the title displayed to the player.
      */
-    // Paper - Undeprecate
+    // Paper - undeprecate
     public void resetTitle();
 
     /**
@@ -1455,6 +1453,34 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      */
     public <T> void spawnParticle(Particle particle, double x, double y, double z, int count, double offsetX, double offsetY, double offsetZ, double extra, T data);
 
+    /**
+     * Get whether the player can affect mob spawning
+     *
+     * @return if the player can affect mob spawning
+     */
+    public boolean getAffectsSpawning();
+
+    /**
+     * Set whether the player can affect mob spawning
+     *
+     * @param affects Whether the player can affect mob spawning
+     */
+    public void setAffectsSpawning(boolean affects);
+
+    /**
+     * Gets the view distance for this player
+     *
+     * @return the player's view distance
+     */
+    public int getViewDistance();
+
+    /**
+     * Sets the view distance for this player
+     *
+     * @param viewDistance the player's view distance
+     */
+    public void setViewDistance(int viewDistance);
+
     // Spigot start
     public class Spigot extends Entity.Spigot
     {
@@ -1540,48 +1566,6 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
          */
         public void sendMessage(net.md_5.bungee.api.chat.BaseComponent... components) {
             throw new UnsupportedOperationException("Not supported yet.");
-        }
-
-        /**
-         * Get whether the player affects mob spawning
-         *
-         * @return whether or not the player affects
-         * mob spawning.
-         */
-        public boolean getAffectsSpawning()
-        {
-            throw new  UnsupportedOperationException( "Not supported yet." );
-        }
-
-        /**
-         * Set whether or not the player affects mob spawning
-         *
-         * @param affects whether or not the player should affect
-         * spawning or not.
-         */
-        public void setAffectsSpawning(boolean affects)
-        {
-            throw new UnsupportedOperationException( "Not supported yet" );
-        }
-
-        /**
-         * Get the view distance for this player
-         *
-         * @return View distance
-         */
-        public int getViewDistance()
-        {
-            throw new UnsupportedOperationException( "Not supported yet" );
-        }
-
-        /**
-         * Set the view distance for this player
-         *
-         * @param viewDistance View distance
-         */
-        public void setViewDistance(int viewDistance)
-        {
-            throw new UnsupportedOperationException( "Not supported yet" );
         }
 
         public int getPing()
