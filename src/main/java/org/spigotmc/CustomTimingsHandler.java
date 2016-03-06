@@ -16,14 +16,14 @@ public class CustomTimingsHandler
 
     private static Queue<CustomTimingsHandler> HANDLERS = new ConcurrentLinkedQueue<CustomTimingsHandler>();
     /*========================================================================*/
-    final String name;
+    private final String name;
     private final CustomTimingsHandler parent;
-    long count = 0;
+    private long count = 0;
     private long start = 0;
     private long timingDepth = 0;
-    long totalTime = 0;
-    long curTickTotal = 0;
-    long violations = 0;
+    private long totalTime = 0;
+    private long curTickTotal = 0;
+    private long violations = 0;
 
     public CustomTimingsHandler(String name)
     {

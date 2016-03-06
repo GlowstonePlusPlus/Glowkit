@@ -954,7 +954,6 @@ public interface Server extends PluginMessageRecipient {
     CommandMap getCommandMap();
     // Paper end
 
-
     public class Spigot
     {
 
