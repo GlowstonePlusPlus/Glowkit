@@ -52,7 +52,7 @@ public class SpawnEgg extends MaterialData {
      * Set the type of entity this egg will spawn.
      *
      * @param type The entity type.
-     * @deprecated This is now stored in {@link ItemMeta}. See SPIGOT-1592.
+     * @deprecated {@see SpawnMeta}.
      */
     @Deprecated
     public void setSpawnedType(EntityType type) {
