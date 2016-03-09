@@ -64,4 +64,23 @@ public interface Ageable extends Creature {
      * @param breed breedability of the animal
      */
     public void setBreed(boolean breed);
+
+    /**
+     * Creates and spawns a baby entity with the same type and location as the parent.
+     * This is a convenience method for spawning a similar entity, with the baby properties, and attributing its parent.
+     * @return The spawned baby ageable entity
+     */
+    public Ageable createBaby();
+
+    /**
+     * The parent of this baby.
+     * @return The baby's parent, null if not applicable
+     */
+    public Ageable getParent();
+
+    /**
+     * Sets the parent of this baby.
+     * @param parent The new baby's parent
+     */
+    public void setParent(Ageable parent);
 }
