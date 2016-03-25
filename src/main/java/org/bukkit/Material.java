@@ -36,7 +36,7 @@ public enum Material {
     COAL_ORE(16),
     LOG(17, Tree.class),
     LEAVES(18, Leaves.class),
-    SPONGE(19),
+    SPONGE(19, Sponge.class),
     GLASS(20),
     LAPIS_ORE(21),
     LAPIS_BLOCK(22),
