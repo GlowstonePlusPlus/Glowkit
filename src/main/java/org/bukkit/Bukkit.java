@@ -1189,6 +1189,16 @@ public final class Bukkit {
     public static void reloadPermissions() {
         server.reloadPermissions();
     }
+
+    /**
+     * Find an entity on the server by its UUID
+     *
+     * @param uuid The UUID of the entity
+     * @return The entity that is identified by the given UUID, or null if one isn't found
+     */
+    public static Entity getEntity(UUID uuid) {
+        return server.getEntity(uuid);
+    }
     // Paper end
 
     public static Server.Spigot spigot()

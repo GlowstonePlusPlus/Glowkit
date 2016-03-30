@@ -1020,4 +1020,12 @@ public interface Server extends PluginMessageRecipient {
     Spigot spigot();
 
     void reloadPermissions(); // Paper
+
+    /**
+     * Find an entity on the server by its UUID
+     *
+     * @param uuid The UUID of the entity
+     * @return The entity that is identified by the given UUID, or null if one isn't found
+     */
+    Entity getEntity(UUID uuid); // Paper
 }
