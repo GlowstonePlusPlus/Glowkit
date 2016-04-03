@@ -8,7 +8,7 @@ package co.aikar.util;
 
 
 import com.google.common.base.Function;
-import gnu.trove.map.hash.TIntObjectHashMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
 /**
  * Allows you to pass a Loader function that when a key is accessed that doesn't exist,
@@ -24,15 +24,21 @@ import gnu.trove.map.hash.TIntObjectHashMap;
  *
  * @param <V> Value
  */
-public class LoadingIntMap<V> extends TIntObjectHashMap<V> {
+public class LoadingIntMap<V> extends Int2ObjectOpenHashMap<V> {
     private final Function<Integer, V> loader;
 
-    /**
-     * Initializes an auto loading map using specified loader and backing map
-     *
-     * @param loader The loader
-     */
     public LoadingIntMap(Function<Integer, V> loader) {
+        super();
+        this.loader = loader;
+    }
+
+    public LoadingIntMap(int expectedSize, Function<Integer, V> loader) {
+        super(expectedSize);
+        this.loader = loader;
+    }
+
+    public LoadingIntMap(int expectedSize, float loadFactor, Function<Integer, V> loader) {
+        super(expectedSize, loadFactor);
         this.loader = loader;
     }
 

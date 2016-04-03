@@ -25,10 +25,18 @@ package co.aikar.util;
 
 
 import com.google.common.base.Function;
+import org.bukkit.Material;
+import co.aikar.timings.TimingHistory;
+import org.w3c.dom.css.Counter;
 
 import java.lang.reflect.Constructor;
-import java.util.*;
-
+import java.util.AbstractMap;
+import java.util.Collection;
+import java.util.EnumMap;
+import java.util.HashMap;
+import java.util.IdentityHashMap;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Allows you to pass a Loader function that when a key is accessed that doesn't exists,
@@ -51,7 +59,6 @@ public class LoadingMap <K,V> extends AbstractMap<K, V> {
 
     /**
      * Initializes an auto loading map using specified loader and backing map
-     *
      * @param backingMap Actual map being used.
      * @param loader The loader for this LoadingMap.
      */
@@ -62,7 +69,6 @@ public class LoadingMap <K,V> extends AbstractMap<K, V> {
 
     /**
      * Creates a new LoadingMap with the specified map and loader
-     *
      * @param backingMap Actual map being used.
      * @param loader The loader for this LoadingMap.
      * @param <K> Key Type of the Map
@@ -115,7 +121,6 @@ public class LoadingMap <K,V> extends AbstractMap<K, V> {
      * @see #newAutoMap
      *
      * new Auto initializing map using a HashMap.
-     *
      * @param keyClass Class used for the K generic
      * @param valueClass Class used for the V generic
      * @param <K> Key Type of the Map
@@ -130,7 +135,6 @@ public class LoadingMap <K,V> extends AbstractMap<K, V> {
      * @see #newAutoMap
      *
      * new Auto initializing map using a HashMap.
-     *
      * @param valueClass Class used for the V generic
      * @param <K> Key Type of the Map
      * @param <V> Value Type of the Map
@@ -200,7 +204,6 @@ public class LoadingMap <K,V> extends AbstractMap<K, V> {
 
     /**
      * Initializes an auto loading map using an Identity HashMap
-     *
      * @param loader The loader for this LoadingMap.
      * @param <K> Key Type of the Map
      * @param <V> Value Type of the Map
@@ -212,7 +215,6 @@ public class LoadingMap <K,V> extends AbstractMap<K, V> {
 
     /**
      * Initializes an auto loading map using an Identity HashMap
-     *
      * @param loader The loader for this LoadingMap.
      * @param initialCapacity The HashMap's initial capacity.
      * @param <K> Key Type of the Map

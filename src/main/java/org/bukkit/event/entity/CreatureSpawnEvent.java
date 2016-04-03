@@ -135,6 +135,10 @@ public class CreatureSpawnEvent extends EntitySpawnEvent {
          */
         MOUNT,
         /**
+         * When an entity spawns as a trap for players approaching
+         */
+        TRAP,
+        /**
          * When a creature is spawned by plugins
          */
         CUSTOM,

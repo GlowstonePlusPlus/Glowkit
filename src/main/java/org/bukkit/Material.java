@@ -11,8 +11,6 @@ import org.bukkit.util.Java15Compat;
 
 import com.google.common.collect.Maps;
 
-import org.bukkit.material.Banner;
-
 /**
  * An enum of all material IDs accepted by the official server and client
  */
@@ -158,20 +156,20 @@ public enum Material {
     BEACON(138),
     COBBLE_WALL(139),
     FLOWER_POT(140, FlowerPot.class),
-    CARROT(141),
-    POTATO(142),
+    CARROT(141, Crops.class),
+    POTATO(142, Crops.class),
     WOOD_BUTTON(143, Button.class),
     SKULL(144, Skull.class),
     ANVIL(145),
     TRAPPED_CHEST(146, Chest.class),
     GOLD_PLATE(147),
     IRON_PLATE(148),
-    REDSTONE_COMPARATOR_OFF(149),
-    REDSTONE_COMPARATOR_ON(150),
+    REDSTONE_COMPARATOR_OFF(149, Comparator.class),
+    REDSTONE_COMPARATOR_ON(150, Comparator.class),
     DAYLIGHT_DETECTOR(151),
     REDSTONE_BLOCK(152),
     QUARTZ_ORE(153),
-    HOPPER(154),
+    HOPPER(154, Hopper.class),
     QUARTZ_BLOCK(155),
     QUARTZ_STAIRS(156, Stairs.class),
     ACTIVATOR_RAIL(157, PoweredRail.class),
@@ -352,9 +350,6 @@ public enum Material {
     GHAST_TEAR(370),
     GOLD_NUGGET(371),
     NETHER_STALK(372),
-    /**
-     * @see Potion
-     */
     POTION(373, 1, MaterialData.class),
     GLASS_BOTTLE(374),
     SPIDER_EYE(375),
@@ -423,12 +418,9 @@ public enum Material {
     SPLASH_POTION(438, 1),
     SPECTRAL_ARROW(439),
     TIPPED_ARROW(440),
-    /**
-     * @see Potion
-     */
-    LINGERING_POTION(441, 1, MaterialData.class),
+    LINGERING_POTION(441, 1),
     SHIELD(442, 1, 336),
-    ELYTRA(443, 1),
+    ELYTRA(443, 1, 431),
     BOAT_SPRUCE(444, 1),
     BOAT_BIRCH(445, 1),
     BOAT_JUNGLE(446, 1),

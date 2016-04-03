@@ -64,6 +64,9 @@ public interface FallingBlock extends Entity {
      * Gets the source block location of the FallingBlock
      *
      * @return the source block location the FallingBlock was spawned from
+
+     * @deprecated replaced by {@link Entity#getOrigin()}
      */
+    @Deprecated
     public org.bukkit.Location getSourceLoc();
 }

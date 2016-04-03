@@ -7,11 +7,7 @@ import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarFlag;
 import org.bukkit.boss.BarStyle;
 import org.bukkit.boss.BossBar;
-import org.bukkit.command.CommandException;
-import org.bukkit.command.CommandMap;
-import org.bukkit.command.CommandSender;
-import org.bukkit.command.ConsoleCommandSender;
-import org.bukkit.command.PluginCommand;
+import org.bukkit.command.*;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryType;
@@ -993,14 +989,17 @@ public interface Server extends PluginMessageRecipient {
         public void restart() {
             throw new UnsupportedOperationException("Not supported yet.");
         }
-
-        // PaperSpigot start - Add getTPS method
-        public double[] getTPS()
-        {
-            throw new UnsupportedOperationException( "Not supported yet." );
-        }
-        // PaperSpigot end
     }
 
     Spigot spigot();
+
+    void reloadPermissions(); // Paper
+
+    /**
+     * Find an entity on the server by its UUID
+     *
+     * @param uuid The UUID of the entity
+     * @return The entity that is identified by the given UUID, or null if one isn't found
+     */
+    Entity getEntity(UUID uuid); // Paper
 }

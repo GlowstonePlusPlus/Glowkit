@@ -151,7 +151,7 @@ public final class Title implements Cloneable {
     /**
      * Creates a new title.
      * <br>
-     * <p>It is recommended to the {@link BaseComponent} constrctors.</p>
+     * <p>It is recommended to the {@link BaseComponent} constructors.</p>
      *
      * @param title    the main text of the title
      * @param subtitle the secondary text of the title

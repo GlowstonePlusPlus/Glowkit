@@ -28,6 +28,11 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+// Paper start
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+// Paper end
+
 public class VersionCommand extends BukkitCommand {
     public VersionCommand(String name) {
         super(name);
@@ -142,7 +147,7 @@ public class VersionCommand extends BukkitCommand {
         return ImmutableList.of();
     }
 
-    /*private final ReentrantLock versionLock = new ReentrantLock();
+    private final ReentrantLock versionLock = new ReentrantLock();
     private boolean hasVersion = false;
     private String versionMessage = null;
     private final Set<CommandSender> versionWaiters = new HashSet<CommandSender>();
@@ -182,20 +187,37 @@ public class VersionCommand extends BukkitCommand {
         }
     }
 
+    // Paper start
     private void obtainVersion() {
         String version = Bukkit.getVersion();
         if (version == null) version = "Custom";
-        // Paper start
-        if (version.startsWith("git-Paper-")) {
-            String[] parts = version.substring("git-Paper-".length()).split("[-\\s]");
-            int paperVersions = getDistance("paper", parts[0]);
-            if (paperVersions == -1) {
+        if (Bukkit.getName().startsWith("Glowstone")) {
+            String[] parts = version.replace("\"", "").split("-");
+            int distance = getDistance("GlowstoneMC/GlowstonePlusPlus", parts[2]);
+            switch (distance) {
+                case -1:
+                    setVersionMessage("Error obtaining version information");
+                    break;
+                case 0:
+                    setVersionMessage("You are running the latest version");
+                    break;
+                case -2:
+                    setVersionMessage("Unknown version");
+                    break;
+                default:
+                    setVersionMessage("You are " + distance + " version(s) behind");
+            }
+        } else if (version.startsWith("git-Bukkit-")) {
+            // Paper end
+            version = version.substring("git-Bukkit-".length());
+            int cbVersions = getDistance("craftbukkit", version.substring(0, version.indexOf(' ')));
+            if (cbVersions == -1) {
                 setVersionMessage("Error obtaining version information");
             } else {
-                if (paperVersions == 0) {
+                if (cbVersions == 0) {
                     setVersionMessage("You are running the latest version");
                 } else {
-                    setVersionMessage("You are " + paperVersions + " version(s) behind");
+                    setVersionMessage("You are " + cbVersions + " version(s) behind");
                 }
             }
         } else {
@@ -219,27 +241,39 @@ public class VersionCommand extends BukkitCommand {
         }
     }
 
-    private static int getDistance(String repo, String currentVerInt) { // Paper
+    // Paper start
+    private static int getDistance(String repo, String verInfo) {
+        return getFromRepo(repo, verInfo);
+    }
+
+    // Contributed by Techcable <Techcable@outlook.com> in GH PR #65
+    private static final String BRANCH = "master";
+    private static int getFromRepo(String repo, String hash) {
         try {
-            BufferedReader reader = Resources.asCharSource(
-                    new URL("https://ci.destroystokyo.com/job/PaperSpigot/lastSuccessfulBuild/buildNumber"), // Paper
-                    Charsets.UTF_8
-            ).openBufferedStream();
-            try {
-                // Paper start
-                int newVer = Integer.decode(reader.readLine());
-                int currentVer = Integer.decode(currentVerInt);
-                return newVer - currentVer;
-            } catch (NumberFormatException ex) {
-                //ex.printStackTrace();
-                // Paper end
+            HttpURLConnection connection = (HttpURLConnection) new URL("https://api.github.com/repos/" + repo + "/compare/" + BRANCH + "..." + hash).openConnection();
+            connection.connect();
+            if (connection.getResponseCode() == HttpURLConnection.HTTP_NOT_FOUND) return -2; // Unknown commit
+            try (
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), Charsets.UTF_8))
+            ) {
+                JSONObject obj = (JSONObject) new JSONParser().parse(reader);
+                String status = (String) obj.get("status");
+                switch (status) {
+                    case "identical":
+                        return 0;
+                    case "behind":
+                        return ((Number) obj.get("behind_by")).intValue();
+                    default:
+                        return -1;
+                }
+            } catch (ParseException | NumberFormatException e) {
+                e.printStackTrace();
                 return -1;
-            } finally {
-                reader.close();
             }
         } catch (IOException e) {
             e.printStackTrace();
             return -1;
         }
-    }*/
+    }
+    // Paper end
 }

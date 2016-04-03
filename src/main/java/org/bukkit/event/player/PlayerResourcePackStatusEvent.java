@@ -10,18 +10,21 @@ import org.bukkit.event.HandlerList;
 public class PlayerResourcePackStatusEvent extends PlayerEvent {
 
     private static final HandlerList handlers = new HandlerList();
+    private final String hash; // Paper
     private final Status status;
-    private final String hash;
 
+    @Deprecated // Paper
     public PlayerResourcePackStatusEvent(final Player who, Status resourcePackStatus) {
         this(who, resourcePackStatus, null);
     }
 
-    public PlayerResourcePackStatusEvent(final Player who, Status resourcePackStatus, String resourcePackHash) {
+    // Paper start
+    public PlayerResourcePackStatusEvent(final Player who, Status resourcePackStatus, String hash) {
         super(who);
+        this.hash = hash; // Paper
         this.status = resourcePackStatus;
-        this.hash = resourcePackHash;
     }
+    // Paper end
 
     /**
      * Gets the status of this pack.

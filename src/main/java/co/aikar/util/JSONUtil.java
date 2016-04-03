@@ -3,7 +3,10 @@ package co.aikar.util;
 import com.google.common.base.Function;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -52,7 +55,7 @@ public final class JSONUtil {
     }
 
     /**
-     * This builds a JSON array from a set of data
+     * This builds a JSON array from a set of datas
      * @param data The Java objects to collect into the list.
      * @return The resultant list.
      */

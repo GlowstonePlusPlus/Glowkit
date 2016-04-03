@@ -310,7 +310,9 @@ public interface World extends PluginMessageRecipient, Metadatable {
      * @param safe Controls whether to unload the chunk when players are
      *     nearby
      * @return true if the chunk has unloaded successfully, otherwise false
+     * @deprecated it is never safe to remove a chunk in use
      */
+    @Deprecated
     public boolean unloadChunk(int x, int z, boolean save, boolean safe);
 
     /**
@@ -385,6 +387,20 @@ public interface World extends PluginMessageRecipient, Metadatable {
      * @return Arrow entity spawned as a result of this method
      */
     public Arrow spawnArrow(Location location, Vector direction, float speed, float spread);
+
+    /**
+     * Creates an arrow entity of the given class at the given {@link Location}
+     *
+     * @param <T> type of arrow to spawn
+     * @param location Location to spawn the arrow
+     * @param direction Direction to shoot the arrow in
+     * @param speed Speed of the arrow. A recommend speed is 0.6
+     * @param spread Spread of the arrow. A recommend spread is 12
+     * @param clazz the Entity class for the arrow
+     * {@link org.bukkit.entity.SpectralArrow},{@link org.bukkit.entity.Arrow},{@link org.bukkit.entity.TippedArrow}
+     * @return Arrow entity spawned as a result of this method
+     */
+    public <T extends Arrow> T spawnArrow(Location location, Vector direction, float speed, float spread, Class<T> clazz);
 
     /**
      * Creates a tree at the given {@link Location}
@@ -1187,6 +1203,20 @@ public interface World extends PluginMessageRecipient, Metadatable {
      * @param pitch The pitch of the sound
      */
     void playSound(Location location, Sound sound, float volume, float pitch);
+
+    /**
+     * Play a Sound at the provided Location in the World.
+     * <p>
+     * This function will fail silently if Location or Sound are null. No
+     * sound will be heard by the players if their clients do not have the
+     * respective sound for the value passed.
+     *
+     * @param location the location to play the sound
+     * @param sound the internal sound name to play
+     * @param volume the volume of the sound
+     * @param pitch the pitch of the sound
+     */
+    void playSound(Location location, String sound, float volume, float pitch);
 
     /**
      * Get existing rules

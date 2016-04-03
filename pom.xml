@@ -11,7 +11,7 @@
 
     <groupId>net.glowstone</groupId>
     <artifactId>glowkit</artifactId>
-    <version>1.9-R0.1-SNAPSHOT</version>
+    <version>1.9.2-R0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>Glowkit</name>
@@ -35,19 +35,11 @@
             <id>SonaType OSS</id>
             <url>https://oss.sonatype.org/content/repositories/snapshots</url>
         </repository>
-    </repositories>
-
-    <!-- just until we get deployment to central approved -->
-    <distributionManagement>
         <repository>
-            <id>destroystokyo-releases</id>
-            <url>https://repo.destroystokyo.com/content/repositories/releases/</url>
+            <id>aikar</id>
+            <url>https://ci.emc.gs/nexus/content/repositories/aikar</url>
         </repository>
-        <snapshotRepository>
-            <id>destroystokyo-snapshots</id>
-            <url>https://repo.destroystokyo.com/content/repositories/snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
+    </repositories>
 
     <pluginRepositories>
         <pluginRepository>
@@ -66,6 +58,11 @@
             <groupId>net.sf.trove4j</groupId>
             <artifactId>trove4j</artifactId>
             <version>3.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>co.aikar</groupId>
+            <artifactId>fastutil-lite</artifactId>
+            <version>1.0</version>
         </dependency>
         <!-- Keep lang2 for plugin compatibility for now. This may be removed in the future. -->
         <dependency>
@@ -127,9 +124,16 @@
             <version>1.3</version>
             <scope>test</scope>
         </dependency>
+        <!-- ASM -->
+        <dependency>
+            <groupId>org.ow2.asm</groupId>
+            <artifactId>asm-all</artifactId>
+            <version>5.0.4</version>
+        </dependency>
     </dependencies>
 
     <build>
+        <defaultGoal>clean install</defaultGoal>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

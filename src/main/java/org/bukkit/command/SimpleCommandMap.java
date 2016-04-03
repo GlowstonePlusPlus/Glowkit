@@ -1,9 +1,20 @@
 package org.bukkit.command;
 
+import static org.bukkit.util.Java15Compat.Arrays_copyOfRange;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.regex.Pattern;
+
 import com.destroystokyo.paper.event.server.ServerExceptionEvent;
 import com.destroystokyo.paper.exception.ServerCommandException;
 import com.destroystokyo.paper.exception.ServerTabCompleteException;
-import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang.Validate;
 import org.bukkit.Location;
 import org.bukkit.Server;
 import org.bukkit.command.defaults.*;
@@ -214,7 +225,7 @@ public class SimpleCommandMap implements CommandMap {
     }
 
     // Paper start - location tab-completes
-    /*
+    /**
      * This code was copied, except for the noted change, from tabComplete(CommandSender sender, String cmdLine)
      */
     public List<String> tabComplete(CommandSender sender, String cmdLine, Location location) {

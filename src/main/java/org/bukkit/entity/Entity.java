@@ -357,6 +357,23 @@ public interface Entity extends Metadatable, CommandSender {
      */
     boolean isGlowing();
 
+    /**
+     * Sets whether the entity is invulnerable or not.
+     * <p>
+     * When an entity is invulnerable it can only be damaged by players in
+     * creative mode.
+     *
+     * @param flag if the entity is invulnerable
+     */
+    public void setInvulnerable(boolean flag);
+
+    /**
+     * Gets whether the entity is invulnerable or not.
+     *
+     * @return whether the entity is
+     */
+    public boolean isInvulnerable();
+
     // Spigot Start
     public class Spigot
     {
@@ -374,4 +391,15 @@ public interface Entity extends Metadatable, CommandSender {
 
     Spigot spigot();
     // Spigot End
+
+    // Paper start
+    /**
+     * Gets the location where this entity originates from.
+     * <p>
+     * This value can be null if the entity hasn't yet been added to the world.
+     *
+     * @return Location where entity originates or null if not yet added
+     */
+    Location getOrigin();
+    // Paper end
 }

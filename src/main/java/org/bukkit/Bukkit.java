@@ -8,11 +8,7 @@ import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarFlag;
 import org.bukkit.boss.BarStyle;
 import org.bukkit.boss.BossBar;
-import org.bukkit.command.CommandException;
-import org.bukkit.command.CommandMap;
-import org.bukkit.command.CommandSender;
-import org.bukkit.command.ConsoleCommandSender;
-import org.bukkit.command.PluginCommand;
+import org.bukkit.command.*;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryType;
@@ -1175,6 +1171,23 @@ public final class Bukkit {
      */
     public static CommandMap getCommandMap() {
         return server.getCommandMap();
+    }
+
+    /**
+     * Reload the Permissions in permissions.yml
+     */
+    public static void reloadPermissions() {
+        server.reloadPermissions();
+    }
+
+    /**
+     * Find an entity on the server by its UUID
+     *
+     * @param uuid The UUID of the entity
+     * @return The entity that is identified by the given UUID, or null if one isn't found
+     */
+    public static Entity getEntity(UUID uuid) {
+        return server.getEntity(uuid);
     }
     // Paper end
 
