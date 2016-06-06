@@ -52,7 +52,7 @@
 		<name>glowstone-snapshots</name>
 		<url>https://repo.glowstone.net/content/repositories/snapshots</url>
 	</snapshotRepository>
-    <distributionManagement>
+    </distributionManagement>
 
     <pluginRepositories>
         <pluginRepository>
