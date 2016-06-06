@@ -40,6 +40,19 @@
             <url>https://ci.emc.gs/nexus/content/repositories/aikar</url>
         </repository>
     </repositories>
+    
+    <distributionManagement>
+	<repository>
+		<id>glowstone-upstream</id>
+		<name>glowstone-releases</name>
+		<url>https://repo.glowstone.net/content/repositories/releases</url>
+	</repository>
+	<snapshotRepository>
+		<id>glowstone-upstream</id>
+		<name>glowstone-snapshots</name>
+		<url>https://repo.glowstone.net/content/repositories/snapshots</url>
+	</snapshotRepository>
+    <distributionManagement>
 
     <pluginRepositories>
         <pluginRepository>
